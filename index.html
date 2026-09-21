@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Administración tercerizada para PyMEs | AdminYAAA, Ciudadela</title>
+<meta name="description" content="Facturación, pagos, cobranzas y trámites de tu negocio, y números claros para decidir. Trabajamos junto a tu contador. Oficina en Ciudadela, Zona Oeste.">
+<meta name="theme-color" content="#02264A">
+
+<!-- BORRADOR: no indexar hasta publicar. Al publicar, borrar la línea de abajo (ver README.md). -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- [DATO A COMPLETAR: dominio final] Al publicar, agregar:
+     <link rel="canonical" href="https://DOMINIO/">
+     y pasar og:image / og:url a direcciones absolutas. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="AdminYAAA">
+<meta property="og:title" content="AdminYAAA: vos ocupate del negocio, de la administración nos ocupamos nosotros">
+<meta property="og:description" content="Administración tercerizada para PyMEs, comercios, emprendedores y profesionales. Trabajamos junto a tu contador.">
+<meta property="og:image" content="assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- Datos estructurados: negocio local. Solo incluye datos CONFIRMADOS.
+     [DATO A COMPLETAR al publicar: "url", "logo", "image", "openingHours" (cuando haya horarios); sumar el enlace de la ficha de Google a "sameAs"] -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "AdminYAAA",
+  "description": "Administración tercerizada para PyMEs, comercios, emprendedores y profesionales. Trabajamos junto al contador del cliente.",
+  "telephone": ["+5491125604901", "+5491130332341"],
+  "email": "adminyaaa@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Gaona 4385",
+    "addressLocality": "Ciudadela",
+    "addressRegion": "Provincia de Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": -34.6344412, "longitude": -58.550395 },
+  "sameAs": ["https://www.instagram.com/admin.yaaa/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Reemplazan a mi contador?", "acceptedAnswer": { "@type": "Answer", "text": "No. Trabajamos junto a tu contador: nosotros nos ocupamos de la administración diaria y de ordenar la información, y él sigue a cargo de lo que le corresponde." } },
+    { "@type": "Question", "name": "¿Qué servicios incluyen?", "acceptedAnswer": { "@type": "Answer", "text": "Facturación, pagos a proveedores, cobranzas y trámites impositivos; además flujo de caja, stock y compras, presupuestación, costeo y márgenes, y herramientas adaptadas al negocio. Podés necesitar solo una parte: lo definimos según tu situación." } },
+    { "@type": "Question", "name": "¿Para qué tipo de negocio trabajan?", "acceptedAnswer": { "@type": "Answer", "text": "Para PyMEs, comercios, emprendedores y profesionales. Si no estás seguro de si tu caso encaja, contanos cómo funciona tu negocio y lo vemos." } },
+    { "@type": "Question", "name": "¿El servicio es presencial o remoto?", "acceptedAnswer": { "@type": "Answer", "text": "Es remoto. Además tenemos oficina en Zona Oeste, en Av. Gaona 4385, Ciudadela." } },
+    { "@type": "Question", "name": "¿Cómo empiezo?", "acceptedAnswer": { "@type": "Answer", "text": "Escribinos por cualquiera de los dos WhatsApp o por correo a adminyaaa@gmail.com. Nos contás qué necesitás y a partir de ahí vemos cómo ayudarte." } },
+    { "@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": { "@type": "Answer", "text": "Depende de lo que necesite cada negocio. Escribinos y te lo explicamos según tu caso." } },
+    { "@type": "Question", "name": "Mi rubro no aparece en la lista, ¿pueden ayudarme igual?", "acceptedAnswer": { "@type": "Answer", "text": "Escribinos y lo vemos: las herramientas se adaptan a cómo trabaja cada negocio." } },
+    { "@type": "Question", "name": "¿Dónde está la oficina y en qué horario atienden?", "acceptedAnswer": { "@type": "Answer", "text": "Estamos en Av. Gaona 4385, Ciudadela, Provincia de Buenos Aires. Consultanos por WhatsApp para conocer los horarios de atención." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- Iconos (se reutilizan con <use>) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.3-.4A8 8 0 0 1 12 4Zm-3 3.5c-.3 0-.7.1-1 .5-.3.4-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3 2.4 1 2.9.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4l-1.9-.9c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6M18 14.4c1.8.8 3 2.7 3 5.6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <!-- servicios -->
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M12 15V4m0 0L8 8m4-4l4 4"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+  <symbol id="i-filecheck" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 14l2 2 4-4"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-9"/><path d="M15 7h5v5"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></symbol>
+  <symbol id="i-dash" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></symbol>
+  <!-- rubros -->
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9v11h16V9"/><path d="M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9"/><path d="M10 20v-5h4v5"/></symbol>
+  <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M7 3v8M4 3v5a3 3 0 0 0 6 0V3M7 11v10"/><path d="M17 21V3c-2.5 1.5-3.5 4-3.5 7.5 0 1.7 1.5 2.5 3.5 2.5"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 12c0-4 3-6 7-6 0 4-3 6-7 6z"/><path d="M12 14c0-3-2.5-5-6-5 0 3.5 2.5 5 6 5z"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-build" viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M14 10h5a1 1 0 0 1 1 1v10M2 21h20M8 8h2M8 12h2M8 16h2"/></symbol>
+</svg>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ============================ ENCABEZADO ============================ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#inicio">
+      <picture>
+        <source srcset="assets/img/adminyaaa-logo-dark.webp" type="image/webp">
+        <img src="assets/img/adminyaaa-logo-dark.png" alt="AdminYAAA" width="760" height="214">
+      </picture>
+    </a>
+    <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">
+      <svg class="i" aria-hidden="true"><use href="#i-menu"/></svg><span>Menú</span>
+    </button>
+    <nav class="header-nav" id="menu" aria-label="Principal">
+      <ul class="nav-list">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+        <li><a href="#rubros">Por rubro</a></li>
+        <li><a href="#donde">Dónde estamos</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a class="wa wa--sm" href="https://wa.me/5491125604901?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
+        <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg><span class="sr-only">WhatsApp </span><span class="wa-num">11 2560-4901</span><span class="sr-only">(se abre en una pestaña nueva)</span>
+      </a>
+      <a class="wa wa--sm" href="https://wa.me/5491130332341?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
+        <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg><span class="sr-only">WhatsApp </span><span class="wa-num">11 3033-2341</span><span class="sr-only">(se abre en una pestaña nueva)</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ============================ PORTADA ============================ -->
+  <section class="hero" id="inicio" aria-labelledby="t-inicio">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Administración tercerizada · Zona Oeste</p>
+        <h1 id="t-inicio">Vos ocupate del negocio. De la administración nos ocupamos <span class="mark">nosotros</span>.</h1>
+        <p class="lead">Nos encargamos de la facturación, los pagos, las cobranzas y los trámites de tu negocio, y te damos números claros para decidir. Para PyMEs, comercios, emprendedores y profesionales. Siempre junto a tu contador.</p>
+
+        <div class="hero-cta" id="hero-cta">
+          <p class="cta-title">Escribinos por WhatsApp</p>
+          <p class="cta-hint">Los dos números atienden. Elegí el que prefieras.</p>
+          <div class="wa-pair">
+            <a class="wa" href="https://wa.me/5491125604901?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
+              <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>
+              <span class="wa-text"><span class="wa-label">WhatsApp</span><span class="wa-num">11 2560-4901</span></span>
+              <span class="sr-only">(se abre en una pestaña nueva)</span>
+            </a>
+            <a class="wa" href="https://wa.me/5491130332341?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
+              <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>
+              <span class="wa-text"><span class="wa-label">WhatsApp</span><span class="wa-num">11 3033-2341</span></span>
+              <span class="sr-only">(se abre en una pestaña nueva)</span>
+            </a>
+          </div>
+          <p class="hero-alt">¿Preferís contarnos tu caso por escrito? <a href="#contacto">Completá el formulario corto</a>.</p>
+          <div class="hero-address">
+            <svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>
+            <p>Oficina: Av. Gaona 4385, Ciudadela, Provincia de Buenos Aires.
+              <a class="link-go" href="https://share.google/GwaTx7BCfUCzjgzkv" target="_blank" rel="noopener">Cómo llegar en Google Maps<svg class="i" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> (se abre en una pestaña nueva)</span></a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="split" role="group" aria-label="Cómo nos repartimos el trabajo">
+        <p class="split-head">Así nos repartimos el trabajo</p>
+        <div class="split-you">
+          <p class="split-title">Vos</p>
+          <ul>
+            <li>Atendés a tus clientes</li>
+            <li>Producís y vendés</li>
+            <li>Decidís hacia dónde crece el negocio</li>
+          </ul>
+        </div>
+        <div class="split-us">
+          <p class="split-title">Nosotros</p>
+          <ul>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Facturación</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Pagos a proveedores</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Cobranzas</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Trámites impositivos</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Números claros para que decidas</li>
+          </ul>
+        </div>
+        <p class="split-foot"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Y siempre en contacto con tu contador.</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <ul class="chips" aria-label="En pocas palabras">
+        <li class="chip"><svg class="i" aria-hidden="true"><use href="#i-monitor"/></svg>Servicio remoto</li>
+        <li class="chip"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Oficina en Ciudadela</li>
+        <li class="chip"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Trabajamos junto a tu contador</li>
+        <li class="chip"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg>Dos números de WhatsApp</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ JUNTO A TU CONTADOR ============================ -->
+  <section class="section section--alt" id="contador" aria-labelledby="t-contador">
+    <div class="wrap">
+      <p class="kicker reveal">Con tu contador</p>
+      <h2 id="t-contador" class="reveal">Tu contador sigue siendo tu contador.</h2>
+      <p class="intro reveal">No venimos a reemplazarlo. Nos ocupamos de la administración diaria y ordenamos la información, para que su trabajo, y el tuyo, sea más simple.</p>
+
+      <div class="trio reveal">
+        <div class="node">
+          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></div>
+          <h3>Vos</h3>
+          <p>Atendés, producís, vendés y decidís hacia dónde va el negocio.</p>
+        </div>
+        <div class="node node--mid">
+          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-dash"/></svg></div>
+          <h3>AdminYAAA</h3>
+          <p>Nos ocupamos de la administración de todos los días y ordenamos la información en un solo lugar.</p>
+        </div>
+        <div class="node">
+          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-filecheck"/></svg></div>
+          <h3>Tu contador</h3>
+          <p>Sigue a cargo de lo que le corresponde, con la información más ordenada.</p>
+        </div>
+      </div>
+      <p class="trio-note reveal">Estamos en contacto con vos y con tu contador. Los trámites y vencimientos los gestionamos en coordinación con él.</p>
+      <!-- [DATO A COMPLETAR: ¿qué pasa si el cliente todavía no tiene contador? ¿lo derivan, trabajan con otro estudio?] -->
+    </div>
+  </section>
+
+  <!-- ============================ SERVICIOS ============================ -->
+  <section class="section" id="servicios" aria-labelledby="t-servicios">
+    <div class="wrap">
+      <p class="kicker reveal">Servicios</p>
+      <h2 id="t-servicios" class="reveal">Servicios para que la administración deje de ser una carga</h2>
+      <p class="intro reveal">Nos hacemos cargo de la rutina administrativa y te damos las herramientas para entender los números de tu negocio.</p>
+
+      <div class="svc-group">
+        <h3 class="reveal">La administración de todos los días</h3>
+        <div class="cards cards--4">
+          <article class="card reveal">
+            <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></div>
+            <h4>Facturación</h4>
+            <p>Emisión y seguimiento de tus comprobantes, al día y ordenados.</p>
+          </article>
+          <article class="card reveal">
+            <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-out"/></svg></div>
+            <h4>Pagos a proveedores</h4>
+            <p>Vencimientos y pagos organizados en un solo lugar.</p>
+          </article>
+          <article class="card reveal">
+            <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg></div>
+            <h4>Cobranzas</h4>
+            <p>Seguimiento de lo que te deben, para que cobrar no dependa de acordarte.</p>
+          </article>
+          <article class="card reveal">
+            <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-filecheck"/></svg></div>
+            <h4>Trámites impositivos</h4>
+            <p>Gestión de trámites y vencimientos, en coordinación con tu contador.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="svc-group">
+        <h3 class="reveal">Información para manejar el negocio</h3>
+        <div class="cards cards--5">
+          <article class="card reveal">
+            <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-trend"/></svg></div>
+            <h4>Flujo de caja</h4>
+            <p>Una vista clara de lo que entra y lo que sale.</p>
+          </article>
+          <article class="card reveal">
+            <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-box"/></svg></div>
+            <h4>Stock y compras</h4>
+            <p>Control de mercadería y de lo que hay que reponer.</p>
+          </article>
+          <article class="card reveal">
+            <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg></div>
+            <h4>Presupuestación</h4>
+            <p>Números para planificar lo que viene.</p>
+          </article>
+          <article class="card reveal">
+            <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-calc"/></svg></div>
+            <h4>Costeo y márgenes</h4>
+            <p>Cuánto te cuesta lo que vendés y cuánto te deja.</p>
+          </article>
+          <article class="card reveal">
+            <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-dash"/></svg></div>
+            <h4>Herramientas adaptadas al negocio</h4>
+            <p>Planillas y tableros hechos a la medida de cómo trabajás.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="svc-foot reveal">
+        <p>Podés necesitar solo una parte. Lo definimos según tu situación.</p>
+        <a class="btn btn--primary" href="#contacto">Contanos tu caso</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CÓMO TRABAJAMOS ============================ -->
+  <!-- [DATO A COMPLETAR: validar que estos 4 pasos reflejan el proceso real; agregar plazos solo si son ciertos] -->
+  <section class="section section--alt" id="como-trabajamos" aria-labelledby="t-como">
+    <div class="wrap">
+      <p class="kicker reveal">Cómo trabajamos</p>
+      <h2 id="t-como" class="reveal">Un camino simple, en cuatro pasos</h2>
+      <p class="intro reveal">Primero entendemos cómo funciona tu negocio. Después nos ocupamos de que la administración acompañe.</p>
+      <ol class="steps">
+        <li class="reveal">
+          <h3>Entendemos el negocio</h3>
+          <p>Empezamos escuchando: cómo vendés, cómo cobrás, cómo pagás y qué te está quitando tiempo.</p>
+        </li>
+        <li class="reveal">
+          <h3>Ordenamos</h3>
+          <p>Ponemos en orden comprobantes, pagos, cobros y vencimientos para que la información esté en un mismo lugar.</p>
+        </li>
+        <li class="reveal">
+          <h3>Acompañamos</h3>
+          <p>Nos ocupamos de la administración del día a día, en contacto con vos y con tu contador.</p>
+        </li>
+        <li class="reveal">
+          <h3>Información para decidir</h3>
+          <p>Te acercamos números claros, en un formato que puedas leer, para decidir con más tranquilidad.</p>
+        </li>
+      </ol>
+      <div class="steps-cta reveal">
+        <a class="btn btn--light" href="#contacto">Empezá contándonos tu caso</a>
+        <p>Escribinos y vemos cómo ayudarte.</p>
+      </div>
+      <!-- [DATO A COMPLETAR: si la primera consulta no tiene costo, conviene decirlo acá; hoy no está confirmado] -->
+    </div>
+  </section>
+
+  <!-- ============================ POR RUBRO ============================ -->
+  <!-- [DATO A COMPLETAR: validar los ejemplos por rubro con el negocio] -->
+  <section class="section" id="rubros" aria-labelledby="t-rubros">
+    <div class="wrap">
+      <p class="kicker reveal">Por rubro</p>
+      <h2 id="t-rubros" class="reveal">Herramientas según tu rubro</h2>
+      <p class="intro reveal">Cada negocio maneja sus números de manera distinta. Estos son ejemplos de lo que podemos armar.</p>
+
+      <div class="rubros-grid">
+        <div>
+          <ul class="rubros">
+            <li class="reveal">
+              <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-store"/></svg></div>
+              <h3>Comercios</h3>
+              <p>Control de stock y compras, seguimiento de cobranzas y listas de precios ordenadas.</p>
+            </li>
+            <li class="reveal">
+              <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-utensils"/></svg></div>
+              <h3>Gastronomía</h3>
+              <p>Costeo de recetas y platos, márgenes por producto y control de insumos.</p>
+            </li>
+            <li class="reveal">
+              <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-sprout"/></svg></div>
+              <h3>Emprendedores</h3>
+              <p>Costeo de productos, flujo de caja simple y presupuesto para arrancar con los números claros.</p>
+            </li>
+            <li class="reveal">
+              <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-brief"/></svg></div>
+              <h3>Profesionales</h3>
+              <p>Seguimiento de lo facturado y lo cobrado, vencimientos y presupuestos de trabajos.</p>
+            </li>
+            <li class="reveal">
+              <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-build"/></svg></div>
+              <h3>PyMEs</h3>
+              <p>Tablero de ingresos y egresos, pagos a proveedores, flujo de caja y presupuesto anual.</p>
+            </li>
+          </ul>
+          <p class="note reveal">¿Tu rubro no está en la lista? Escribinos: las herramientas se adaptan a cómo trabaja cada negocio.</p>
+        </div>
+
+        <!-- Ejemplo VISUAL con datos ficticios, rotulado como tal. No representa a ningún cliente real. -->
+        <aside class="board reveal" aria-label="Ejemplo ilustrativo de un tablero de flujo de caja">
+          <div class="board-head">
+            <p class="board-title">Así puede verse el orden</p>
+            <span class="tag">Ejemplo ilustrativo</span>
+          </div>
+          <div class="bars" role="img" aria-label="Gráfico de ejemplo con datos ficticios: barras de lo que entra y lo que sale en cada uno de seis meses.">
+            <div><i class="in" style="height:60%"></i><i class="out" style="height:45%"></i></div>
+            <div><i class="in" style="height:68%"></i><i class="out" style="height:52%"></i></div>
+            <div><i class="in" style="height:55%"></i><i class="out" style="height:58%"></i></div>
+            <div><i class="in" style="height:75%"></i><i class="out" style="height:55%"></i></div>
+            <div><i class="in" style="height:82%"></i><i class="out" style="height:60%"></i></div>
+            <div><i class="in" style="height:70%"></i><i class="out" style="height:62%"></i></div>
+          </div>
+          <div class="months" aria-hidden="true"><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span></div>
+          <p class="legend"><span>Entra</span><span class="l-out">Sale</span></p>
+          <div class="due">
+            <h3>Próximos vencimientos y cobros</h3>
+            <ul>
+              <li><span>Proveedor de insumos</span><span>vence en 3 días</span></li>
+              <li><span>Alquiler</span><span>vence en 8 días</span></li>
+              <li><span>Cobro a Cliente A</span><span>12 días de atraso</span></li>
+            </ul>
+          </div>
+          <p class="board-note">Datos ficticios, solo para mostrar la idea. El formato real se arma según tu negocio.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DÓNDE ESTAMOS ============================ -->
+  <!-- [DATO A COMPLETAR: horarios de atención; alcance geográfico real del servicio remoto; fotos reales de la oficina] -->
+  <section class="section section--alt" id="donde" aria-labelledby="t-donde">
+    <div class="wrap">
+      <p class="kicker reveal">Dónde estamos</p>
+      <h2 id="t-donde" class="reveal">Servicio remoto, con oficina en Ciudadela</h2>
+      <p class="intro reveal">Trabajamos de forma remota y tenemos oficina en Zona Oeste.</p>
+
+      <div class="where-grid">
+        <div class="office reveal">
+          <h3>Nuestra oficina</h3>
+          <address>Av. Gaona 4385<br>Ciudadela, Provincia de Buenos Aires</address>
+          <p>Consultanos por WhatsApp para conocer los horarios de atención.</p>
+          <a class="btn btn--light" href="https://share.google/GwaTx7BCfUCzjgzkv" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar<span class="sr-only"> (se abre en una pestaña nueva)</span></a>
+        </div>
+        <div class="map reveal">
+          <iframe title="Mapa con la ubicación de AdminYAAA en Av. Gaona 4385, Ciudadela" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-34.6344412,-58.550395&amp;z=16&amp;hl=es&amp;output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PREGUNTAS FRECUENTES ============================ -->
+  <!-- [DATO A COMPLETAR: sumar respuestas sobre seguridad de datos/accesos, sistemas con los que trabajan y tiempos de respuesta cuando estén confirmados] -->
+  <section class="section" id="preguntas" aria-labelledby="t-preguntas">
+    <div class="wrap">
+      <p class="kicker reveal">Preguntas frecuentes</p>
+      <h2 id="t-preguntas" class="reveal">Lo que suelen preguntarnos</h2>
+      <div class="faq reveal">
+        <details>
+          <summary>¿Reemplazan a mi contador?</summary>
+          <p class="answer">No. Trabajamos junto a tu contador: nosotros nos ocupamos de la administración diaria y de ordenar la información, y él sigue a cargo de lo que le corresponde.</p>
+        </details>
+        <details>
+          <summary>¿Qué servicios incluyen?</summary>
+          <p class="answer">Facturación, pagos a proveedores, cobranzas y trámites impositivos; además flujo de caja, stock y compras, presupuestación, costeo y márgenes, y herramientas adaptadas al negocio. Podés necesitar solo una parte: lo definimos según tu situación.</p>
+        </details>
+        <details>
+          <summary>¿Para qué tipo de negocio trabajan?</summary>
+          <p class="answer">Para PyMEs, comercios, emprendedores y profesionales. Si no estás seguro de si tu caso encaja, contanos cómo funciona tu negocio y lo vemos.</p>
+        </details>
+        <details>
+          <summary>¿El servicio es presencial o remoto?</summary>
+          <p class="answer">Es remoto. Además tenemos oficina en Zona Oeste, en Av. Gaona 4385, Ciudadela.</p>
+        </details>
+        <details>
+          <summary>¿Cómo empiezo?</summary>
+          <p class="answer">Escribinos por cualquiera de los dos WhatsApp o por correo a adminyaaa@gmail.com. Nos contás qué necesitás y a partir de ahí vemos cómo ayudarte.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto cuesta?</summary>
+          <p class="answer">Depende de lo que necesite cada negocio. Escribinos y te lo explicamos según tu caso.</p>
+        </details>
+        <details>
+          <summary>Mi rubro no aparece en la lista, ¿pueden ayudarme igual?</summary>
+          <p class="answer">Escribinos y lo vemos: las herramientas se adaptan a cómo trabaja cada negocio.</p>
+        </details>
+        <details>
+          <summary>¿Dónde está la oficina y en qué horario atienden?</summary>
+          <p class="answer">Estamos en Av. Gaona 4385, Ciudadela, Provincia de Buenos Aires. Consultanos por WhatsApp para conocer los horarios de atención.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CONTACTO ============================ -->
+  <section class="section section--alt" id="contacto" aria-labelledby="t-contacto">
+    <div class="wrap">
+      <p class="kicker reveal">Contacto</p>
+      <h2 id="t-contacto" class="reveal">Contanos cómo trabajás y vemos cómo ayudarte</h2>
+      <p class="intro reveal">Escribinos a cualquiera de los dos WhatsApp, por correo, o completá el formulario: te abre el mensaje ya armado.</p>
+
+      <div class="contact-grid">
+        <div class="panel reveal">
+          <h3>Escribinos directamente</h3>
+          <p class="hint">Los dos números atienden por WhatsApp.</p>
+          <ul class="clist">
+            <li><a class="crow" href="https://wa.me/5491125604901?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
+              <span class="badge"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg></span>
+              <span class="crow-text"><span class="crow-main">11 2560-4901</span><span class="crow-sub">WhatsApp · Escribir ahora</span></span>
+              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a></li>
+            <li><a class="crow" href="https://wa.me/5491130332341?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
+              <span class="badge"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg></span>
+              <span class="crow-text"><span class="crow-main">11 3033-2341</span><span class="crow-sub">WhatsApp · Escribir ahora</span></span>
+              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a></li>
+            <li><a class="crow" href="https://share.google/GwaTx7BCfUCzjgzkv" target="_blank" rel="noopener">
+              <span class="badge"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></span>
+              <span class="crow-text"><span class="crow-main">Av. Gaona 4385</span><span class="crow-sub">Ciudadela, Buenos Aires · Cómo llegar</span></span>
+              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a></li>
+            <li><a class="crow" href="https://www.instagram.com/admin.yaaa/" target="_blank" rel="noopener">
+              <span class="badge"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg></span>
+              <span class="crow-text"><span class="crow-main">@admin.yaaa</span><span class="crow-sub">Instagram</span></span>
+              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a></li>
+            <li><a class="crow" href="mailto:adminyaaa@gmail.com">
+              <span class="badge"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span>
+              <span class="crow-text"><span class="crow-main crow-main--mail">adminyaaa@gmail.com</span><span class="crow-sub">Correo</span></span>
+              <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="panel form-card reveal">
+          <h3>Contanos tu caso</h3>
+          <p class="hint">Cuatro datos y se abre WhatsApp o tu correo con el mensaje listo. Lo revisás antes de enviarlo.</p>
+          <form class="form" id="form-caso" novalidate>
+            <div class="form-2">
+              <div class="field">
+                <label for="f-nombre">Tu nombre <span class="opt">(opcional)</span></label>
+                <input id="f-nombre" name="nombre" type="text" autocomplete="given-name" enterkeyhint="next">
+              </div>
+              <div class="field">
+                <label for="f-rubro">Tu negocio es un…</label>
+                <select id="f-rubro" name="rubro">
+                  <option value="">Elegí una opción</option>
+                  <option>Comercio</option>
+                  <option>Gastronomía</option>
+                  <option>Emprendimiento</option>
+                  <option>Profesional independiente</option>
+                  <option>PyME</option>
+                  <option>Otro rubro</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-tema">¿Qué te gustaría resolver?</label>
+              <select id="f-tema" name="tema">
+                <option value="">Elegí una opción</option>
+                <option>Facturación</option>
+                <option>Pagos a proveedores</option>
+                <option>Cobranzas</option>
+                <option>Trámites impositivos</option>
+                <option>Flujo de caja</option>
+                <option>Stock y compras</option>
+                <option>Presupuestación</option>
+                <option>Costeo y márgenes</option>
+                <option>Herramientas adaptadas a mi negocio</option>
+                <option>Varias cosas</option>
+                <option>Todavía no sé: quiero que me orienten</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-mensaje">Algo más que quieras contarnos <span class="opt">(opcional)</span></label>
+              <textarea id="f-mensaje" name="mensaje" rows="3"></textarea>
+            </div>
+            <div class="form-actions">
+              <a class="btn btn--primary" id="send-wa1" href="https://wa.me/5491125604901" target="_blank" rel="noopener"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp · 11 2560-4901<span class="sr-only"> (se abre en una pestaña nueva)</span></a>
+              <a class="btn btn--primary" id="send-wa2" href="https://wa.me/5491130332341" target="_blank" rel="noopener"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp · 11 3033-2341<span class="sr-only"> (se abre en una pestaña nueva)</span></a>
+              <a class="btn btn--ghost" id="send-mail" href="mailto:adminyaaa@gmail.com"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Enviar por correo</a>
+            </div>
+            <p class="form-note">Esta página no guarda lo que escribís: solo arma el mensaje para que lo envíes vos.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================ PIE ============================ -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="#inicio">
+        <picture>
+          <source srcset="assets/img/adminyaaa-logo-dark.webp" type="image/webp">
+          <img src="assets/img/adminyaaa-logo-dark.png" alt="AdminYAAA, volver al inicio" width="760" height="214" loading="lazy">
+        </picture>
+      </a>
+      <p class="footer-slogan">Administración que te ayuda a crecer</p>
+      <p>Administración tercerizada para PyMEs, comercios, emprendedores y profesionales. Trabajamos junto a tu contador.</p>
+    </div>
+    <nav class="footer-col" aria-label="Pie de página">
+      <h3>Secciones</h3>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+        <li><a href="#rubros">Por rubro</a></li>
+        <li><a href="#preguntas">Preguntas frecuentes</a></li>
+      </ul>
+    </nav>
+    <div class="footer-col">
+      <h3>Contacto</h3>
+      <ul>
+        <li><a href="https://wa.me/5491125604901" target="_blank" rel="noopener">WhatsApp 11 2560-4901<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+        <li><a href="https://wa.me/5491130332341" target="_blank" rel="noopener">WhatsApp 11 3033-2341<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+        <li><a href="https://www.instagram.com/admin.yaaa/" target="_blank" rel="noopener">Instagram @admin.yaaa<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+        <li><a href="mailto:adminyaaa@gmail.com">adminyaaa@gmail.com</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Oficina</h3>
+      <address>Av. Gaona 4385<br>Ciudadela, Provincia de Buenos Aires</address>
+      <ul>
+        <li><a href="https://share.google/GwaTx7BCfUCzjgzkv" target="_blank" rel="noopener">Cómo llegar<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- Barra fija de WhatsApp en celular y tablet: ambos números, mismo tamaño y estilo -->
+<nav class="wa-bar" id="wa-bar" aria-label="WhatsApp">
+  <a class="wa" href="https://wa.me/5491125604901?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
+    <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>
+    <span class="wa-text"><span class="wa-label">WhatsApp</span><span class="wa-num">11 2560-4901</span></span>
+    <span class="sr-only">(se abre en una pestaña nueva)</span>
+  </a>
+  <a class="wa" href="https://wa.me/5491130332341?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
+    <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>
+    <span class="wa-text"><span class="wa-label">WhatsApp</span><span class="wa-num">11 3033-2341</span></span>
+    <span class="sr-only">(se abre en una pestaña nueva)</span>
+  </a>
+</nav>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
