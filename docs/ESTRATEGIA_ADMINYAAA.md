@@ -35,22 +35,27 @@ Consecuencias directas:
 | Coordenadas | -34.6344412, -58.550395 | URL de Maps que pasaste |
 | WhatsApp 1 | 11 2560-4901 (`wa.me/5491125604901`) | borrador |
 | WhatsApp 2 | 11 3033-2341 (`wa.me/5491130332341`) | borrador |
-| Correo | adminyaaa@gmail.com | borrador |
+| Correo | adminyaaa@gmail.com | borrador + mensaje del usuario |
+| Instagram | @admin.yaaa | tarjeta de presentación |
+| Lemas de la marca | "Administración tercerizada para empresas" y "Administración que te ayuda a crecer" | tarjeta de presentación |
+| Estética de marca | Fondo azul marino profundo, logo claro con verde brillante, iconos en círculos verdes | tarjeta de presentación |
 | Servicios (9) | Facturación · Pagos a proveedores · Cobranzas · Trámites impositivos · Flujo de caja · Stock y compras · Presupuestación · Costeo y márgenes · Herramientas adaptadas al negocio | borrador |
 | Diferencial declarado | "Trabajamos junto a tu contador. No lo reemplazamos." | borrador |
 | Prioridad del negocio | Los dos WhatsApp con **la misma importancia**; dirección con enlace a Google bien visible | `REVISION_WEB.txt` |
 | Estado | Borrador sin publicar (`noindex, nofollow`) | `REVISION_WEB.txt` |
+
+**Matiz sobre el público.** La tarjeta dice "para empresas", mientras que el borrador habla de PyMEs, comercios, emprendedores y profesionales. La web mantiene la versión más específica del borrador (convierte mejor); conviene confirmar si "empresas" es más amplio que eso.
 
 **Matiz importante.** El borrador presenta como "ejemplos de lo que podemos armar" las herramientas por rubro (comercios, gastronomía, emprendedores, profesionales, PyMEs) y un proceso de 4 pasos. Los tomé como base, pero conviene que AdminYAAA **valide que reflejan cómo trabaja de verdad** antes de publicar.
 
 ### Presencia digital actual (lo que pude verificar)
 - **Ficha de Google Maps**: existe (ID `/g/11nw1hjf73`), pero **no pude leer su contenido** (rating, cantidad de reseñas, categoría, horarios, fotos): el panel cargó vacío en el navegador de trabajo. **[DATO A COMPLETAR: capturas o datos de la ficha]**.
 - **Sitio web propio**: no encontré ninguno indexado al buscar "AdminYAAA". Es una de las oportunidades más concretas: hoy quien busque el servicio no los encuentra.
-- **Instagram / redes**: pendiente de confirmar (según `REVISION_WEB.txt`).
+- **Instagram**: `@admin.yaaa` (confirmado con la tarjeta). No pude ver su contenido ni su actividad.
 
 ### ❓ Datos que faltan
 1. **Horarios de atención** (confirmado como pendiente).
-2. **Instagram** u otras redes (pendiente).
+2. **Otras redes** (Facebook, LinkedIn) si existen. Instagram ya está confirmado (`@admin.yaaa`).
 3. **Reseñas de Google**: puntaje, cantidad y 2–3 textos que se puedan citar con permiso.
 4. **Años de trayectoria** y **cantidad de clientes** (solo si son ciertos y demostrables).
 5. **Quién está detrás**: nombres, formación, foto real. Es lo que más confianza genera en un servicio "de personas".
@@ -267,32 +272,35 @@ Cada sección responde **una pregunta** del visitante.
 
 ## 8. Identidad visual
 
-### Punto de partida
-El logo ya existe (azul `#012E55` y verde `#028148`, con una flecha ascendente). **Se respeta.** El desafío era que la web no fuera "azul corporativo genérico" ni "template".
+### Punto de partida: la tarjeta de presentación
+La marca ya tiene una estética definida en su tarjeta: **fondo azul marino profundo, logo claro con verde brillante, iconos dentro de círculos verdes, círculos translúcidos en las esquinas y una tipografía geométrica de trazo limpio**. La web la traslada tal cual, en lugar de inventar otra identidad. (En una primera versión usé papel claro con azul y verde; se reemplazó por esta.)
 
-### Concepto: "la libreta prolija"
-La administración vista como algo ordenado y tranquilo: papel cálido en lugar de blanco clínico, renglones de libreta, cifras tabulares, tildes de "hecho". La flecha del logo aparece solo como guiño. **El azul se usa como tinta, no como fondo dominante.**
+### Concepto
+Tranquilidad y orden sobre un fondo oscuro: **un solo acento (el verde)**, mucho aire, tarjetas de un azul apenas más claro y el motivo del círculo verde con icono repetido en todas las secciones.
 
-### Paleta
+### Paleta (colores medidos sobre la imagen de la tarjeta)
 | Rol | Color | Uso | Contraste |
 |---|---|---|---|
-| **Primario** | Verde `#0B6B3E` (variante oscurecida del verde del logo) | Botones y acciones | Blanco sobre verde: **6,6:1** |
-| Marca | Verde `#028148` (del logo) | Solo elementos decorativos grandes y el logo | 4,5:1 sobre papel |
-| **Tinta** | Azul `#012E55` (del logo) | Texto, secciones oscuras | Sobre papel: **12,5:1** |
-| **Fondo** | Papel `#F7F4EC` + blanco `#FFFFFF` en tarjetas | Superficies | — |
-| **Acento** | Caléndula `#F5B942` | Subrayado marcador y detalles mínimos | Azul sobre caléndula: 7,8:1 |
-| Texto secundario | `#4A5B6E` | Textos de apoyo | 6,3:1 sobre papel |
-| Menta | `#8FE3B8` | Detalles sobre azul | 9,1:1 sobre azul |
+| **Fondo** | Azul marino `#02264A` | Fondo principal | Blanco sobre él: **15,2:1** |
+| Fondo alterno | Azul profundo `#021B35` | Secciones alternas, pie y campos | Blanco: 17,3:1 |
+| Paneles | Azul `#06315E` (hover `#0B4078`) | Tarjetas y paneles | Blanco: 13,1:1 |
+| **Acento** | Verde brillante `#0BE893` | Botones, rótulos, iconos, línea de marca | Sobre azul: **9,4:1** |
+| Texto en botones | Azul `#02264A` sobre verde | Todos los botones verdes | 9,4:1 |
+| Texto de apoyo | `#B7CADF` | Párrafos secundarios | 7,8:1 a 10,4:1 |
+| Bordes de campos | `#6A90BF` | Formulario | 5,3:1 (mín. 3:1) |
 
-Botones: verde sólido con texto blanco (los dos WhatsApp, idénticos). Un solo acento cálido para evitar "demasiados colores".
+No hay ningún otro color de acento: se descartó el amarillo de la primera versión para no sumar colores.
 
 ### Tipografía
-**Figtree** (sans geométrica y amable, parecida a las letras del logo), autoalojada en variable (400–800). Números con `tabular-nums` para dar el aire de planilla. Sin fuentes externas: más rápida y sin enviar datos a terceros.
+**Poppins** (400, 500, 600 y 700), muy parecida a la de la tarjeta y a las letras del logo. Autoalojada (sin pedir nada a Google): ~31 KB en total. Números con `tabular-nums` para dar el aire de planilla.
+
+### Logo
+El original es azul y verde, pensado para fondo claro. Para el fondo oscuro se generó una **variante clara** ("Admin" en blanco; flecha y "YAAA" en verde brillante), como en la tarjeta. **Se generó recoloreando el PNG original**: si el diseñador tiene los archivos vectoriales de la versión clara, hay que usarlos.
 
 ### Estilo
-Mucho aire, tarjetas limpias con borde fino (sin sombras pesadas), iconos lineales propios, movimiento mínimo (aparición suave, respeta `prefers-reduced-motion`), mobile primero. **Evitado**: degradados, fotos de stock de apretones de manos, exceso de sombras, muchos colores, bloques de texto largos.
+Botones en forma de píldora, tarjetas redondeadas con borde fino (sin sombras pesadas), círculos translúcidos y el isotipo como marca de agua en la portada, movimiento mínimo (respeta `prefers-reduced-motion`), mobile primero. **Evitado**: degradados, fotos de stock, exceso de sombras, muchos colores, bloques de texto largos.
 
-**Fotos**: no hay fotos reales disponibles, así que no se usan imágenes de stock. La web ya está preparada para sumar fotos de la oficina y del equipo cuando existan.
+**Fotos**: no hay fotos reales disponibles, así que no se usan imágenes de stock. La web está preparada para sumar fotos de la oficina y del equipo cuando existan.
 
 ---
 

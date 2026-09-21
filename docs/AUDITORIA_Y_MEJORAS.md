@@ -3,17 +3,17 @@
 ## Qué se probó y qué no (importante)
 
 **Probado de verdad** (en el navegador integrado, con la página corriendo):
-- Se ve y funciona en escritorio (1360 px), tablet (820 px) y celular (375 y 320 px), sin desbordes horizontales.
+- Se ve y funciona (con la estética actual) en escritorio (1360 px), tablet (820 px) y celular (375 y 320 px), sin desbordes horizontales.
 - El formulario arma bien el mensaje (con tildes, saltos de línea y también vacío) para los dos WhatsApp y el correo.
 - El mapa carga y el marcador cae sobre Av. Gaona.
 - Datos estructurados (JSON-LD) válidos; el FAQ visible coincide palabra por palabra con el del schema.
 - Sin enlaces internos rotos, sin recursos faltantes, sin IDs duplicados, todas las imágenes con `alt`.
 - Los dos WhatsApp aparecen el mismo número de veces (7 y 7) y con idéntico estilo.
 - Ninguna de las frases que se querían evitar ("soluciones integrales", "core business", "líderes", etc.), ni "consorcio", ni cifras inventadas.
-- Contrastes de color calculados (ver estrategia): todos cumplen AA.
+- Contrastes de color calculados (ver estrategia): todo el texto supera AAA (mínimo 6,2:1) y los campos del formulario superan el 3:1 exigido para componentes.
 
 **NO probado** (hay que hacerlo antes de publicar):
-- PageSpeed / Lighthouse (no pude ejecutarlo). Peso estimado de la carga inicial: **~205 KB** sin contar el mapa, lo que es muy liviano, pero no es una medición de velocidad real.
+- PageSpeed / Lighthouse (no pude ejecutarlo). Peso estimado de la carga inicial: **~112 KB** sin contar el mapa, lo que es muy liviano, pero no es una medición de velocidad real.
 - Dispositivos reales (iPhone, Android), Safari y Firefox: solo se probó en un navegador tipo Chrome.
 - Lector de pantalla (VoiceOver, TalkBack, NVDA).
 - Que WhatsApp abra correctamente el chat desde un celular con la app instalada.
@@ -50,15 +50,15 @@ Leyenda: ✅ bien · ⚠️ mejorable · ❌ falta (por falta de datos)
 | Área | Estado | Detalle |
 |---|---|---|
 | **UX** | ✅ | Un solo recorrido claro; cada sección responde una pregunta; contacto accesible desde 4 lugares (encabezado, portada, barra fija, contacto). |
-| **UI** | ✅ | Identidad propia (papel cálido + azul/verde del logo), sin degradados ni sombras pesadas, jerarquía clara. ⚠ Sin fotos: la página es 100 % tipográfica e iconográfica. |
+| **UI** | ✅ | Estética tomada de la tarjeta de la marca (azul marino + verde brillante, iconos en círculos verdes), sin degradados ni sombras pesadas, jerarquía clara. ⚠ Sin fotos: la página es 100 % tipográfica e iconográfica. |
 | **Mobile** | ✅ | Barra fija con los dos WhatsApp que se oculta cuando ya están a la vista; menú desplegable; objetivos táctiles ≥ 44 px en botones y enlaces principales. ⚠ Falta probar en dispositivos reales. |
 | **SEO** | ✅ técnico / ⚠️ contenido | Título, meta, H1 único, jerarquía de encabezados, schema `ProfessionalService` + `FAQPage`, `lang="es-AR"`, texto real (no imágenes). ⚠ Es una sola página: el potencial de posicionar por rubro o por zona está sin usar. ⚠ `noindex` activo (correcto para un borrador). |
 | **Conversión** | ✅ | CTA único y repetido, mensaje de WhatsApp ya armado, formulario de 4 campos, ninguna fricción (sin registro, sin teléfono obligatorio). ⚠ No hay medición: no se sabrá cuántas consultas llegan desde la web (ver mejoras). |
 | **Accesibilidad** | ✅ | Enlace "saltar al contenido", estructura semántica, foco visible, contraste AA, `aria-expanded` en el menú, preguntas con `<details>`, respeta "reducir movimiento", enlaces externos avisan que abren pestaña nueva. ⚠ Falta prueba con lector de pantalla. |
-| **Velocidad** | ✅ (estimada) | ~205 KB, un CSS, un JS con `defer`, tipografía propia con preload, sin librerías, mapa con carga diferida. ⚠ Falta medirlo. |
+| **Velocidad** | ✅ (estimada) | ~112 KB, un CSS, un JS con `defer`, tipografía propia con preload, sin librerías, mapa con carga diferida. ⚠ Falta medirlo. |
 | **Claridad** | ✅ | Vocabulario simple, sin jerga; voseo. La sección "Vos / Nosotros" resume el servicio en 10 segundos. |
 | **Credibilidad** | ❌ / ⚠️ | Fortalezas: dirección real con mapa, dos vías de contacto, honestidad sobre lo que no se sabe. Faltan: personas, casos, reseñas, seguridad de datos, correo con dominio propio (hoy es Gmail). |
-| **Errores de contenido** | ✅ | Se corrigieron dos frases que no se podían respaldar ("sin compromiso de entrada" y "WhatsApp directos"). Quedan **9 pendientes marcados** como `[DATO A COMPLETAR]` en el código. |
+| **Errores de contenido** | ✅ | Se corrigieron dos frases que no se podían respaldar ("sin compromiso de entrada" y "WhatsApp directos"). Quedan **8 pendientes marcados** como `[DATO A COMPLETAR]` en el código. |
 | **Información faltante** | ❌ | Ver lista completa en la sección 1 de la estrategia. Las más urgentes: horarios, alcance geográfico, cómo se cobra/primera consulta, quién está detrás. |
 
 ### Riesgos y límites que conviene conocer
@@ -67,7 +67,7 @@ Leyenda: ✅ bien · ⚠️ mejorable · ❌ falta (por falta de datos)
 3. **Los rubros y los 4 pasos vienen del borrador original**, no de una validación independiente. Hay que confirmarlos.
 4. **La ficha de Google Maps no pude leerla**: no sé su puntaje, reseñas, categoría ni horarios. Si tiene buenas reseñas, es la prueba social más barata de mostrar.
 5. **El mapa incrusta un servicio de Google.** Si se quiere evitar cualquier carga de terceros hasta que la persona lo pida, se puede reemplazar por una imagen con botón "Ver mapa".
-6. **El logo es un PNG.** Funciona bien, pero una versión vectorial (SVG) se vería más nítida y pesaría menos.
+6. **El logo claro para fondo oscuro lo generé yo recoloreando el PNG.** Se ve bien, pero la versión oficial (vectorial, SVG) del diseñador sería más nítida y fiel a la tarjeta.
 
 ---
 
@@ -93,5 +93,5 @@ Leyenda: ✅ bien · ⚠️ mejorable · ❌ falta (por falta de datos)
 13. **Páginas por rubro** con contenido útil y real: *costeo para gastronomía*, *administración para comercios*, *administración para profesionales*. Es lo que más puede mejorar el posicionamiento (nadie en Zona Oeste ocupa ese lugar).
 14. **Search Console**: validar las keywords reales con datos de búsqueda y ajustar títulos.
 15. **Publicaciones mensuales** en la ficha de Google (ejemplos, vencimientos, consejos).
-16. **Instagram** (si se confirma) enlazado en la web y en el schema (`sameAs`).
-17. **Logo en SVG** y, si hay presupuesto, una sesión de fotos profesional.
+16. **Instagram** (`@admin.yaaa`) ya está enlazado en la web y en el schema. Falta decidir si se muestran publicaciones en la página y mantener la cuenta activa.
+17. **Logo en SVG (versión clara y oscura)** y, si hay presupuesto, una sesión de fotos profesional.

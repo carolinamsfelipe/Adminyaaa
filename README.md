@@ -1,6 +1,6 @@
 # AdminYAAA — sitio web
 
-Página de una sola pantalla larga (landing), en HTML + CSS + JavaScript simples. **No necesita instalar nada ni compilar.**
+Página de una sola pantalla larga (landing) con la estética de la tarjeta de la marca (azul marino y verde brillante), en HTML + CSS + JavaScript simples. **No necesita instalar nada ni compilar.**
 
 **Estado: borrador para revisión.** Tiene `noindex, nofollow`, así que Google no la indexa todavía.
 
@@ -12,8 +12,8 @@ Abrí `index.html` con doble clic. La carpeta `assets/` tiene que quedar junto a
 index.html              ← TODO el contenido (textos, datos de contacto, FAQ, SEO)
 assets/css/styles.css   ← diseño. Los colores están en las variables de arriba (:root)
 assets/js/main.js       ← menú, barra de WhatsApp, formulario, animaciones
-assets/img/             ← logo, íconos y la imagen para compartir el link
-assets/fonts/           ← tipografía Figtree (alojada acá, no se pide a Google)
+assets/img/             ← logo (versión clara para fondo oscuro), íconos y la imagen para compartir el link
+assets/fonts/           ← tipografía Poppins (alojada acá, no se pide a Google)
 docs/                   ← estrategia y auditoría
 ```
 

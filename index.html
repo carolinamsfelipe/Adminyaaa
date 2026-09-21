@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Administración tercerizada para PyMEs | AdminYAAA, Ciudadela</title>
 <meta name="description" content="Facturación, pagos, cobranzas y trámites de tu negocio, y números claros para decidir. Trabajamos junto a tu contador. Oficina en Ciudadela, Zona Oeste.">
-<meta name="theme-color" content="#F7F4EC">
+<meta name="theme-color" content="#02264A">
 
 <!-- BORRADOR: no indexar hasta publicar. Al publicar, borrar la línea de abajo (ver README.md). -->
 <meta name="robots" content="noindex, nofollow">
@@ -25,12 +25,13 @@
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/styles.css">
 <script>document.documentElement.classList.add('js');</script>
 
 <!-- Datos estructurados: negocio local. Solo incluye datos CONFIRMADOS.
-     [DATO A COMPLETAR al publicar: "url", "logo", "image", "openingHours" (cuando haya horarios), "sameAs" (Instagram/Google) ] -->
+     [DATO A COMPLETAR al publicar: "url", "logo", "image", "openingHours" (cuando haya horarios); sumar el enlace de la ficha de Google a "sameAs"] -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,7 +47,8 @@
     "addressRegion": "Provincia de Buenos Aires",
     "addressCountry": "AR"
   },
-  "geo": { "@type": "GeoCoordinates", "latitude": -34.6344412, "longitude": -58.550395 }
+  "geo": { "@type": "GeoCoordinates", "latitude": -34.6344412, "longitude": -58.550395 },
+  "sameAs": ["https://www.instagram.com/admin.yaaa/"]
 }
 </script>
 <script type="application/ld+json">
@@ -74,6 +76,7 @@
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
@@ -106,8 +109,8 @@
   <div class="wrap header-inner">
     <a class="brand" href="#inicio">
       <picture>
-        <source srcset="assets/img/adminyaaa-logo.webp" type="image/webp">
-        <img src="assets/img/adminyaaa-logo.png" alt="AdminYAAA" width="760" height="214">
+        <source srcset="assets/img/adminyaaa-logo-dark.webp" type="image/webp">
+        <img src="assets/img/adminyaaa-logo-dark.png" alt="AdminYAAA" width="760" height="214">
       </picture>
     </a>
     <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">
@@ -204,7 +207,7 @@
   </section>
 
   <!-- ============================ JUNTO A TU CONTADOR ============================ -->
-  <section class="section section--white" id="contador" aria-labelledby="t-contador">
+  <section class="section section--alt" id="contador" aria-labelledby="t-contador">
     <div class="wrap">
       <p class="kicker reveal">Con tu contador</p>
       <h2 id="t-contador" class="reveal">Tu contador sigue siendo tu contador.</h2>
@@ -305,7 +308,7 @@
 
   <!-- ============================ CÓMO TRABAJAMOS ============================ -->
   <!-- [DATO A COMPLETAR: validar que estos 4 pasos reflejan el proceso real; agregar plazos solo si son ciertos] -->
-  <section class="section section--dark on-dark" id="como-trabajamos" aria-labelledby="t-como">
+  <section class="section section--alt" id="como-trabajamos" aria-labelledby="t-como">
     <div class="wrap">
       <p class="kicker reveal">Cómo trabajamos</p>
       <h2 id="t-como" class="reveal">Un camino simple, en cuatro pasos</h2>
@@ -338,7 +341,7 @@
 
   <!-- ============================ POR RUBRO ============================ -->
   <!-- [DATO A COMPLETAR: validar los ejemplos por rubro con el negocio] -->
-  <section class="section section--white" id="rubros" aria-labelledby="t-rubros">
+  <section class="section" id="rubros" aria-labelledby="t-rubros">
     <div class="wrap">
       <p class="kicker reveal">Por rubro</p>
       <h2 id="t-rubros" class="reveal">Herramientas según tu rubro</h2>
@@ -408,14 +411,14 @@
 
   <!-- ============================ DÓNDE ESTAMOS ============================ -->
   <!-- [DATO A COMPLETAR: horarios de atención; alcance geográfico real del servicio remoto; fotos reales de la oficina] -->
-  <section class="section" id="donde" aria-labelledby="t-donde">
+  <section class="section section--alt" id="donde" aria-labelledby="t-donde">
     <div class="wrap">
       <p class="kicker reveal">Dónde estamos</p>
       <h2 id="t-donde" class="reveal">Servicio remoto, con oficina en Ciudadela</h2>
       <p class="intro reveal">Trabajamos de forma remota y tenemos oficina en Zona Oeste.</p>
 
       <div class="where-grid">
-        <div class="office on-dark reveal">
+        <div class="office reveal">
           <h3>Nuestra oficina</h3>
           <address>Av. Gaona 4385<br>Ciudadela, Provincia de Buenos Aires</address>
           <p>Consultanos por WhatsApp para conocer los horarios de atención.</p>
@@ -430,7 +433,7 @@
 
   <!-- ============================ PREGUNTAS FRECUENTES ============================ -->
   <!-- [DATO A COMPLETAR: sumar respuestas sobre seguridad de datos/accesos, sistemas con los que trabajan y tiempos de respuesta cuando estén confirmados] -->
-  <section class="section section--white" id="preguntas" aria-labelledby="t-preguntas">
+  <section class="section" id="preguntas" aria-labelledby="t-preguntas">
     <div class="wrap">
       <p class="kicker reveal">Preguntas frecuentes</p>
       <h2 id="t-preguntas" class="reveal">Lo que suelen preguntarnos</h2>
@@ -472,7 +475,7 @@
   </section>
 
   <!-- ============================ CONTACTO ============================ -->
-  <section class="section" id="contacto" aria-labelledby="t-contacto">
+  <section class="section section--alt" id="contacto" aria-labelledby="t-contacto">
     <div class="wrap">
       <p class="kicker reveal">Contacto</p>
       <h2 id="t-contacto" class="reveal">Contanos cómo trabajás y vemos cómo ayudarte</h2>
@@ -482,21 +485,33 @@
         <div class="panel reveal">
           <h3>Escribinos directamente</h3>
           <p class="hint">Los dos números atienden por WhatsApp.</p>
-          <div class="wa-cards">
-            <div class="wa-card">
-              <span class="lbl">WhatsApp 1</span><span class="num">11 2560-4901</span>
-              <a class="btn btn--primary" href="https://wa.me/5491125604901?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg>Escribir por WhatsApp<span class="sr-only"> al 11 2560-4901 (se abre en una pestaña nueva)</span></a>
-            </div>
-            <div class="wa-card">
-              <span class="lbl">WhatsApp 2</span><span class="num">11 3033-2341</span>
-              <a class="btn btn--primary" href="https://wa.me/5491130332341?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg>Escribir por WhatsApp<span class="sr-only"> al 11 3033-2341 (se abre en una pestaña nueva)</span></a>
-            </div>
-          </div>
-          <div class="mail-row">
-            <svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>
-            <div><span class="sr-only">Correo: </span><a href="mailto:adminyaaa@gmail.com">adminyaaa@gmail.com</a></div>
-          </div>
-          <!-- [DATO A COMPLETAR: Instagram u otras redes, cuando estén confirmadas] -->
+          <ul class="clist">
+            <li><a class="crow" href="https://wa.me/5491125604901?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
+              <span class="badge"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg></span>
+              <span class="crow-text"><span class="crow-main">11 2560-4901</span><span class="crow-sub">WhatsApp · Escribir ahora</span></span>
+              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a></li>
+            <li><a class="crow" href="https://wa.me/5491130332341?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
+              <span class="badge"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg></span>
+              <span class="crow-text"><span class="crow-main">11 3033-2341</span><span class="crow-sub">WhatsApp · Escribir ahora</span></span>
+              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a></li>
+            <li><a class="crow" href="https://share.google/GwaTx7BCfUCzjgzkv" target="_blank" rel="noopener">
+              <span class="badge"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></span>
+              <span class="crow-text"><span class="crow-main">Av. Gaona 4385</span><span class="crow-sub">Ciudadela, Buenos Aires · Cómo llegar</span></span>
+              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a></li>
+            <li><a class="crow" href="https://www.instagram.com/admin.yaaa/" target="_blank" rel="noopener">
+              <span class="badge"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg></span>
+              <span class="crow-text"><span class="crow-main">@admin.yaaa</span><span class="crow-sub">Instagram</span></span>
+              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a></li>
+            <li><a class="crow" href="mailto:adminyaaa@gmail.com">
+              <span class="badge"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span>
+              <span class="crow-text"><span class="crow-main crow-main--mail">adminyaaa@gmail.com</span><span class="crow-sub">Correo</span></span>
+              <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a></li>
+          </ul>
         </div>
 
         <div class="panel form-card reveal">
@@ -561,10 +576,11 @@
     <div class="footer-brand">
       <a class="brand" href="#inicio">
         <picture>
-          <source srcset="assets/img/adminyaaa-logo.webp" type="image/webp">
-          <img src="assets/img/adminyaaa-logo.png" alt="AdminYAAA, volver al inicio" width="760" height="214" loading="lazy">
+          <source srcset="assets/img/adminyaaa-logo-dark.webp" type="image/webp">
+          <img src="assets/img/adminyaaa-logo-dark.png" alt="AdminYAAA, volver al inicio" width="760" height="214" loading="lazy">
         </picture>
       </a>
+      <p class="footer-slogan">Administración que te ayuda a crecer</p>
       <p>Administración tercerizada para PyMEs, comercios, emprendedores y profesionales. Trabajamos junto a tu contador.</p>
     </div>
     <nav class="footer-col" aria-label="Pie de página">
@@ -581,6 +597,7 @@
       <ul>
         <li><a href="https://wa.me/5491125604901" target="_blank" rel="noopener">WhatsApp 11 2560-4901<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
         <li><a href="https://wa.me/5491130332341" target="_blank" rel="noopener">WhatsApp 11 3033-2341<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
+        <li><a href="https://www.instagram.com/admin.yaaa/" target="_blank" rel="noopener">Instagram @admin.yaaa<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
         <li><a href="mailto:adminyaaa@gmail.com">adminyaaa@gmail.com</a></li>
       </ul>
     </div>
