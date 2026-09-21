@@ -40,6 +40,8 @@ Consecuencias directas:
 | Lemas de la marca | "Administración tercerizada para empresas" y "Administración que te ayuda a crecer" | tarjeta de presentación |
 | Estética de marca | Fondo azul marino profundo, logo claro con verde brillante, iconos en círculos verdes | tarjeta de presentación |
 | Servicios (9) | Facturación · Pagos a proveedores · Cobranzas · Trámites impositivos · Flujo de caja · Stock y compras · Presupuestación · Costeo y márgenes · Herramientas adaptadas al negocio | borrador |
+| Servicio: vender online | Asesoramiento y puesta en marcha de catálogo, tienda y publicaciones | mensaje del usuario (confirmado por el dueño) y versión del dueño |
+| Enfoque de la marca | **Administración** (no consultoría general de negocios) | mensaje del usuario (dueño) |
 | Diferencial declarado | "Trabajamos junto a tu contador. No lo reemplazamos." | borrador |
 | Prioridad del negocio | Los dos WhatsApp con **la misma importancia**; dirección con enlace a Google bien visible | `REVISION_WEB.txt` |
 | Estado | Borrador sin publicar (`noindex, nofollow`) | `REVISION_WEB.txt` |
@@ -168,7 +170,7 @@ Los perfiles salen de los rubros del borrador (no asumí otros). Las búsquedas 
 - *Necesita*: tablero de ingresos y egresos, pagos a proveedores ordenados. *Problema*: no hay un área administrativa. *Le preocupa*: perder control al delegar. *Objeción*: "¿y mis datos?" (seguridad).
 - *Busca*: "administración tercerizada pymes", "outsourcing administrativo".
 - *Debe leer*: qué hace cada uno (Vos/Nosotros) y cómo se informa.
-- *CTA*: WhatsApp o formulario corto.
+- *CTA*: WhatsApp.
 
 ---
 
@@ -200,34 +202,33 @@ Cercano, claro, tranquilo. Español rioplatense con voseo ("escribinos", "contan
 
 ---
 
-## 5. Estructura de la web (una página, fácil de escanear)
+## 5. Estructura de la web (una página corta)
 
-Cada sección responde **una pregunta** del visitante.
+**Versión 3.** Después de comparar con la versión que envió el dueño, la página se acortó a la mitad: de 1.090 a **546 palabras** y de ~19 a **~11 pantallas en celular**. Se combinó lo mejor de las dos: el arranque centrado en el cliente ("Contanos qué necesitás resolver", tarjetas en primera persona) y la claridad de qué es AdminYAAA.
 
-| # | Sección | Pregunta que responde | Decisión basada en la investigación |
-|---|---|---|---|
-| 1 | Encabezado | ¿Cómo los contacto? | Dos WhatsApp visibles con **el mismo peso** (prioridad del negocio) |
-| 2 | Portada | ¿Qué hacen, para quién, se puede confiar? | Propuesta + reparto **Vos / Nosotros** + dos WhatsApp + dirección con "Cómo llegar" |
-| 3 | Junto a tu contador | ¿Tengo que dejar a mi contador? | Es el diferencial más claro: sección propia |
-| 4 | Servicios | ¿Qué hacen exactamente? | Tarjetas con icono, en dos grupos; cada una dice *qué te resuelve* |
-| 5 | Cómo trabajamos | ¿Cómo es empezar? | 4 pasos reales, sin inventar plazos |
-| 6 | Por rubro | ¿Sirve para mi tipo de negocio? | Ejemplos por rubro + tablero ilustrativo (rotulado como ejemplo) |
-| 7 | Dónde estamos | ¿Dónde están? ¿Puedo ir? | Mapa, dirección, "Cómo llegar", horarios por WhatsApp |
-| 8 | Preguntas frecuentes | ¿Y si…? (contador, precio, remoto) | 8 preguntas que desactivan las objeciones detectadas |
-| 9 | Contacto | ¿Cómo empiezo? | Dos WhatsApp iguales + mail + formulario corto que arma el mensaje |
+| # | Sección | Fondo | Pregunta que responde | Decisión |
+|---|---|---|---|---|
+| 1 | Encabezado | Azul | ¿Cómo los contacto? | Los dos WhatsApp con **el mismo peso** |
+| 2 | Portada | Azul | ¿Qué hacen y cómo los contacto? | H1 claro + "Contanos qué necesitás resolver" + los dos WhatsApp + dirección con "Cómo llegar". Tarjeta **Vos / Nosotros** con "siempre en contacto con tu contador" |
+| 3 | ¿Qué necesitás resolver? | Claro | ¿Sirve para lo mío? | 5 tarjetas en primera persona. La primera (**administración diaria**) va destacada porque es el corazón de la marca |
+| 4 | Cómo trabajamos | Azul | ¿Cómo es empezar? | 3 pasos (los del dueño) |
+| 5 | Preguntas frecuentes | Claro | ¿Y si…? (contador, precio, remoto) | 6 preguntas que desactivan las objeciones detectadas |
+| 6 | Contacto y ubicación | Azul | ¿Dónde y cómo los encuentro? | Lista de contactos (2 WhatsApp, correo, Instagram, dirección) + mapa |
 
-**Lo que no se incluye a propósito**: testimonios, métricas, "sobre nosotros" con equipo, blog, precios. No hay datos reales; **quedan documentados como pendientes** y la estructura ya tiene lugar para agregarlos.
+**Se quitó a propósito** (respecto de la versión 2): la sección "Con tu contador" (fusionada en la portada y el FAQ), "Por rubro" con el **tablero ilustrativo inventado**, y el **formulario** (tres botones de envío confundían y para un público mayor es más simple escribir directo por WhatsApp).
+
+**Sigue sin incluir** testimonios, métricas, equipo, blog ni precios: no hay datos reales.
 
 ---
 
 ## 6. Conversión
 
-- **CTA principal**: **WhatsApp** (los dos números, mismo estilo y tamaño). Es el canal que usan los competidores mejor posicionados y el que el negocio pidió.
-- **CTA secundario**: "Contanos tu caso" (baja a un formulario corto) y correo.
-- **Sticky en celular**: barra inferior con los dos WhatsApp, que se oculta cuando ya están visibles en pantalla (portada o contacto) para no tapar contenido.
-- **Formulario**: 4 campos (nombre, tipo de negocio, qué necesitás, mensaje opcional). **Sin teléfono ni correo**, porque WhatsApp ya los da. No hay servidor: arma el mensaje y abre WhatsApp o el correo. No se guarda nada.
-- **Microcopy**: "Se abre WhatsApp con el mensaje ya armado. Lo revisás antes de enviarlo."
-- **Elementos de confianza reales** (sin inventar): dirección física con mapa, dos vías directas, "no reemplazamos a tu contador", reparto claro de tareas, FAQ honesta (incluido "¿cuánto cuesta? depende de tu caso").
+- **CTA principal**: **WhatsApp** (los dos números, mismo estilo y tamaño), siempre bajo el mismo llamado: **"Contanos qué necesitás resolver"** (frase tomada de la versión del dueño; repetida en portada, servicios y contacto para que el mensaje sea coherente).
+- **Sin formulario.** Se evaluó y se descartó: dos números de WhatsApp + correo cubren la necesidad, y menos opciones convierten mejor con un público mayor. El mensaje de WhatsApp ya viene armado con un saludo.
+- **CTA secundario**: correo e Instagram, en la lista de contacto.
+- **Barra fija en celular**: con los dos WhatsApp, se oculta cuando ya están a la vista (portada o contacto).
+- **El botón principal de WhatsApp se ve en la primera pantalla del celular** (medido a 375 px).
+- **Elementos de confianza reales** (sin inventar): dirección con mapa, dos vías directas, "no reemplazamos a tu contador", reparto claro de tareas, FAQ honesta (incluido "¿cuánto cuesta? depende de tu caso").
 
 ---
 
@@ -249,11 +250,11 @@ Cada sección responde **una pregunta** del visitante.
 
 ### Textos SEO
 - **Title** (≤ 60 caracteres): `Administración tercerizada para PyMEs | AdminYAAA, Ciudadela`
-- **Meta description** (≤ 155): `Facturación, pagos, cobranzas y trámites de tu negocio, y números claros para decidir. Trabajamos junto a tu contador. Oficina en Ciudadela, Zona Oeste.`
+- **Meta description** (≤ 155): `Facturación, pagos, cobranzas y trámites de tu negocio, números claros y ayuda para vender online. Trabajamos junto a tu contador. Ciudadela, Zona Oeste.`
 - **H1**: `Vos ocupate del negocio. De la administración nos ocupamos nosotros.`
-- **H2**: Servicios · Cómo trabajamos con tu contador · Herramientas según tu rubro · Dónde estamos · Preguntas frecuentes · Contacto.
+- **H2**: ¿Qué necesitás resolver? · Empezamos por escucharte · Lo que suelen preguntarnos · Contanos qué necesitás resolver.
 - **URLs**: hoy es una sola página (`/`), correcto para una empresa chica que recién empieza. **Fase 2** (solo si se confirman los servicios y hay contenido real): `/administracion-para-comercios`, `/costeo-gastronomia`, `/administracion-para-profesionales`.
-- **FAQ SEO**: las 8 preguntas de la página, escritas como las buscaría un cliente. Se marcan también con `FAQPage`.
+- **FAQ SEO**: las 6 preguntas de la página, escritas como las buscaría un cliente. Se marcan también con `FAQPage`.
 
 ### Schema
 `ProfessionalService` (subtipo de `LocalBusiness`) con: nombre, logo, dirección, coordenadas, teléfonos, correo. **No incluye** horarios, puntaje, redes ni área de servicio, porque no están confirmados. El código lo trae armado con `url` pendiente.
@@ -273,34 +274,42 @@ Cada sección responde **una pregunta** del visitante.
 ## 8. Identidad visual
 
 ### Punto de partida: la tarjeta de presentación
-La marca ya tiene una estética definida en su tarjeta: **fondo azul marino profundo, logo claro con verde brillante, iconos dentro de círculos verdes, círculos translúcidos en las esquinas y una tipografía geométrica de trazo limpio**. La web la traslada tal cual, en lugar de inventar otra identidad. (En una primera versión usé papel claro con azul y verde; se reemplazó por esta.)
+La marca ya tiene una estética definida en su tarjeta: **fondo azul marino profundo, logo claro con verde brillante, iconos dentro de círculos verdes y círculos translúcidos en las esquinas**. La web la traslada.
 
-### Concepto
-Tranquilidad y orden sobre un fondo oscuro: **un solo acento (el verde)**, mucho aire, tarjetas de un azul apenas más claro y el motivo del círculo verde con icono repetido en todas las secciones.
+### Decisión clave de la versión 3: público que incluye personas mayores
+El dueño prefiere el azul, pero advirtió que el público es mayor. Por eso el azul **se mantiene como identidad, pero no en toda la página**:
+- **Azul (la identidad):** encabezado, portada, "Cómo trabajamos", contacto y pie.
+- **Fondo claro (la lectura):** "¿Qué necesitás resolver?" y las preguntas frecuentes. El texto claro sobre fondo oscuro cansa más la vista con la edad y con astigmatismo, y son las secciones con más texto.
 
-### Paleta (colores medidos sobre la imagen de la tarjeta)
+### Accesibilidad para lectores mayores (medida)
+| Criterio | Antes (v2) | Ahora (v3) |
+|---|---|---|
+| Tamaño de letra base | 16 px | **18 px** |
+| Texto más chico (en celular) | 12–13 px | **≥ 15 px** (solo el rótulo "WhatsApp" de la barra) |
+| Alto de botones | 52–56 px | **60–72 px** |
+| Alto de las filas de contacto | 68 px | **84 px** |
+| Texto de apoyo | gris claro, 7,8:1 | **más oscuro/claro según fondo, mín. 8,7:1** |
+| Rótulos | MAYÚSCULAS chicas con espaciado | **texto normal, 17 px, en negrita** |
+| Animaciones | aparición al hacer scroll | **ninguna** |
+| Opciones por pantalla | formulario + 5 vías de contacto | **una lista simple** |
+
+### Paleta
 | Rol | Color | Uso | Contraste |
 |---|---|---|---|
-| **Fondo** | Azul marino `#02264A` | Fondo principal | Blanco sobre él: **15,2:1** |
-| Fondo alterno | Azul profundo `#021B35` | Secciones alternas, pie y campos | Blanco: 17,3:1 |
-| Paneles | Azul `#06315E` (hover `#0B4078`) | Tarjetas y paneles | Blanco: 13,1:1 |
-| **Acento** | Verde brillante `#0BE893` | Botones, rótulos, iconos, línea de marca | Sobre azul: **9,4:1** |
-| Texto en botones | Azul `#02264A` sobre verde | Todos los botones verdes | 9,4:1 |
-| Texto de apoyo | `#B7CADF` | Párrafos secundarios | 7,8:1 a 10,4:1 |
-| Bordes de campos | `#6A90BF` | Formulario | 5,3:1 (mín. 3:1) |
+| **Azul de la marca** | `#02264A` | Fondos azules y texto sobre claro | Blanco sobre él: 15,2:1 · Él sobre blanco: 15,2:1 |
+| Azul profundo / paneles | `#021B35` / `#06315E` | Pie, paneles | Blanco: 13:1 a 17:1 |
+| **Verde brillante** | `#0BE893` | Botones, iconos, rótulos (siempre con texto azul encima o sobre azul) | Sobre azul: 9,4:1 |
+| Verde para texto en fondo claro | `#0A6A3D` | Rótulos y flechas en zonas claras | 5,9:1 a 6,7:1 |
+| Fondo claro | `#FFFFFF` / `#EAF1F8` | Zonas de lectura | — |
+| Texto de apoyo | `#2F455C` (claro) · `#D2DFEE` (azul) | Párrafos secundarios | 8,7:1 · 9,7:1 |
 
-No hay ningún otro color de acento: se descartó el amarillo de la primera versión para no sumar colores.
-
-### Tipografía
-**Poppins** (400, 500, 600 y 700), muy parecida a la de la tarjeta y a las letras del logo. Autoalojada (sin pedir nada a Google): ~31 KB en total. Números con `tabular-nums` para dar el aire de planilla.
-
-### Logo
-El original es azul y verde, pensado para fondo claro. Para el fondo oscuro se generó una **variante clara** ("Admin" en blanco; flecha y "YAAA" en verde brillante), como en la tarjeta. **Se generó recoloreando el PNG original**: si el diseñador tiene los archivos vectoriales de la versión clara, hay que usarlos.
+### Tipografía y logo
+**Poppins** (400–700), autoalojada, parecida a la de la tarjeta. El logo claro para fondo oscuro se generó recoloreando el PNG original; conviene reemplazarlo por la versión vectorial oficial del diseñador.
 
 ### Estilo
-Botones en forma de píldora, tarjetas redondeadas con borde fino (sin sombras pesadas), círculos translúcidos y el isotipo como marca de agua en la portada, movimiento mínimo (respeta `prefers-reduced-motion`), mobile primero. **Evitado**: degradados, fotos de stock, exceso de sombras, muchos colores, bloques de texto largos.
+Botones en píldora, tarjetas redondeadas, círculos verdes con icono, círculos translúcidos y el isotipo como marca de agua en la portada. **Evitado**: degradados, fotos de stock, sombras pesadas, animaciones, texto en mayúsculas chicas.
 
-**Fotos**: no hay fotos reales disponibles, así que no se usan imágenes de stock. La web está preparada para sumar fotos de la oficina y del equipo cuando existan.
+**Fotos**: no hay fotos reales; no se usan de stock. Está preparada para sumarlas.
 
 ---
 
