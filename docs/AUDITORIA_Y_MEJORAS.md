@@ -1,97 +1,111 @@
-# AdminYAAA — Revisión como cliente, auditoría final y mejoras
+# AdminYAAA — Auditoría y mejoras (versión 3)
 
-## Qué se probó y qué no (importante)
+## 0. Esta ronda: percepción del nombre y ejemplo ilustrativo
 
-**Probado de verdad** (en el navegador integrado, con la página corriendo):
-- Se ve y funciona (con la estética actual) en escritorio (1360 px), tablet (820 px) y celular (375 y 320 px), sin desbordes horizontales.
-- El formulario arma bien el mensaje (con tildes, saltos de línea y también vacío) para los dos WhatsApp y el correo.
-- El mapa carga y el marcador cae sobre Av. Gaona.
-- Datos estructurados (JSON-LD) válidos; el FAQ visible coincide palabra por palabra con el del schema.
-- Sin enlaces internos rotos, sin recursos faltantes, sin IDs duplicados, todas las imágenes con `alt`.
-- Los dos WhatsApp aparecen el mismo número de veces (7 y 7) y con idéntico estilo.
-- Ninguna de las frases que se querían evitar ("soluciones integrales", "core business", "líderes", etc.), ni "consorcio", ni cifras inventadas.
-- Contrastes de color calculados (ver estrategia): todo el texto supera AAA (mínimo 6,2:1) y los campos del formulario superan el 3:1 exigido para componentes.
+El dueño hizo dos pedidos sobre la versión 3 ya publicada:
 
-**NO probado** (hay que hacerlo antes de publicar):
-- PageSpeed / Lighthouse (no pude ejecutarlo). Peso estimado de la carga inicial: **~112 KB** sin contar el mapa, lo que es muy liviano, pero no es una medición de velocidad real.
-- Dispositivos reales (iPhone, Android), Safari y Firefox: solo se probó en un navegador tipo Chrome.
-- Lector de pantalla (VoiceOver, TalkBack, NVDA).
-- Que WhatsApp abra correctamente el chat desde un celular con la app instalada.
-- Vista previa al compartir el link (necesita dominio; ver abajo).
+1. **"El nombre me hace pensar en administración de edificios."** No se tocó el nombre real (logo, tarjeta, Instagram, ficha de Maps): es una decisión de marca que le corresponde al dueño, no algo para resolver dentro de un ajuste de la web. Se aplicó, en cambio, un cambio reversible y de bajo riesgo: un texto corto ("Para tu negocio") junto al logo en el encabezado, para que el primer vistazo ya aclare de qué se trata antes de que seguir leyendo lo confirme. **Sigue abierta** la pregunta de si el dueño quiere ir más a fondo (ver Sección 4 de la estrategia).
+2. **Un ejemplo concreto ("tipo Juancito del kiosco")** para que una persona se imagine como cliente. Se agregó la sección "Un ejemplo", con un mini estado de cuenta ficticio ("Juan tiene un kiosco"), rotulado como "Ejemplo ilustrativo" y aclarado en el texto ("no es un cliente real"), siguiendo el mismo criterio que ya se usó en la versión 2 para el tablero de flujo de caja (que en esa versión se había sacado por otras razones de extensión, no por el criterio de etiquetarlo).
 
----
+Con esto, la página pasó de ~610 a **~720 palabras** y de ~12 a **~13,5 pantallas en celular** (medido a 375×812); sigue siendo bastante más corta que la versión 2 (1.090 palabras). Peso de la carga inicial: **~92 KB** (antes ~86 KB).
 
-## Etapa 10 — Recorrido como potencial cliente
+## 0b. Dominio conectado (`adminya.com.ar`)
 
-Recorrí la página como tres personas distintas, leyendo solo lo que dice la pantalla.
+Verificado con consultas DNS y HTTP contra el sitio real (saltando el filtro de la red local, que muestra una página de bloqueo de Fortinet para dominios nuevos):
+- **DNS:** delegado a Netlify (`dns1–dns4.p08.nsone.net`); `adminya.com.ar` y `www` resuelven a la misma dirección.
+- **HTTPS:** certificado válido; `http` redirige a `https` (301) y `www` redirige a `https://adminya.com.ar/` (301).
+- **Versión publicada:** la **versión 3 anterior**: no tiene las dos tarjetas nuevas de servicios, la etiqueta "Para tu negocio" ni el ejemplo del kiosco. Esos cambios están en la carpeta local y hay que publicarlos en Netlify.
+- **Nombre del dominio:** `adminya`, no `adminyaaa`. Conviene que el dueño decida si es el nombre definitivo (ver Sección 4 de la estrategia).
+- **Aviso de red:** en redes con filtro de contenido (como la de esta computadora) el dominio puede verse **bloqueado** por unos días, hasta que el filtro lo clasifique. Desde datos móviles u otra red abre normal.
 
-**1) Dueña de un local de comidas, que hace las cuentas de noche.**
-- *En 5 segundos*: entiende "administración", "para comercios", "junto a tu contador". ✔
-- *Se identifica*: en "Gastronomía" ve costeo de platos y márgenes, que es justo su dolor. ✔
-- *Duda que le queda*: "¿cuánto cuesta?" → la respuesta ("depende de tu caso") es honesta pero no la ayuda a decidir. ⚠
-- *Actúa*: WhatsApp inmediato desde el celular (barra fija). ✔
+## 1. Qué se probó y qué no
 
-**2) Profesional independiente que factura y cobra.**
-- Entiende el servicio, pero "Profesionales" es la fila con menos detalle. Se pregunta si el servicio es "para alguien tan chico". ⚠
-- La pregunta "¿Qué servicios incluyen? Podés necesitar solo una parte" lo tranquiliza. ✔
+**Probado de verdad**
+- **Página publicada (versión 2, en GitHub Pages):** los 12 recursos responden 200, sin errores de consola, todos los enlaces (WhatsApp, correo, Instagram, "Cómo llegar") apuntan bien, carga completa en ~0,5 s.
+- **Versión 3 (esta):** sin desbordes horizontales en 320, 375, 500 y 1440 px; tablet y escritorio revisados con capturas en Chrome; contrastes calculados; recursos y anclas sin roturas; datos estructurados válidos y coincidentes con las 6 preguntas visibles; los dos WhatsApp con el mismo número de apariciones (6 y 6).
+- **Cambios de esta ronda:** la etiqueta "Para tu negocio" no se superpone con el botón de menú en ningún ancho probado (320 a 1360 px; se oculta a propósito debajo de 360 px, donde no entraría cómoda); la tarjeta del ejemplo se lee bien y sin cortes en 320, 375 y 1360 px.
 
-**3) Dueño de una PyME que ya tiene contador y desconfía.**
-- La sección "Tu contador sigue siendo tu contador" le responde su objeción principal antes de que la formule. ✔ (es lo más fuerte de la página)
-- Le faltan dos cosas para confiar: **quién está detrás** (no hay nombres ni caras) y **qué pasa con sus datos y accesos** (no se habla de seguridad). ❌ Es el mayor hueco de credibilidad, y **no se puede llenar sin datos reales**.
+**NO probado (hay que hacerlo antes de publicar)**
+- PageSpeed/Lighthouse, iPhone y Android reales, Safari y Firefox, lector de pantalla.
+- Que WhatsApp abra el chat desde un celular con la app instalada.
+- Vista previa al compartir el link (necesita dominio).
 
-**Conclusión:** la página explica muy bien *qué hacen* y *cómo contactarlos*. Lo que falta para convencer a alguien desconfiado es **prueba real**: personas, un caso, reseñas, y una idea de precio.
+## 2. Qué se le criticó a la versión 2 y qué se hizo
 
----
+| Crítica | Medición | En la versión 3 |
+|---|---|---|
+| Demasiado larga y repetitiva | 1.090 palabras · 13 pantallas (escritorio) · ~19 (celular) | **~720 palabras · ~13,5 pantallas en celular** (incluye los servicios nuevos y el ejemplo del kiosco) |
+| Demasiados botones de WhatsApp | 12 enlaces, 14 botones verdes | Un llamado único y repetido: "Contanos qué necesitás resolver" |
+| Formulario con 3 botones de envío | Confundía | **Eliminado** (para un público mayor, escribir directo es más simple) |
+| Botón principal cortado en celular | Quedaba bajo el pliegue | **Visible en la primera pantalla** (medido a 375 px) |
+| Tablero de ejemplo inventado | Podía leerse como un entregable real | **Eliminado** |
+| Lectura larga sobre fondo oscuro | Cansa más, sobre todo a los mayores | **Zonas de lectura sobre fondo claro**; el azul queda para encabezado, portada, pasos, contacto y pie |
+| Letra chica | 16 px base, 12–13 px en detalles | **18 px base, mínimo 15 px** |
+| Enfoque solo en el servicio | No hablaba de la necesidad del cliente | **Tarjetas en primera persona** ("Necesito ordenar mis números", "Quiero vender online") |
 
-## Etapa 11 — Auditoría
+Peso de la carga inicial: **~92 KB** (antes ~112 KB en la versión 2).
+
+## 3. Comparación con la versión del dueño
+
+Se compararon solo tres capturas (portada, servicios y contacto); no se vio el resto.
+
+| Criterio | Versión del dueño | Versión 3 |
+|---|---|---|
+| ¿Qué hace AdminYAAA? (5 segundos) | Poco claro ("lo que tu negocio necesita resolver, lo vemos juntos") | **Claro** (administración: facturación, pagos, cobranzas, trámites) |
+| Enfoque en el cliente | **Muy bueno** | Incorporado (tarjetas en primera persona, mismo llamado repetido) |
+| Diferenciación | No menciona al contador | **"Junto a tu contador"** |
+| Largo | Corta | Corta (~720 palabras, con un ejemplo concreto que la versión del dueño no tiene) |
+| Estética | Fondo claro, logo original | Azul de la tarjeta con zonas claras para leer |
+| Servicios "vender online", "análisis de mercado" y "sistemas a medida" | "Vender online" sí | **Los tres incorporados** (confirmados por el dueño) |
+
+**Qué se tomó del dueño:** el llamado "Contanos qué necesitás resolver", las cuatro tarjetas y sus textos, los 3 pasos y "Empezamos por escucharte".
+**Qué se conserva de la versión anterior:** el H1, la tarjeta Vos/Nosotros, la diferencia de "junto a tu contador", el FAQ, los datos estructurados y el mapa.
+
+## 4. Auditoría de la versión 3
 
 Leyenda: ✅ bien · ⚠️ mejorable · ❌ falta (por falta de datos)
 
 | Área | Estado | Detalle |
 |---|---|---|
-| **UX** | ✅ | Un solo recorrido claro; cada sección responde una pregunta; contacto accesible desde 4 lugares (encabezado, portada, barra fija, contacto). |
-| **UI** | ✅ | Estética tomada de la tarjeta de la marca (azul marino + verde brillante, iconos en círculos verdes), sin degradados ni sombras pesadas, jerarquía clara. ⚠ Sin fotos: la página es 100 % tipográfica e iconográfica. |
-| **Mobile** | ✅ | Barra fija con los dos WhatsApp que se oculta cuando ya están a la vista; menú desplegable; objetivos táctiles ≥ 44 px en botones y enlaces principales. ⚠ Falta probar en dispositivos reales. |
-| **SEO** | ✅ técnico / ⚠️ contenido | Título, meta, H1 único, jerarquía de encabezados, schema `ProfessionalService` + `FAQPage`, `lang="es-AR"`, texto real (no imágenes). ⚠ Es una sola página: el potencial de posicionar por rubro o por zona está sin usar. ⚠ `noindex` activo (correcto para un borrador). |
-| **Conversión** | ✅ | CTA único y repetido, mensaje de WhatsApp ya armado, formulario de 4 campos, ninguna fricción (sin registro, sin teléfono obligatorio). ⚠ No hay medición: no se sabrá cuántas consultas llegan desde la web (ver mejoras). |
-| **Accesibilidad** | ✅ | Enlace "saltar al contenido", estructura semántica, foco visible, contraste AA, `aria-expanded` en el menú, preguntas con `<details>`, respeta "reducir movimiento", enlaces externos avisan que abren pestaña nueva. ⚠ Falta prueba con lector de pantalla. |
-| **Velocidad** | ✅ (estimada) | ~112 KB, un CSS, un JS con `defer`, tipografía propia con preload, sin librerías, mapa con carga diferida. ⚠ Falta medirlo. |
-| **Claridad** | ✅ | Vocabulario simple, sin jerga; voseo. La sección "Vos / Nosotros" resume el servicio en 10 segundos. |
-| **Credibilidad** | ❌ / ⚠️ | Fortalezas: dirección real con mapa, dos vías de contacto, honestidad sobre lo que no se sabe. Faltan: personas, casos, reseñas, seguridad de datos, correo con dominio propio (hoy es Gmail). |
-| **Errores de contenido** | ✅ | Se corrigieron dos frases que no se podían respaldar ("sin compromiso de entrada" y "WhatsApp directos"). Quedan **8 pendientes marcados** como `[DATO A COMPLETAR]` en el código. |
-| **Información faltante** | ❌ | Ver lista completa en la sección 1 de la estrategia. Las más urgentes: horarios, alcance geográfico, cómo se cobra/primera consulta, quién está detrás. |
+| **UX** | ✅ | Un solo recorrido; cada sección responde una pregunta; pocas opciones por pantalla. |
+| **UI** | ✅ | Estética de la tarjeta, sin degradados ni sombras pesadas. ⚠ Sin fotos ni personas (el ejemplo del kiosco ayuda a hacerlo tangible, pero no reemplaza fotos ni casos reales). |
+| **Mobile** | ✅ | Barra fija con los dos WhatsApp (se oculta cuando ya están a la vista), menú grande, botones de 60–72 px. ⚠ Falta probar en dispositivos reales. |
+| **Accesibilidad** | ✅ | Letra base 18 px, contraste mínimo 5,9:1 (el resto entre 8,7:1 y 15,2:1), "saltar al contenido", foco visible de 4 px, semántica correcta, sin animaciones, enlaces externos avisan que abren pestaña nueva. ⚠ Falta prueba con lector de pantalla. |
+| **SEO** | ✅ técnico / ⚠️ contenido | Título, meta (153 caracteres), H1 único, schema `ProfessionalService` + `FAQPage`, `lang="es-AR"`, Instagram en `sameAs`. ⚠ Una sola página; `noindex` activo (correcto para un borrador). |
+| **Conversión** | ✅ | Un llamado único, dos WhatsApp iguales, mensaje ya armado. ⚠ No hay medición de consultas. |
+| **Velocidad** | ✅ (estimada) | ~92 KB, sin librerías, mapa con carga diferida. ⚠ Falta medirla con PageSpeed. |
+| **Claridad** | ✅ | Vocabulario simple, sin jerga. |
+| **Credibilidad** | ❌ / ⚠️ | Dirección con mapa, dos vías directas, Instagram, honestidad sobre lo que no se sabe. Faltan personas, casos, reseñas, seguridad de datos y correo con dominio propio (hoy Gmail). |
+| **Errores de contenido** | ✅ | Ninguna frase sin respaldo. Quedan **4 comentarios** `[DATO A COMPLETAR]` en el código (schema, pasos, preguntas frecuentes y horarios/ubicación). |
 
-### Riesgos y límites que conviene conocer
-1. **La vista previa al compartir el link no funcionará hasta tener dominio** (`og:image` necesita dirección absoluta). Es importante porque este negocio se comparte por WhatsApp.
-2. **El tablero "Así puede verse el orden" es ficticio.** Está rotulado como "Ejemplo ilustrativo" y "datos ficticios", pero la mejor versión de esa sección es un ejemplo **real y anonimizado**, con permiso de un cliente.
-3. **Los rubros y los 4 pasos vienen del borrador original**, no de una validación independiente. Hay que confirmarlos.
-4. **La ficha de Google Maps no pude leerla**: no sé su puntaje, reseñas, categoría ni horarios. Si tiene buenas reseñas, es la prueba social más barata de mostrar.
-5. **El mapa incrusta un servicio de Google.** Si se quiere evitar cualquier carga de terceros hasta que la persona lo pida, se puede reemplazar por una imagen con botón "Ver mapa".
-6. **El logo claro para fondo oscuro lo generé yo recoloreando el PNG.** Se ve bien, pero la versión oficial (vectorial, SVG) del diseñador sería más nítida y fiel a la tarjeta.
+### Riesgos y límites
+1. **Vista previa al compartir:** el dominio `adminya.com.ar` ya está y `og:image` ya apunta a una dirección absoluta en el código; **solo se verá cuando esta versión se publique en Netlify** (la publicada hoy es la anterior).
+2. **El repositorio está público** (GitHub Pages lo exige en cuentas gratuitas), así que `docs/` es visible para cualquiera.
+3. **Los 3 pasos y los textos de las tarjetas** vienen de la versión del dueño y de sus piezas gráficas; conviene que confirme el alcance exacto de "vender online", "análisis de mercado" y "sistemas a medida". Las frases absolutas ("cualquier proceso", "100 %") se dejaron afuera a propósito.
+3b. **Marca inconsistente en las piezas gráficas:** dicen "AdminYa" y no "AdminYAAA". La web usa AdminYAAA.
+4. **La ficha de Google Maps no pudo leerse:** no se conoce su puntaje ni reseñas.
+5. **El logo claro** se generó recoloreando el PNG; conviene la versión vectorial oficial.
+6. **Sin formulario:** ya no hay forma de "dejar los datos" en la web; todo pasa por WhatsApp, correo o Instagram.
+7. **Nombre de marca:** se agregó "Para tu negocio" junto al logo para desactivar la lectura de "administración de edificios" en el primer vistazo, pero es un parche de la web, no una solución de fondo. Si el dueño sigue viendo el problema al usarla, la conversación pendiente es sobre la marca (nombre, logo, Instagram), no sobre el sitio.
 
----
+## 5. Mejoras recomendadas, por prioridad
 
-## Etapa 12 — Mejoras recomendadas, en orden de prioridad
+### Antes de publicar
+1. Que el dueño **confirme los textos** de las 5 tarjetas y los 3 pasos.
+2. **Cargar horarios** y confirmar el alcance geográfico del servicio remoto.
+3. **Correo institucional** (`contacto@adminya.com.ar`, hoy es un Gmail). El dominio, el `canonical`, la `og:image` absoluta y los datos del schema ya están cargados.
+4. **Probar en celulares reales** los dos WhatsApp.
+5. **Completar la ficha de Google Business Profile** (web, horarios, servicios, fotos).
 
-### A. Antes de publicar (bloqueantes)
-1. **Validar con el negocio** los 4 pasos, los ejemplos por rubro y la frase de servicio "podés contratar solo una parte".
-2. **Cargar horarios** y confirmar si el servicio remoto tiene alcance nacional o local. Con eso se puede armar una sección de zonas útil para SEO.
-3. **Dominio + correo institucional** (`contacto@…`), canonical, `og:image` absoluta, schema completo.
-4. **Probar en celulares reales** los dos WhatsApp y el formulario.
-5. **Completar la ficha de Google Business Profile** con la dirección web, horarios, servicios y fotos.
+### Primer mes
+6. **"Quiénes somos" mínimo**: nombres, una foto real y una línea de experiencia. Es lo que más falta.
+7. **Fotos reales** de la oficina y del equipo.
+8. **1 a 3 testimonios reales** y las **reseñas de Google**.
+9. **Una respuesta sobre seguridad** de datos y accesos.
+10. **Un criterio de precio** (aunque sea "depende de X, Y, Z").
+11. **Medir** clics en WhatsApp con una herramienta sin cookies (Plausible o Umami).
 
-### B. Primer mes (mayor impacto en confianza)
-6. **"Quiénes somos" mínimo**: nombres, una foto real y una línea de formación/experiencia de quien atiende. Es lo que más falta.
-7. **Fotos reales** de la oficina y del equipo. Sin stock.
-8. **1 a 3 testimonios o casos reales**, con permiso, y las **reseñas de Google** (pedirlas a clientes actuales con un enlace directo).
-9. **Una respuesta sobre seguridad**: cómo se manejan accesos y datos. Es la duda nº 1 de quien va a delegar la administración.
-10. **Un criterio de precio**: aunque sea "el abono depende de X, Y, Z" o un "desde". Casi ningún competidor lo hace, y sería un diferencial.
-11. **Decir qué recibe el cliente y cuándo** (por ejemplo, "un resumen mensual"), una vez que se confirme.
-12. **Medir**: contar clics en WhatsApp y envíos del formulario con una herramienta sin cookies (por ejemplo Plausible o Umami), para saber qué funciona.
-
-### C. Mes 2 en adelante (crecimiento)
-13. **Páginas por rubro** con contenido útil y real: *costeo para gastronomía*, *administración para comercios*, *administración para profesionales*. Es lo que más puede mejorar el posicionamiento (nadie en Zona Oeste ocupa ese lugar).
-14. **Search Console**: validar las keywords reales con datos de búsqueda y ajustar títulos.
-15. **Publicaciones mensuales** en la ficha de Google (ejemplos, vencimientos, consejos).
-16. **Instagram** (`@admin.yaaa`) ya está enlazado en la web y en el schema. Falta decidir si se muestran publicaciones en la página y mantener la cuenta activa.
-17. **Logo en SVG (versión clara y oscura)** y, si hay presupuesto, una sesión de fotos profesional.
+### Más adelante
+12. Páginas propias para **vender online** y para **administración de comercios**, con contenido útil real.
+13. Search Console para validar keywords; publicaciones periódicas en la ficha de Google.
+14. Logo vectorial (versión clara y oscura) y sesión de fotos profesional.
