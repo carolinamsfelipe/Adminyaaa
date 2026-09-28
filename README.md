@@ -31,16 +31,20 @@ docs/                   ← estrategia y auditoría
 ## Antes de publicar (lista de control)
 1. [ ] **Validar el contenido** con el negocio: los 3 pasos de "Cómo trabajamos" y el detalle de cada servicio.
 2. [ ] **Cargar los horarios** (hoy dice "consultanos por WhatsApp"). Actualizar el texto "Consultanos por WhatsApp para conocer los horarios" (sección Contacto), sumar la pregunta de horarios al FAQ (y a su versión en el `<head>`) y agregar `openingHours` al schema.
-3. [ ] **Definir el dominio.** Con el dominio final:
-   - agregar `<link rel="canonical" href="https://DOMINIO/">`
-   - pasar `og:image` a dirección absoluta (`https://DOMINIO/assets/img/og-image.png`) y agregar `og:url`. Sin esto, el link **no muestra vista previa** al compartirlo por WhatsApp.
-   - agregar `url`, `logo` e `image` al schema `ProfessionalService`.
+3. [x] **Dominio definido: `https://adminya.com.ar/`** (el `www` redirige a esa dirección). Ya están cargados en `index.html` el `canonical`, `og:url`, `og:image` absoluta y `url`/`logo`/`image` del schema. *Pendiente solo si cambia el dominio: buscar `adminya.com.ar` en `index.html` y reemplazar.*
 4. [ ] **Borrar la línea `<meta name="robots" content="noindex, nofollow">`** (la última acción, cuando todo esté listo).
-5. [ ] Subir la carpeta a cualquier hosting estático (Netlify, Cloudflare Pages, GitHub Pages o el hosting del dominio). Es solo copiar los archivos.
+5. [x] **Hosting: Netlify** (con el dominio conectado por Netlify DNS). Para publicar cambios, hay que actualizar el sitio en Netlify (ver *Cómo actualizar la web publicada*, abajo).
 6. [ ] Agregar `robots.txt` y `sitemap.xml` (una sola URL).
 7. [ ] **Google Business Profile:** agregar la dirección web a la ficha y completar horarios, servicios, descripción y fotos.
 8. [ ] Probar en **al menos un iPhone y un Android reales**: que los dos botones de WhatsApp abran el chat con el mensaje.
 9. [ ] Pasar la URL por PageSpeed Insights y por la prueba de resultados enriquecidos de Google.
+
+## Cómo actualizar la web publicada
+La web de `adminya.com.ar` está alojada en **Netlify**. Los archivos de esta carpeta **no se publican solos**:
+- Si el sitio de Netlify está **conectado al repositorio de GitHub**: al subir archivos a GitHub (rama `main`), Netlify publica solo en un minuto o dos.
+- Si **no** está conectado: en Netlify, entrar al sitio → **Deploys** → arrastrar la carpeta `Adminyaaa` entera a la zona que dice *"Drag and drop your site output folder here"*.
+
+Para saber cuál es el caso: en Netlify, **Site configuration → Build & deploy → Continuous deployment**. Si dice *"Linked repository"* con el repositorio de GitHub, es automático.
 
 ## Desarrollo
 `.claude/launch.json` es solo una configuración para previsualizar desde Claude Code (`python3 -m http.server`). No hace falta para publicar.

@@ -108,6 +108,12 @@ h3 { font-size: 1.3rem; line-height: 1.3; font-weight: 600; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header-h); }
 .brand { display: block; flex: none; line-height: 0; border-radius: 8px; }
 .brand img { height: 44px; width: auto; }
+/* Encabezado: el logo solo (imagen) no dice "negocio" a simple vista y puede leerse
+   como administración de edificios/consorcios. Este texto corrige esa primera
+   lectura, en el primer segundo, sin tocar la marca real (logo, tarjeta, Instagram). */
+.brand-block { display: flex; flex-direction: column; gap: 2px; flex: none; border-radius: 8px; text-decoration: none; }
+.brand-block img { height: 40px; width: auto; }
+.brand-tag { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em; color: var(--green); line-height: 1.2; white-space: nowrap; }
 .menu-btn {
   display: inline-flex; align-items: center; gap: 10px;
   min-height: 52px; padding: 8px 20px;
@@ -221,6 +227,19 @@ h3 { font-size: 1.3rem; line-height: 1.3; font-weight: 600; }
   .need-list { grid-template-columns: 1fr 1fr; }
 }
 
+/* ---------- Un ejemplo (Juan y el kiosco) ---------- */
+.tag { display: inline-block; margin-top: 6px; padding: 5px 14px; border: 2px solid var(--line-l); border-radius: 999px; font-size: 0.82rem; font-weight: 700; color: var(--ink-muted); }
+.example-card { margin-top: 44px; max-width: 640px; padding: 32px; background: var(--tint); border: 2px solid var(--line-l); border-radius: var(--r-lg); }
+.example-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 24px; }
+.example-head h3 { font-size: 1.4rem; }
+.ledger { border-top: 2px solid var(--line-l); }
+.ledger li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--line-l); font-weight: 600; font-size: 1.1rem; }
+.ledger li span:last-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ledger li:last-child { border-bottom: 0; border-top: 2px solid var(--line-l); margin-top: 4px; padding-top: 18px; font-weight: 700; font-size: 1.25rem; color: var(--green-d); }
+.example-warn { margin-top: 24px; padding: 18px 22px; background: var(--navy); color: var(--white); border-radius: var(--r); font-weight: 600; }
+.example-note { margin-top: 16px; color: var(--ink-muted); }
+.example-cta { margin-top: 26px; }
+
 /* ---------- Cómo trabajamos ---------- */
 .steps { margin-top: 52px; display: grid; gap: 40px 32px; counter-reset: paso; }
 .steps li { counter-increment: paso; position: relative; padding-top: 84px; }
@@ -287,6 +306,10 @@ a.crow:hover { border-color: var(--green); background: var(--navy-deep); }
   .split-you, .split-us, .split-foot { padding-inline: 22px; }
   .need { padding: 24px 22px; }
   .needs-cta .btn { width: 100%; }
+  .example-card { padding: 22px 20px; }
+  .example-cta { width: 100%; }
+  .ledger li { font-size: 1rem; }
+  .ledger li:last-child { font-size: 1.15rem; }
   .hero::before { width: 320px; height: 320px; left: -170px; top: -170px; }
   .hero::after { width: 380px; height: 380px; right: -190px; bottom: -200px; }
   .crow { padding-right: 16px; gap: 14px; }
@@ -301,7 +324,10 @@ a.crow:hover { border-color: var(--green); background: var(--navy-deep); }
   .crow-main--mail { font-size: 0.93rem; }
   .wa-bar .wa .i { display: none; }
   .wa-bar .wa-num { font-size: 1rem; }
-  .brand img { height: 38px; }
+  .brand img, .brand-block img { height: 36px; }
+  .brand-tag { display: none; }
+  .ledger li { font-size: 0.93rem; }
+  .ledger li:last-child { font-size: 1.08rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

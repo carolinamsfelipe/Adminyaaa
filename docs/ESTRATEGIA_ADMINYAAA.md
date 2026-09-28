@@ -36,15 +36,23 @@ Consecuencias directas:
 | WhatsApp 1 | 11 2560-4901 (`wa.me/5491125604901`) | borrador |
 | WhatsApp 2 | 11 3033-2341 (`wa.me/5491130332341`) | borrador |
 | Correo | adminyaaa@gmail.com | borrador + mensaje del usuario |
-| Instagram | @admin.yaaa | tarjeta de presentación |
+| Instagram | @admin.yaaa (11 seguidores y 1 publicación al momento de verificarlo; la biografía dice "Única Empresa de Servicios Administrativos de Zona Oeste", una afirmación absoluta que conviene revisar) | tarjeta + verificado en Instagram + mensaje del usuario |
 | Lemas de la marca | "Administración tercerizada para empresas" y "Administración que te ayuda a crecer" | tarjeta de presentación |
 | Estética de marca | Fondo azul marino profundo, logo claro con verde brillante, iconos en círculos verdes | tarjeta de presentación |
 | Servicios (9) | Facturación · Pagos a proveedores · Cobranzas · Trámites impositivos · Flujo de caja · Stock y compras · Presupuestación · Costeo y márgenes · Herramientas adaptadas al negocio | borrador |
 | Servicio: vender online | Asesoramiento y puesta en marcha de catálogo, tienda y publicaciones | mensaje del usuario (confirmado por el dueño) y versión del dueño |
+| Servicio: análisis de mercado | Precios, competidores, posicionamiento, demanda y oportunidades | piezas gráficas del dueño + mensaje del usuario (confirmado) |
+| Modelo de cobro | **Abono mensual o proyecto puntual** (el precio depende del negocio) | mensaje del usuario (confirmado por el dueño) |
+| Alcance geográfico | **Remoto: clientes de Buenos Aires y también del interior del país**; seguir creciendo en el interior es un plan. Oficina en Ciudadela | mensaje del usuario (confirmado por el dueño) |
+| Uso de inteligencia artificial | El equipo se apoya en IA ("es lo que viene"); todavía no se dice en la web | mensaje del usuario (confirmado por el dueño) |
+| Servicio: sistemas administrativos a medida | Compras, ventas, stock, facturación, cobros, pagos y reportes conectados; automatización de tareas repetitivas | piezas gráficas del dueño + mensaje del usuario (confirmado) |
+| Nombre de la marca | **AdminYAAA** (las piezas gráficas dicen "AdminYa": es una inconsistencia a corregir en ellas) | mensaje del usuario |
 | Enfoque de la marca | **Administración** (no consultoría general de negocios) | mensaje del usuario (dueño) |
 | Diferencial declarado | "Trabajamos junto a tu contador. No lo reemplazamos." | borrador |
 | Prioridad del negocio | Los dos WhatsApp con **la misma importancia**; dirección con enlace a Google bien visible | `REVISION_WEB.txt` |
 | Estado | Borrador sin publicar (`noindex, nofollow`) | `REVISION_WEB.txt` |
+
+**Sobre las frases absolutas de las piezas gráficas.** El dueño pidió sumar a la web los servicios que prometen esas piezas ("análisis de mercado" y "sistemas administrativos a medida"). Se incorporaron con sus palabras, **pero sin** "automatizamos *cualquier* proceso" ni "100 % personalizados", porque no se pueden demostrar. Si el dueño quiere recuperarlas, es un cambio simple en `index.html`.
 
 **Matiz sobre el público.** La tarjeta dice "para empresas", mientras que el borrador habla de PyMEs, comercios, emprendedores y profesionales. La web mantiene la versión más específica del borrador (convierte mejor); conviene confirmar si "empresas" es más amplio que eso.
 
@@ -61,8 +69,8 @@ Consecuencias directas:
 3. **Reseñas de Google**: puntaje, cantidad y 2–3 textos que se puedan citar con permiso.
 4. **Años de trayectoria** y **cantidad de clientes** (solo si son ciertos y demostrables).
 5. **Quién está detrás**: nombres, formación, foto real. Es lo que más confianza genera en un servicio "de personas".
-6. **Alcance geográfico real**: ¿atienden remoto a todo el país, solo Gran Buenos Aires, solo Zona Oeste? Sin esto no se puede armar una lista de zonas.
-7. **Cómo se cobra** (abono mensual, por hora, por tarea) y si hay **primera consulta sin costo**.
+6. ~~Alcance geográfico~~: **confirmado** (Buenos Aires e interior, remoto). Falta saber **qué ciudades del interior ya atienden**, para no prometer de más.
+7. ~~Cómo se cobra~~: **confirmado** (abono mensual o proyecto puntual). Falta decidir si hay **primera consulta sin costo**.
 8. **Qué recibe el cliente y cuándo** (¿informe mensual? ¿tablero? ¿frecuencia?).
 9. **Seguridad**: cómo se manejan accesos a bancos/ARCA y datos del cliente (es de las primeras dudas de este rubro).
 10. **Con qué sistemas trabajan** (planillas, sistemas de facturación, etc.) y si el cliente tiene que cambiar algo.
@@ -191,6 +199,13 @@ Los perfiles salen de los rubros del borrador (no asumí otros). Las búsquedas 
 ### Mensaje para recordar
 **"Vos ocupate del negocio. La administración la llevamos nosotros, junto a tu contador."**
 
+### Hallazgo del dueño: el nombre puede evocar administración de edificios
+Al revisar la versión 3, el dueño señaló que "AdminYAAA" (y en general la palabra "Admin") le hace pensar primero en administración de consorcios/edificios, hasta que el resto de la página aclara de qué se trata. Es una alerta real de percepción, distinta del error de alcance de la Etapa 0 (ahí el archivo confirmaba que el negocio no es de consorcios; acá el tema es qué piensa alguien al ver el nombre por primera vez, antes de leer nada).
+
+**Decisión tomada (reversible, sin tocar la marca real):** se agregó un texto corto junto al logo en el encabezado —"Para tu negocio"— para que el primer vistazo (logo + esa frase) desactive la lectura de "edificios" antes de que la persona siga leyendo. No se tocó el nombre, el logo, la tarjeta, Instagram ni la ficha de Maps: son materiales reales del negocio y cambiarlos es una decisión de marca mucho más grande que un ajuste de la web.
+
+**Pendiente de decidir por el dueño:** si con ese ajuste alcanza, o si quiere evaluar un cambio de nombre/marca más de fondo (implicaría nuevo logo, nueva cuenta de Instagram o handle, tarjetas reimpresas, y probablemente rehacer parte de esta investigación de posicionamiento).
+
 ### Tono
 Cercano, claro, tranquilo. Español rioplatense con voseo ("escribinos", "contanos"). Frases cortas, sin jerga ni promesas grandilocuentes. Serio en lo que importa (números, vencimientos), humano en cómo se dice.
 
@@ -204,16 +219,17 @@ Cercano, claro, tranquilo. Español rioplatense con voseo ("escribinos", "contan
 
 ## 5. Estructura de la web (una página corta)
 
-**Versión 3.** Después de comparar con la versión que envió el dueño, la página se acortó a la mitad: de 1.090 a **546 palabras** y de ~19 a **~11 pantallas en celular**. Se combinó lo mejor de las dos: el arranque centrado en el cliente ("Contanos qué necesitás resolver", tarjetas en primera persona) y la claridad de qué es AdminYAAA.
+**Versión 3.** Después de comparar con la versión que envió el dueño, la página se acortó a la mitad: de 1.090 a **~720 palabras** (tras sumar los servicios nuevos y el ejemplo del kiosco) y de ~19 a **~13,5 pantallas en celular** (medido a 375×812). Se combinó lo mejor de las dos: el arranque centrado en el cliente ("Contanos qué necesitás resolver", tarjetas en primera persona) y la claridad de qué es AdminYAAA.
 
 | # | Sección | Fondo | Pregunta que responde | Decisión |
 |---|---|---|---|---|
-| 1 | Encabezado | Azul | ¿Cómo los contacto? | Los dos WhatsApp con **el mismo peso** |
+| 1 | Encabezado | Azul | ¿Cómo los contacto? | Los dos WhatsApp con **el mismo peso**; logo con la etiqueta "Para tu negocio" (ver Sección 4) |
 | 2 | Portada | Azul | ¿Qué hacen y cómo los contacto? | H1 claro + "Contanos qué necesitás resolver" + los dos WhatsApp + dirección con "Cómo llegar". Tarjeta **Vos / Nosotros** con "siempre en contacto con tu contador" |
-| 3 | ¿Qué necesitás resolver? | Claro | ¿Sirve para lo mío? | 5 tarjetas en primera persona. La primera (**administración diaria**) va destacada porque es el corazón de la marca |
-| 4 | Cómo trabajamos | Azul | ¿Cómo es empezar? | 3 pasos (los del dueño) |
-| 5 | Preguntas frecuentes | Claro | ¿Y si…? (contador, precio, remoto) | 6 preguntas que desactivan las objeciones detectadas |
-| 6 | Contacto y ubicación | Azul | ¿Dónde y cómo los encuentro? | Lista de contactos (2 WhatsApp, correo, Instagram, dirección) + mapa |
+| 3 | ¿Qué necesitás resolver? | Claro | ¿Sirve para lo mío? | 7 tarjetas en primera persona (incluye "sistema hecho a mi medida" y "conocer mi mercado"). La primera (**administración diaria**) va destacada porque es el corazón de la marca |
+| 4 | Un ejemplo | Claro | ¿Cómo se ve esto en la práctica? | "Juan tiene un kiosco": un ejemplo ficticio e ilustrativo (pedido por el dueño), con un mini estado de cuenta, para que la persona se imagine como cliente. Rotulado como "Ejemplo ilustrativo" y aclarado en el texto ("no es un cliente real"): no es un testimonio ni un caso real, no compromete ninguna cifra de AdminYAAA |
+| 5 | Cómo trabajamos | Azul | ¿Cómo es empezar? | 3 pasos (los del dueño) |
+| 6 | Preguntas frecuentes | Claro | ¿Y si…? (contador, precio, remoto) | 6 preguntas que desactivan las objeciones detectadas |
+| 7 | Contacto y ubicación | Azul | ¿Dónde y cómo los encuentro? | Lista de contactos (2 WhatsApp, correo, Instagram, dirección) + mapa |
 
 **Se quitó a propósito** (respecto de la versión 2): la sección "Con tu contador" (fusionada en la portada y el FAQ), "Por rubro" con el **tablero ilustrativo inventado**, y el **formulario** (tres botones de envío confundían y para un público mayor es más simple escribir directo por WhatsApp).
 
@@ -242,6 +258,7 @@ Cercano, claro, tranquilo. Español rioplatense con voseo ("escribinos", "contan
 | Servicio principal | administración tercerizada para pymes | Title, H1/sub, cuerpo |
 | Servicio principal | administración para comercios / emprendedores / profesionales | Rubros, H2 |
 | Servicio | facturación y cobranzas para pymes · pagos a proveedores | Servicios |
+| Servicio | sistemas administrativos a medida · automatización administrativa para pymes · análisis de mercado para pymes | Servicios (tarjetas nuevas) |
 | Información | flujo de caja · costeo de productos/recetas · control de stock | Servicios y rubros |
 | Local | administración pymes Ciudadela · Zona Oeste | Title, meta, dónde estamos, schema |
 | Marca | AdminYAAA | Todo |
