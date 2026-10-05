@@ -124,20 +124,51 @@ ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.suppliers ENABLE ROW LEVEL SECURITY;
 
 -- Políticas de lectura pública (Catálogo accesible para compradores)
+DROP POLICY IF EXISTS "Lectura pública de productos" ON public.products;
 CREATE POLICY "Lectura pública de productos" ON public.products FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Inserción pública de pedidos" ON public.orders;
 CREATE POLICY "Inserción pública de pedidos" ON public.orders FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Lectura de pedidos propios o públicos" ON public.orders;
 CREATE POLICY "Lectura de pedidos propios o públicos" ON public.orders FOR SELECT USING (true);
 
 -- Políticas operativas y administrativas
+DROP POLICY IF EXISTS "Gestión total de productos" ON public.products;
 CREATE POLICY "Gestión total de productos" ON public.products FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Gestión total de historial" ON public.price_history;
 CREATE POLICY "Gestión total de historial" ON public.price_history FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Gestión total de movimientos" ON public.stock_movements;
 CREATE POLICY "Gestión total de movimientos" ON public.stock_movements FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Gestión total de pedidos" ON public.orders;
 CREATE POLICY "Gestión total de pedidos" ON public.orders FOR ALL USING (true);
+
+DROP POLICY IF EXISTS "Gestión total de proveedores" ON public.suppliers;
 CREATE POLICY "Gestión total de proveedores" ON public.suppliers FOR ALL USING (true);
 
 -- ----------------------------------------------------------------------------
--- REALTIME (Suscripciones WebSocket automáticas)
+-- REALTIME (Suscripciones WebSocket automáticas - seguro e idempotente)
 -- ----------------------------------------------------------------------------
-ALTER PUBLICATION supabase_realtime ADD TABLE public.products;
-ALTER PUBLICATION supabase_realtime ADD TABLE public.orders;
-ALTER PUBLICATION supabase_realtime ADD TABLE public.stock_movements;
+DO $$
+BEGIN
+    BEGIN
+        ALTER PUBLICATION supabase_realtime ADD TABLE public.products;
+    EXCEPTION WHEN duplicate_object THEN
+        -- Ya agregada, ignorar
+    END;
+
+    BEGIN
+        ALTER PUBLICATION supabase_realtime ADD TABLE public.orders;
+    EXCEPTION WHEN duplicate_object THEN
+        -- Ya agregada, ignorar
+    END;
+
+    BEGIN
+        ALTER PUBLICATION supabase_realtime ADD TABLE public.stock_movements;
+    EXCEPTION WHEN duplicate_object THEN
+        -- Ya agregada, ignorar
+    END;
+END $$;
