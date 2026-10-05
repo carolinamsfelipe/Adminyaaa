@@ -84,27 +84,52 @@
         </div>
       </a>
 
-      <!-- Navegación Desktop -->
-      <nav class="nav-desktop" aria-label="Navegación principal">
-        <a href="#inicio" class="nav-link is-active">Inicio</a>
-        <a href="#catalogo" class="nav-link">Productos</a>
-        <a href="#combos" class="nav-link">Combos <span class="nav-link-badge">Ahorro</span></a>
-        <a href="#ofertas" class="nav-link">Ofertas</a>
-        <a href="#como-comprar" class="nav-link nav-link--secondary">Cómo comprar</a>
-        <a href="#contacto" class="nav-link nav-link--secondary">Contacto</a>
-        <a href="admin/" class="nav-link" id="nav-header-admin-link" style="color:var(--color-primary-600);font-weight:700;display:none;align-items:center;gap:0.35rem" title="Panel de Gestión Mayorista">
+      <!-- Botón Desplegable de CATEGORÍAS (Mega Menú - Estilo Club de Beneficios) -->
+      <div class="header-categories-trigger-wrap">
+        <button type="button" class="btn-mega-categories" id="btn-mega-categories" aria-expanded="false" aria-controls="header-mega-menu" aria-label="Abrir menú de categorías mayoristas">
+          <svg class="icon-menu-bars" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="icon-menu-close" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <span>CATEGORÍAS</span>
+          <svg class="icon-chevron" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+
+        <!-- Mega Menú Desplegable de 2 Columnas (Estilo Club de Beneficios) -->
+        <div class="mega-menu-dropdown" id="header-mega-menu" role="dialog" aria-label="Categorías mayoristas" aria-hidden="true">
+          <div class="mega-menu-arrow"></div>
+          <div class="mega-menu-inner">
+            <!-- Columna Izquierda: Departamentos Principales -->
+            <div class="mega-menu-sidebar" id="mega-menu-sidebar"></div>
+
+            <!-- Columna Derecha: Subcategorías Dinámicas -->
+            <div class="mega-menu-content" id="mega-menu-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Búsqueda Rápida en Header (Espaciosa, Centrada y Libre de Colisiones) -->
+      <div class="header-search">
+        <div class="search-input-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="search" id="catalog-search-input" class="header-search-input" placeholder="Buscar fideos, aceite, jabón, lavandina..." aria-label="Buscar en el catálogo mayorista">
+          <button type="button" class="search-clear-btn" id="search-clear-btn" aria-label="Limpiar búsqueda">&times;</button>
+        </div>
+      </div>
+
+      <!-- Accesos Directos Opcionales en Header (Ofertas y Combos) -->
+      <nav class="nav-desktop-shortcuts" aria-label="Accesos rápidos destacados">
+        <a href="#ofertas" class="nav-shortcut-link nav-shortcut-link--promo">
+          <span>🔥</span>
+          <span>Ofertas</span>
+        </a>
+        <a href="#combos" class="nav-shortcut-link nav-shortcut-link--combo">
+          <span>📦</span>
+          <span>Combos</span>
+        </a>
+        <a href="admin/" class="nav-shortcut-link" id="nav-header-admin-link" style="color:var(--color-primary-600);font-weight:700;display:none;align-items:center;gap:0.35rem" title="Panel de Gestión Mayorista">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           Admin
         </a>
       </nav>
-
-      <!-- Barra de Búsqueda Rápida en Header -->
-      <div class="header-search">
-        <div class="search-input-wrap">
-          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          <input type="search" id="catalog-search-input" class="header-search-input" placeholder="Buscar fideos, aceite, jabón..." aria-label="Buscar en el catálogo mayorista">
-        </div>
-      </div>
 
       <!-- Acciones de Usuario -->
       <div class="header-actions">
@@ -134,6 +159,9 @@
       </div>
 
     </div>
+
+    <!-- Backdrop del Mega Menú -->
+    <div class="mega-menu-backdrop" id="mega-menu-backdrop"></div>
   </header>
 
   <!-- ============================================================

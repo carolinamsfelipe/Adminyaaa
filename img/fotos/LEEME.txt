@@ -1,0 +1,3 @@
+FOTOS PROPIAS DE PRODUCTOS
+Guardá acá las fotos con el código del producto como nombre (ej.: M72.jpg),
+cuadradas, de unos 300 x 300 px, y agregalas en js/imagenes.js dentro de "fotos".

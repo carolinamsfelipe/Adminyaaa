@@ -6,6 +6,18 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "4173", "--directory", "/Users/caro/Adminyaaa"],
       "port": 4173
+    },
+    {
+      "name": "adminya-panel",
+      "runtimeExecutable": "/Users/caro/Adminya/server/venv/bin/python3",
+      "runtimeArgs": ["/Users/caro/Adminya/server/app.py"],
+      "port": 4174
+    },
+    {
+      "name": "adminyaaa-gestion",
+      "runtimeExecutable": "/Users/caro/AdminYAAA-Gestion/server/venv/bin/python3",
+      "runtimeArgs": ["/Users/caro/AdminYAAA-Gestion/server/app.py"],
+      "port": 4175
     }
   ]
 }

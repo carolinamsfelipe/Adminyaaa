@@ -22,6 +22,7 @@ import { Toast } from './ui/toast.js';
 import { Modal } from './ui/modal.js';
 import { Drawer } from './ui/drawer.js';
 import { QuickView } from './ui/quickView.js';
+import { MegaMenu } from './ui/megaMenu.js';
 
 // Sincronización en vivo con inventario y precios del Panel Administrativo (/admin)
 function getLiveProducts() {
@@ -67,6 +68,13 @@ const state = {
 document.addEventListener('DOMContentLoaded', () => {
   Modal.init();
   Drawer.init();
+
+  // Inicializar Mega Menú de Categorías (Estilo Club de Beneficios)
+  MegaMenu.init({
+    onSelectCategory: ({ section, category, anchor }) => {
+      handleMegaMenuSelect({ section, category, anchor });
+    }
+  });
 
   // Sincronizar catálogo inicial desde Storage si existe
   getLiveProducts();
@@ -469,6 +477,41 @@ function renderCatalog() {
       </article>
     `;
   }).join('');
+}
+
+function handleMegaMenuSelect({ section, category, anchor }) {
+  if (anchor) {
+    const el = document.querySelector(anchor);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+  }
+
+  if (section) {
+    state.selectedSection = section;
+    state.selectedCategory = (category && category !== 'todas') ? category : 'todas';
+    state.searchQuery = '';
+    const searchInput = document.getElementById('catalog-search-input');
+    const searchClearBtn = document.getElementById('search-clear-btn');
+    if (searchInput) searchInput.value = '';
+    if (searchClearBtn) searchClearBtn.classList.remove('is-visible');
+
+    // Sincronizar pills de catálogo y chips de departamento
+    document.querySelectorAll('.pill-btn, .dept-chip[data-section-filter]').forEach(p => {
+      const s = p.dataset.section || p.dataset.sectionFilter;
+      p.classList.toggle('is-active', s === section);
+    });
+
+    renderSectionFilterPills();
+    renderCatalog();
+
+    const catSection = document.getElementById('catalogo');
+    if (catSection) {
+      catSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    Toast.show(`Mostrando ${category && category !== 'todas' ? category : section}`, 'info');
+  }
 }
 
 function resetFilters() {
@@ -1311,17 +1354,45 @@ function bindEventListeners() {
     });
   }
 
-  // Búsqueda en tiempo real con debounce
+  // Búsqueda en tiempo real con debounce y botón limpiar
   const searchInput = document.getElementById('catalog-search-input');
+  const searchClearBtn = document.getElementById('search-clear-btn');
   if (searchInput) {
     let timeout = null;
     searchInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      if (searchClearBtn) {
+        searchClearBtn.classList.toggle('is-visible', val.length > 0);
+      }
       clearTimeout(timeout);
       timeout = setTimeout(() => {
-        state.searchQuery = e.target.value;
+        state.searchQuery = val;
         renderCatalog();
+        if (val.trim().length > 1) {
+          const catSection = document.getElementById('catalogo');
+          if (catSection && window.scrollY < 200) {
+            catSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
       }, 200);
     });
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const catSection = document.getElementById('catalogo');
+        if (catSection) catSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    if (searchClearBtn) {
+      searchClearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchClearBtn.classList.remove('is-visible');
+        state.searchQuery = '';
+        renderCatalog();
+        searchInput.focus();
+      });
+    }
   }
 
   // Ordenamiento select
