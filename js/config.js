@@ -33,8 +33,8 @@ export const STORE_CONFIG = {
   // ============================================================
   DATABASE: {
     /** @type {'local' | 'supabase'} */
-    provider: 'local', // 'local' para localStorage, 'supabase' para PostgreSQL en la nube
-    supabaseUrl: 'https://TU-PROYECTO.supabase.co',
-    supabaseAnonKey: 'TU-ANON-KEY-DE-SUPABASE'
+    provider: 'supabase', // Activo con Supabase BaaS (PostgreSQL)
+    supabaseUrl: 'https://qufrquluczzhsmhiicpm.supabase.co',
+    supabaseAnonKey: 'sb_publishable_J9PenSIHMRicwjA-_ELTUA_MY-v4O-b'
   }
 };
