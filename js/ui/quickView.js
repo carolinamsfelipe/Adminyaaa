@@ -2,6 +2,7 @@
  * QUICK VIEW — Vista rápida interactiva de producto o combo
  */
 import { Modal } from './modal.js';
+import { Drawer } from './drawer.js';
 import { CartService } from '../services/cartService.js';
 import { FavoritesService } from '../services/favoritesService.js';
 import { AuthService } from '../services/authService.js';
@@ -96,6 +97,20 @@ export const QuickView = {
       CartService.addProduct(product, qty, opts);
       Toast.success(`Agregaste ${qty} × ${product.name} al carrito`);
       Modal.close('quick-view-modal');
+      Drawer.open('cart-drawer');
+      const drawerBody = document.getElementById('cart-drawer-items');
+      if (drawerBody) {
+        drawerBody.classList.add('scroll-flash');
+        setTimeout(() => drawerBody.classList.remove('scroll-flash'), 1200);
+        setTimeout(() => {
+          const itemEl = drawerBody.querySelector(`[data-item-id="prod_${product.id}"]`);
+          if (itemEl) {
+            itemEl.classList.add('cart-item--new');
+            itemEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            setTimeout(() => itemEl.classList.remove('cart-item--new'), 1500);
+          }
+        }, 120);
+      }
     });
 
     favBtn.addEventListener('click', () => {

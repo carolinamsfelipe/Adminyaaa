@@ -40,6 +40,12 @@ export const WhatsAppService = {
 
     lines.push(`💰 *RESUMEN ECONÓMICO*`);
     lines.push(`• *Subtotal mercadería:* ${this.formatCurrency(totals.subtotal)} (${totals.totalUnits} un.)`);
+    if (totals.savings > 0) {
+      lines.push(`• *Ahorro mayorista:* -${this.formatCurrency(totals.savings)}`);
+    }
+    if (totals.couponDiscount && totals.couponDiscount > 0) {
+      lines.push(`• *Cupón aplicado (${totals.coupon?.code || 'DESCUENTO'}):* -${this.formatCurrency(totals.couponDiscount)}`);
+    }
     
     if (deliveryType === 'retiro') {
       lines.push(`• *Modalidad de entrega:* Retiro en depósito Ituzaingó (Sin costo)`);
