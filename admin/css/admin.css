@@ -1075,3 +1075,113 @@ body.admin-body {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ============================================================
+   Buscador Inteligente de Producto y Autocompletado (Ingreso)
+   ============================================================ */
+.search-results-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-sm);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 100;
+  margin-top: 4px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  cursor: pointer;
+  border-bottom: 1px solid #F1F5F9;
+  transition: background 0.15s ease;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover,
+.search-result-item.is-selected {
+  background: #F8FAFC;
+}
+
+.search-result-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  background: #FFFFFF;
+  border-radius: 6px;
+  border: 1px solid #E2E8F0;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.search-result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-result-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--admin-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.search-result-meta {
+  font-size: 0.75rem;
+  color: var(--admin-text-muted);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-result-badges {
+  display: flex;
+  gap: 0.35rem;
+}
+
+/* Indicador de bajo margen interactivo */
+.ranking-card-btn {
+  background: #FEF2F2;
+  color: #EF4444;
+  border: 1px solid #FECDD3;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ranking-card-btn:hover {
+  background: #FEE2E2;
+  border-color: #F87171;
+  transform: translateY(-1px);
+}
+
+.ranking-list .ranking-item {
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+}
+
+.ranking-list .ranking-item:hover {
+  background: #F8FAFC;
+}

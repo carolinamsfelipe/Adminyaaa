@@ -300,7 +300,9 @@
           <div class="ranking-card">
             <div class="ranking-card-title">
               <span>⚠️ Menor Margen %</span>
-              <small style="color:#EF4444;font-weight:600">Revisar precio</small>
+              <button type="button" class="ranking-card-btn" id="btn-open-low-margin-review" title="Abrir asistente para revisar y actualizar precios de bajo margen">
+                Revisar precio ⚡
+              </button>
             </div>
             <div class="ranking-list" id="ranking-lowest-margin"></div>
           </div>
@@ -434,6 +436,20 @@
           </div>
         </div>
 
+        <!-- Banner de Confirmación en la Misma Pantalla -->
+        <div id="receipt-feedback-banner" style="display:none;max-width:800px;margin:0 auto 1.25rem;padding:1rem 1.25rem;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:var(--admin-radius);color:#065F46">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:0.75rem">
+              <span style="font-size:1.5rem">✅</span>
+              <div>
+                <strong id="receipt-feedback-title" style="font-size:0.95rem;display:block">¡Mercadería Ingresada Exitosamente!</strong>
+                <span id="receipt-feedback-desc" style="font-size:0.85rem">El stock y costo fueron actualizados. Podés continuar ingresando el siguiente producto del remito.</span>
+              </div>
+            </div>
+            <button type="button" id="btn-close-receipt-feedback" style="background:none;border:none;font-size:1.25rem;color:#065F46;cursor:pointer">&times;</button>
+          </div>
+        </div>
+
         <div class="modal-card" style="max-width:800px;margin:0 auto">
           <form id="form-goods-receipt">
             <div class="modal-body">
@@ -448,9 +464,44 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <label class="form-label" for="receipt-product-select">2. Producto a Ingresar *</label>
-                <select class="form-select" id="receipt-product-select" required></select>
+              <!-- Buscador de Producto con Lupita o Código / SKU -->
+              <div class="form-group" style="position:relative">
+                <label class="form-label" for="receipt-product-search">
+                  2. Producto a Ingresar * (Buscador por nombre, código o SKU)
+                </label>
+                <div style="position:relative;display:flex;align-items:center">
+                  <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#64748B;pointer-events:none;font-size:1.05rem">
+                    🔍
+                  </span>
+                  <input type="text" id="receipt-product-search" class="form-input" style="padding-left:42px;padding-right:36px;font-size:0.95rem" placeholder="Escribí nombre, SKU (ej: MAY-M45) o código de barras..." autocomplete="off">
+                  <button type="button" id="btn-clear-receipt-product" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:#94A3B8;cursor:pointer;font-size:1.2rem;display:none" title="Limpiar">&times;</button>
+                </div>
+                
+                <!-- Lista flotante de autocompletado -->
+                <div id="receipt-product-results" class="search-results-dropdown" style="display:none"></div>
+
+                <!-- Tarjeta visual de confirmación del producto seleccionado -->
+                <div id="receipt-selected-product-card" style="display:none;margin-top:0.75rem;padding:0.875rem 1rem;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;align-items:center;gap:1rem">
+                  <img id="receipt-selected-img" src="" alt="" style="width:48px;height:48px;object-fit:contain;background:#FFF;border-radius:6px;border:1px solid #E2E8F0;padding:2px;flex-shrink:0">
+                  <div style="flex:1;min-width:0">
+                    <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.25rem">
+                      <strong id="receipt-selected-name" style="font-size:0.95rem;color:#0F172A"></strong>
+                      <span class="badge badge--primary" id="receipt-selected-sku" style="font-size:0.75rem"></span>
+                      <span class="badge" id="receipt-selected-barcode" style="font-size:0.75rem;background:#E2E8F0;color:#334155"></span>
+                    </div>
+                    <div style="font-size:0.825rem;color:#64748B;display:flex;gap:1.25rem;flex-wrap:wrap">
+                      <span>Stock actual: <strong id="receipt-selected-stock" style="color:#0F172A">0</strong> un.</span>
+                      <span>Costo actual: <strong id="receipt-selected-cost" style="color:#0F172A">$0</strong></span>
+                      <span>Precio venta: <strong id="receipt-selected-price" style="color:#0F172A">$0</strong></span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn--sm btn--secondary" id="btn-change-receipt-product" style="font-size:0.8rem;padding:0.35rem 0.65rem;flex-shrink:0">
+                    Cambiar 🔄
+                  </button>
+                </div>
+
+                <!-- Select original para fallback / sincronización -->
+                <select class="form-select" id="receipt-product-select" style="display:none"></select>
               </div>
 
               <div class="form-grid-2">
@@ -491,12 +542,46 @@
               </div>
             </div>
 
-            <div class="modal-footer">
-              <button type="submit" class="btn btn--primary" data-permission="write">
-                ✅ Confirmar Ingreso de Mercadería
-              </button>
+            <div class="modal-footer" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+              <div style="font-size:0.85rem;color:#64748B">
+                💡 <em>Presioná <kbd style="background:#E2E8F0;padding:2px 6px;border-radius:4px;font-family:monospace;font-size:0.8rem">Enter ↵</kbd> para registrar y continuar en esta pantalla</em>
+              </div>
+              <div style="display:flex;gap:0.75rem">
+                <button type="button" class="btn btn--secondary" id="btn-clear-receipt-form">
+                  Limpiar producto
+                </button>
+                <button type="submit" id="btn-submit-goods-receipt" class="btn btn--primary" style="font-weight:700;display:inline-flex;align-items:center;gap:0.5rem" data-permission="write">
+                  <span>📥 Ingresar Mercadería</span>
+                  <kbd style="background:rgba(255,255,255,0.25);padding:2px 7px;border-radius:4px;font-size:0.75rem;font-family:monospace">Enter ↵</kbd>
+                </button>
+              </div>
             </div>
           </form>
+        </div>
+
+        <!-- Tabla de ítems ingresados en la sesión actual -->
+        <div class="table-card" id="receipt-session-card" style="display:none;max-width:800px;margin:1.75rem auto 0">
+          <div class="table-card-header" style="display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid var(--admin-border)">
+            <h3 style="font-size:0.95rem;font-weight:700;color:var(--admin-text);margin:0">
+              📋 Mercadería ingresada en esta sesión (<span id="receipt-session-count">0</span>)
+            </h3>
+            <button type="button" class="btn btn--sm btn--outline" id="btn-goto-history" style="font-size:0.8rem">
+              Ver Historial Completo &rarr;
+            </button>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Hora</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Costo Unit.</th>
+                <th>Nuevo Stock</th>
+                <th>Remito</th>
+              </tr>
+            </thead>
+            <tbody id="receipt-session-tbody"></tbody>
+          </table>
         </div>
       </section>
 
@@ -1147,6 +1232,78 @@
         <button type="button" class="btn btn--secondary" data-close-modal="modal-bulk-price-update">Cancelar</button>
         <button type="button" class="btn btn--primary" id="btn-apply-bulk-update" disabled data-permission="write">
           ✅ Confirmar y Aplicar Nuevos Precios
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: REVISIÓN Y AJUSTE DE PRODUCTOS CON BAJO MARGEN
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-low-margin-review">
+    <div class="modal-card modal-card--lg" style="max-width:960px;width:95%">
+      <div class="modal-header" style="background:#FFF1F2;border-bottom:1px solid #FECDD3">
+        <div>
+          <div style="display:flex;align-items:center;gap:0.5rem">
+            <span style="font-size:1.35rem">⚠️</span>
+            <h3 class="modal-title" style="color:#9F1239;margin:0">Revisión y Ajuste de Productos con Bajo Margen</h3>
+          </div>
+          <p style="font-size:0.875rem;color:#BE123C;margin:0.35rem 0 0">
+            Listado de productos con menor rentabilidad o margen inferior al objetivo. Podés ajustar los precios individualmente o calcular el precio sugerido en lote.
+          </p>
+        </div>
+        <button type="button" class="modal-close-btn" data-close-modal="modal-low-margin-review">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding:1.25rem">
+        <!-- Barra de cálculo en lote por margen objetivo -->
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;padding:1rem 1.25rem;border-radius:8px;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap">
+            <label style="font-size:0.875rem;font-weight:700;color:#334155" for="low-margin-target-input">
+              Margen objetivo deseado:
+            </label>
+            <div style="display:inline-flex;align-items:center;gap:0.25rem">
+              <input type="number" id="low-margin-target-input" class="form-input" style="width:75px;padding:0.4rem 0.5rem;text-align:center;font-weight:700" value="30" min="5" max="90">
+              <span style="font-weight:700;color:#64748B">%</span>
+            </div>
+            <button type="button" class="btn btn--secondary btn--sm" id="btn-apply-target-margin-all" style="font-weight:600">
+              ⚡ Calcular precio sugerido para seleccionados
+            </button>
+          </div>
+          <div style="font-size:0.875rem;color:#64748B">
+            <strong id="low-margin-selected-count" style="color:#0F172A">0</strong> productos seleccionados
+          </div>
+        </div>
+
+        <!-- Tabla editable -->
+        <div style="max-height:400px;overflow-y:auto;border:1px solid #E2E8F0;border-radius:8px">
+          <table class="data-table" style="margin:0">
+            <thead style="position:sticky;top:0;background:#F8FAFC;z-index:2">
+              <tr>
+                <th style="width:40px;text-align:center">
+                  <input type="checkbox" id="check-all-low-margin" checked title="Seleccionar todos">
+                </th>
+                <th>Producto</th>
+                <th>Costo Actual</th>
+                <th>Precio Actual</th>
+                <th>Margen Actual</th>
+                <th style="width:160px">Nuevo Precio ($)</th>
+                <th>Nuevo Margen</th>
+              </tr>
+            </thead>
+            <tbody id="low-margin-table-body">
+              <!-- Renderizado dinámico -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="display:flex;justify-content:space-between;align-items:center">
+        <button type="button" class="btn btn--secondary" data-close-modal="modal-low-margin-review">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn--primary" id="btn-save-low-margin-prices" style="background:#E11D48;border-color:#BE123C">
+          💾 Guardar y Actualizar Precios
         </button>
       </div>
     </div>

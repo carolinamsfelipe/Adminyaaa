@@ -25,7 +25,8 @@ const state = {
   ordersFilter: {
     status: 'todos'
   },
-  bulkPreview: []
+  bulkPreview: [],
+  sessionReceipts: []
 };
 
 // ============================================================
@@ -288,12 +289,12 @@ function renderDashboardRankings() {
   const containerLowMargin = document.getElementById('ranking-lowest-margin');
   if (containerLowMargin) {
     containerLowMargin.innerHTML = lowMargin.map((p, i) => `
-      <div class="ranking-item">
+      <div class="ranking-item" data-action="review-product-margin" data-id="${p.id}" style="cursor:pointer" title="Hacé clic para revisar y actualizar el precio de ${p.name}">
         <div class="ranking-item-left">
           <span class="rank-number">${i + 1}</span>
           <span class="ranking-item-name" title="${p.name}">${p.name}</span>
         </div>
-        <span class="ranking-item-val text-danger">${p.marginPct.toFixed(1)}%</span>
+        <span class="ranking-item-val text-danger" style="font-weight:700">${p.marginPct.toFixed(1)}%</span>
       </div>
     `).join('');
   }
@@ -465,8 +466,17 @@ function renderGoodsReceiptView() {
 
   const supSelect = document.getElementById('receipt-supplier-select');
   if (supSelect) {
+    const currentVal = supSelect.value;
     supSelect.innerHTML = `<option value="">-- Seleccionar proveedor --</option>` +
       suppliers.map(s => `<option value="${s.id}">${s.name} (${s.categories.join(', ')})</option>`).join('');
+    if (currentVal) supSelect.value = currentVal;
+  }
+
+  // Fecha por defecto si está vacía
+  const dateInput = document.getElementById('receipt-date-input');
+  if (dateInput && !dateInput.value) {
+    const localNow = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+    dateInput.value = localNow;
   }
 
   const prodSelect = document.getElementById('receipt-product-select');
@@ -475,40 +485,225 @@ function renderGoodsReceiptView() {
       products.map(p => `<option value="${p.id}" data-cost="${p.cost}" data-price="${p.price}" data-margin="${p.targetMargin || 30}">${p.name} [Stock: ${p.stock}]</option>`).join('');
   }
 
-  // Cálculo dinámico de precio sugerido
+  // Elementos de búsqueda y selección
+  const searchInput = document.getElementById('receipt-product-search');
+  const clearBtn = document.getElementById('btn-clear-receipt-product');
+  const resultsDropdown = document.getElementById('receipt-product-results');
+  const selectedCard = document.getElementById('receipt-selected-product-card');
+  const changeProdBtn = document.getElementById('btn-change-receipt-product');
+  const clearFormBtn = document.getElementById('btn-clear-receipt-form');
+
   const costInput = document.getElementById('receipt-cost-input');
   const qtyInput = document.getElementById('receipt-qty-input');
   const suggestedPriceEl = document.getElementById('receipt-suggested-price-val');
   const targetMarginEl = document.getElementById('receipt-suggested-margin-val');
+  const newPriceInput = document.getElementById('receipt-new-price-input');
+  const updatePriceCheck = document.getElementById('receipt-update-price-check');
 
   function updateSuggested() {
     const cost = parseFloat(costInput.value) || 0;
-    const selectedOption = prodSelect.options[prodSelect.selectedIndex];
-    const targetMargin = selectedOption ? parseFloat(selectedOption.dataset.margin) || 30 : 30;
+    const selectedId = prodSelect ? prodSelect.value : null;
+    const currentProd = products.find(p => p.id === selectedId);
+    const targetMargin = currentProd ? (currentProd.targetMargin || 30) : 30;
 
     if (cost > 0) {
       const marginDecimal = targetMargin / 100;
       const suggestedPrice = Math.round((cost / (1 - marginDecimal)) / 10) * 10;
-      suggestedPriceEl.textContent = `$${suggestedPrice.toLocaleString('es-AR')}`;
-      targetMarginEl.textContent = `${targetMargin}%`;
-      document.getElementById('receipt-new-price-input').value = suggestedPrice;
+      if (suggestedPriceEl) suggestedPriceEl.textContent = `$${suggestedPrice.toLocaleString('es-AR')}`;
+      if (targetMarginEl) targetMarginEl.textContent = `${targetMargin}%`;
+      if (newPriceInput) newPriceInput.value = suggestedPrice;
     } else {
-      suggestedPriceEl.textContent = '—';
-      targetMarginEl.textContent = '30%';
+      if (suggestedPriceEl) suggestedPriceEl.textContent = '—';
+      if (targetMarginEl) targetMarginEl.textContent = '30%';
     }
   }
 
-  prodSelect.onchange = () => {
-    const selectedOption = prodSelect.options[prodSelect.selectedIndex];
-    if (selectedOption && selectedOption.dataset.cost) {
-      costInput.value = selectedOption.dataset.cost;
-      updateSuggested();
+  function selectProduct(p) {
+    if (!p) return;
+    if (prodSelect) prodSelect.value = p.id;
+    if (costInput) costInput.value = p.cost;
+
+    // Mostrar tarjeta de producto seleccionado
+    if (selectedCard) {
+      document.getElementById('receipt-selected-img').src = p.image || '../img/productos/aceite.webp';
+      document.getElementById('receipt-selected-name').textContent = p.name;
+      document.getElementById('receipt-selected-sku').textContent = p.sku;
+      document.getElementById('receipt-selected-barcode').textContent = `EAN: ${p.barcode}`;
+      document.getElementById('receipt-selected-stock').textContent = p.stock;
+      document.getElementById('receipt-selected-cost').textContent = `$${p.cost.toLocaleString('es-AR')}`;
+      document.getElementById('receipt-selected-price').textContent = `$${p.price.toLocaleString('es-AR')}`;
+      selectedCard.style.display = 'flex';
     }
-  };
 
-  costInput.oninput = updateSuggested;
+    // Ocultar campo de búsqueda temporalmente
+    if (resultsDropdown) resultsDropdown.style.display = 'none';
+    if (searchInput) {
+      searchInput.value = `${p.name} (${p.sku})`;
+      searchInput.parentElement.style.display = 'none';
+    }
 
-  // Formulario de confirmación
+    updateSuggested();
+
+    // Mover foco a la cantidad para carga veloz
+    if (qtyInput) {
+      qtyInput.focus();
+      qtyInput.select();
+    }
+  }
+
+  function resetProductSelection() {
+    if (prodSelect) prodSelect.value = '';
+    if (selectedCard) selectedCard.style.display = 'none';
+    if (searchInput) {
+      searchInput.value = '';
+      searchInput.parentElement.style.display = 'flex';
+      if (clearBtn) clearBtn.style.display = 'none';
+      searchInput.focus();
+    }
+    if (resultsDropdown) resultsDropdown.style.display = 'none';
+    if (qtyInput) qtyInput.value = '';
+    if (costInput) costInput.value = '';
+    if (newPriceInput) newPriceInput.value = '';
+    if (suggestedPriceEl) suggestedPriceEl.textContent = '—';
+  }
+
+  // Buscador interactivo por nombre, SKU o código de barras
+  if (searchInput && resultsDropdown) {
+    searchInput.oninput = () => {
+      const q = searchInput.value.trim().toLowerCase();
+      if (!q) {
+        if (clearBtn) clearBtn.style.display = 'none';
+        resultsDropdown.style.display = 'none';
+        return;
+      }
+      if (clearBtn) clearBtn.style.display = 'block';
+
+      const matches = products.filter(p => 
+        p.name.toLowerCase().includes(q) ||
+        p.sku.toLowerCase().includes(q) ||
+        p.barcode.toLowerCase().includes(q) ||
+        p.brand.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q)
+      ).slice(0, 15);
+
+      if (matches.length === 0) {
+        resultsDropdown.innerHTML = `
+          <div style="padding:1rem;text-align:center;color:#64748B;font-size:0.875rem">
+            No se encontraron productos con "<strong>${q}</strong>".
+          </div>
+        `;
+        resultsDropdown.style.display = 'block';
+        return;
+      }
+
+      resultsDropdown.innerHTML = matches.map(p => `
+        <div class="search-result-item" data-id="${p.id}">
+          <img src="${p.image}" alt="" class="search-result-img">
+          <div class="search-result-info">
+            <div class="search-result-title">${p.name}</div>
+            <div class="search-result-meta">
+              <span class="badge badge--primary" style="font-size:0.7rem">${p.sku}</span>
+              <span>Stock: <strong>${p.stock} un.</strong></span>
+              <span>Costo: <strong>$${p.cost.toLocaleString('es-AR')}</strong></span>
+              <span>Precio: <strong>$${p.price.toLocaleString('es-AR')}</strong></span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      resultsDropdown.style.display = 'block';
+    };
+
+    // Selección por clic
+    resultsDropdown.onclick = (e) => {
+      const item = e.target.closest('.search-result-item');
+      if (item) {
+        const p = products.find(prod => prod.id === item.dataset.id);
+        if (p) selectProduct(p);
+      }
+    };
+
+    // Selección por Enter
+    searchInput.onkeydown = (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const firstItem = resultsDropdown.querySelector('.search-result-item');
+        if (firstItem) {
+          const p = products.find(prod => prod.id === firstItem.dataset.id);
+          if (p) selectProduct(p);
+        }
+      } else if (e.key === 'Escape') {
+        resultsDropdown.style.display = 'none';
+      }
+    };
+  }
+
+  if (clearBtn) {
+    clearBtn.onclick = () => {
+      if (searchInput) {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        resultsDropdown.style.display = 'none';
+        searchInput.focus();
+      }
+    };
+  }
+
+  if (changeProdBtn) {
+    changeProdBtn.onclick = resetProductSelection;
+  }
+
+  if (clearFormBtn) {
+    clearFormBtn.onclick = resetProductSelection;
+  }
+
+  if (costInput) costInput.oninput = updateSuggested;
+
+  // Clic fuera del buscador cierra el dropdown
+  document.addEventListener('click', (e) => {
+    if (searchInput && resultsDropdown && !searchInput.contains(e.target) && !resultsDropdown.contains(e.target)) {
+      resultsDropdown.style.display = 'none';
+    }
+  });
+
+  // Renderizar tabla de sesión
+  function renderSessionReceipts() {
+    const sessionCard = document.getElementById('receipt-session-card');
+    const sessionTbody = document.getElementById('receipt-session-tbody');
+    const sessionCount = document.getElementById('receipt-session-count');
+    if (!sessionCard || !sessionTbody) return;
+
+    if (!state.sessionReceipts || state.sessionReceipts.length === 0) {
+      sessionCard.style.display = 'none';
+      return;
+    }
+
+    sessionCard.style.display = 'block';
+    if (sessionCount) sessionCount.textContent = state.sessionReceipts.length;
+
+    sessionTbody.innerHTML = state.sessionReceipts.map(it => `
+      <tr>
+        <td style="color:#64748B;font-size:0.825rem">${it.time}</td>
+        <td>
+          <div style="display:flex;align-items:center;gap:0.5rem">
+            <img src="${it.product.image}" alt="" style="width:32px;height:32px;object-fit:contain;border:1px solid #E2E8F0;border-radius:4px">
+            <div>
+              <strong style="font-size:0.875rem;color:#0F172A;display:block">${it.product.name}</strong>
+              <small style="color:#64748B">${it.product.sku}</small>
+            </div>
+          </div>
+        </td>
+        <td><strong class="text-success" style="font-size:0.95rem">+${it.qty} un.</strong></td>
+        <td style="font-weight:600">$${it.cost.toLocaleString('es-AR')}</td>
+        <td><span class="badge badge--nuevo">${it.newStock} un.</span></td>
+        <td style="color:#64748B">${it.invoiceNum || 'S/N'}</td>
+      </tr>
+    `).join('');
+  }
+
+  // Render inicial de sesión
+  renderSessionReceipts();
+
+  // Formulario de confirmación (SE QUEDA EN LA MISMA PANTALLA)
   const form = document.getElementById('form-goods-receipt');
   if (form) {
     form.onsubmit = (e) => {
@@ -519,15 +714,17 @@ function renderGoodsReceiptView() {
         const qty = parseInt(qtyInput.value, 10);
         const cost = parseFloat(costInput.value);
         const invoiceNum = document.getElementById('receipt-invoice-num').value.trim();
-        const date = document.getElementById('receipt-date-input').value || new Date().toISOString();
+        const date = dateInput.value || new Date().toISOString();
         const notes = document.getElementById('receipt-notes-input').value.trim();
-        const updateSalesPrice = document.getElementById('receipt-update-price-check').checked;
-        const newPrice = updateSalesPrice ? parseFloat(document.getElementById('receipt-new-price-input').value) : null;
+        const updateSalesPrice = updatePriceCheck ? updatePriceCheck.checked : false;
+        const newPrice = updateSalesPrice && newPriceInput ? parseFloat(newPriceInput.value) : null;
 
         if (!supplierId) throw new Error('Por favor seleccioná un proveedor.');
-        if (!productId) throw new Error('Por favor seleccioná un producto.');
+        if (!productId) throw new Error('Por favor buscá y seleccioná un producto para ingresar.');
+        if (!qty || qty <= 0) throw new Error('La cantidad ingresada debe ser mayor a 0.');
+        if (!cost || cost <= 0) throw new Error('El costo unitario debe ser mayor a $0.');
 
-        AdminService.recordGoodsReceipt({
+        const result = AdminService.recordGoodsReceipt({
           supplierId,
           productId,
           quantity: qty,
@@ -540,9 +737,40 @@ function renderGoodsReceiptView() {
           user: AdminService.getCurrentRole()
         });
 
-        form.reset();
-        showToast('¡Ingreso de mercadería registrado exitosamente!', 'success');
-        switchTab('historial');
+        const p = result.product;
+
+        // Registrar en historial de la sesión
+        if (!state.sessionReceipts) state.sessionReceipts = [];
+        state.sessionReceipts.unshift({
+          time: new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+          product: p,
+          qty: qty,
+          cost: cost,
+          newStock: p.stock,
+          invoiceNum: invoiceNum
+        });
+
+        // Mostrar Banner de Éxito en la Misma Pantalla
+        const feedbackBanner = document.getElementById('receipt-feedback-banner');
+        if (feedbackBanner) {
+          document.getElementById('receipt-feedback-title').textContent = 
+            `¡Ingreso registrado: ${p.name}!`;
+          document.getElementById('receipt-feedback-desc').textContent = 
+            `Se sumaron ${qty} unidades al stock (Stock nuevo: ${p.stock} un.). Costo actualizado a $${cost.toLocaleString('es-AR')}${updateSalesPrice && newPrice ? ` | Nuevo precio de venta: $${newPrice.toLocaleString('es-AR')}` : ''}. Podés continuar cargando el siguiente ítem del remito.`;
+          feedbackBanner.style.display = 'block';
+          feedbackBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        showToast(`✅ ${qty} un. de "${p.name}" ingresadas con éxito`, 'success');
+
+        // Actualizar tabla de sesión
+        renderSessionReceipts();
+
+        // Limpiar únicamente los datos del producto para agilizar la carga del siguiente
+        resetProductSelection();
+        const notesEl = document.getElementById('receipt-notes-input');
+        if (notesEl) notesEl.value = '';
+
       } catch (err) {
         showToast(err.message, 'danger');
       }
@@ -716,6 +944,187 @@ function openStockAdjustModal(productId) {
   };
 
   openModal('modal-stock-adjust');
+}
+
+// ============================================================
+// ASISTENTE DE REVISIÓN Y AJUSTE DE BAJO MARGEN (MODAL)
+// ============================================================
+function openLowMarginReviewModal(focusProductId = null) {
+  const products = AdminService.getProducts();
+  const modal = document.getElementById('modal-low-margin-review');
+  const tbody = document.getElementById('low-margin-table-body');
+  const selectedCountEl = document.getElementById('low-margin-selected-count');
+  const checkAll = document.getElementById('check-all-low-margin');
+  const targetMarginInput = document.getElementById('low-margin-target-input');
+  if (!modal || !tbody) return;
+
+  // Filtrar productos con menor margen
+  const allWithMargin = products.map(p => {
+    const marginARS = p.price - p.cost;
+    const marginPct = p.price > 0 ? ((marginARS / p.price) * 100) : 0;
+    return { ...p, marginARS, marginPct };
+  }).sort((a, b) => a.marginPct - b.marginPct);
+
+  // Seleccionar productos con margen bajo (< 25%) o al menos los 12 con menor margen
+  let lowMarginItems = allWithMargin.filter(p => p.marginPct < 25 || p.id === focusProductId).slice(0, 30);
+  if (lowMarginItems.length < 8) {
+    const bottomSlice = allWithMargin.slice(0, 10);
+    const existingIds = new Set(lowMarginItems.map(x => x.id));
+    bottomSlice.forEach(x => {
+      if (!existingIds.has(x.id)) lowMarginItems.push(x);
+    });
+  }
+
+  tbody.innerHTML = lowMarginItems.map(p => {
+    const isFocused = focusProductId && p.id === focusProductId;
+    return `
+      <tr data-id="${p.id}" class="low-margin-row ${isFocused ? 'is-focused' : ''}" style="${isFocused ? 'background:#FEF3C7;' : ''}">
+        <td style="text-align:center">
+          <input type="checkbox" class="low-margin-check" data-id="${p.id}" checked>
+        </td>
+        <td>
+          <div style="display:flex;align-items:center;gap:0.6rem">
+            <img src="${p.image}" alt="" style="width:36px;height:36px;object-fit:contain;background:#FFF;border-radius:4px;border:1px solid #E2E8F0;padding:2px;flex-shrink:0">
+            <div>
+              <strong style="font-size:0.875rem;color:#0F172A;display:block">${p.name}</strong>
+              <small style="color:#64748B">${p.brand} · ${p.sku}</small>
+            </div>
+          </div>
+        </td>
+        <td style="font-weight:600;color:#334155">$${p.cost.toLocaleString('es-AR')}</td>
+        <td style="font-weight:600;color:#64748B">$${p.price.toLocaleString('es-AR')}</td>
+        <td>
+          <span class="badge ${p.marginPct < 20 ? 'badge--critico' : 'badge--agotado'}" style="font-weight:700">
+            ${p.marginPct.toFixed(1)}%
+          </span>
+        </td>
+        <td>
+          <div style="display:flex;align-items:center;gap:0.25rem">
+            <span style="font-weight:700;color:#64748B">$</span>
+            <input type="number" step="10" min="${p.cost + 10}" class="form-input low-margin-price-input" data-id="${p.id}" data-cost="${p.cost}" value="${p.price}" style="width:110px;padding:0.35rem 0.5rem;font-weight:700;text-align:right">
+          </div>
+        </td>
+        <td>
+          <span class="badge badge--nuevo low-margin-new-badge" data-id="${p.id}" style="font-weight:700">
+            ${p.marginPct.toFixed(1)}%
+          </span>
+        </td>
+      </tr>
+    `;
+  }).join('');
+
+  function updateSelectedCount() {
+    const checks = tbody.querySelectorAll('.low-margin-check:checked');
+    if (selectedCountEl) selectedCountEl.textContent = checks.length;
+  }
+
+  updateSelectedCount();
+
+  // Seleccionar / Deseleccionar todos
+  if (checkAll) {
+    checkAll.checked = true;
+    checkAll.onchange = () => {
+      tbody.querySelectorAll('.low-margin-check').forEach(chk => {
+        chk.checked = checkAll.checked;
+      });
+      updateSelectedCount();
+    };
+  }
+
+  // Cambio individual de checkbox
+  tbody.onchange = (e) => {
+    if (e.target.classList.contains('low-margin-check')) {
+      updateSelectedCount();
+    }
+  };
+
+  // Recálculo dinámico de margen en vivo al tipear precio
+  tbody.oninput = (e) => {
+    if (e.target.classList.contains('low-margin-price-input')) {
+      const input = e.target;
+      const pid = input.dataset.id;
+      const cost = parseFloat(input.dataset.cost) || 0;
+      const newPrice = parseFloat(input.value) || 0;
+      const badge = tbody.querySelector(`.low-margin-new-badge[data-id="${pid}"]`);
+      if (badge && newPrice > 0) {
+        const newMargin = (((newPrice - cost) / newPrice) * 100).toFixed(1);
+        badge.textContent = `${newMargin}%`;
+        badge.className = `badge low-margin-new-badge ${newMargin >= 25 ? 'badge--activo' : (newMargin >= 20 ? 'badge--nuevo' : 'badge--critico')}`;
+      }
+    }
+  };
+
+  // Aplicar margen objetivo a todos los seleccionados
+  const applyTargetBtn = document.getElementById('btn-apply-target-margin-all');
+  if (applyTargetBtn) {
+    applyTargetBtn.onclick = () => {
+      const targetMargin = parseFloat(targetMarginInput?.value) || 30;
+      const marginDecimal = targetMargin / 100;
+      let count = 0;
+
+      tbody.querySelectorAll('.low-margin-row').forEach(row => {
+        const chk = row.querySelector('.low-margin-check');
+        if (chk && chk.checked) {
+          const input = row.querySelector('.low-margin-price-input');
+          const cost = parseFloat(input.dataset.cost) || 0;
+          if (cost > 0) {
+            const suggested = Math.round((cost / (1 - marginDecimal)) / 10) * 10;
+            input.value = suggested;
+            const badge = row.querySelector('.low-margin-new-badge');
+            if (badge) {
+              badge.textContent = `${targetMargin}%`;
+              badge.className = 'badge badge--activo low-margin-new-badge';
+            }
+            count++;
+          }
+        }
+      });
+
+      showToast(`Precios sugeridos calculados para ${count} productos (Margen ${targetMargin}%)`, 'info');
+    };
+  }
+
+  // Guardar y aplicar precios actualizados
+  const saveBtn = document.getElementById('btn-save-low-margin-prices');
+  if (saveBtn) {
+    saveBtn.onclick = () => {
+      try {
+        let updatedCount = 0;
+        tbody.querySelectorAll('.low-margin-row').forEach(row => {
+          const chk = row.querySelector('.low-margin-check');
+          if (chk && chk.checked) {
+            const pid = row.dataset.id;
+            const input = row.querySelector('.low-margin-price-input');
+            const newPrice = parseFloat(input.value);
+            const origProd = products.find(p => p.id === pid);
+
+            if (origProd && newPrice > 0 && newPrice !== origProd.price) {
+              AdminService.updateProduct(pid, {
+                price: newPrice,
+                priceReason: 'Ajuste masivo por revisión de bajo margen'
+              }, AdminService.getCurrentRole());
+              updatedCount++;
+            }
+          }
+        });
+
+        closeModal('modal-low-margin-review');
+
+        if (updatedCount > 0) {
+          showToast(`¡Se actualizaron con éxito los precios de ${updatedCount} productos!`, 'success');
+          renderDashboardView();
+          renderPricingView();
+          renderProductsView();
+        } else {
+          showToast('No se modificó ningún precio.', 'info');
+        }
+      } catch (err) {
+        showToast(err.message, 'danger');
+      }
+    };
+  }
+
+  openModal('modal-low-margin-review');
 }
 
 // ============================================================
@@ -999,6 +1408,35 @@ function setupGlobalEvents() {
     const adjustStockBtn = e.target.closest('[data-action="adjust-stock"]');
     if (adjustStockBtn) {
       openStockAdjustModal(adjustStockBtn.dataset.id);
+      return;
+    }
+
+    // Botón Revisar Precio en tarjeta de menor margen
+    const lowMarginReviewBtn = e.target.closest('#btn-open-low-margin-review');
+    if (lowMarginReviewBtn) {
+      openLowMarginReviewModal();
+      return;
+    }
+
+    // Clic en ítem individual del ranking de menor margen
+    const lowMarginItem = e.target.closest('[data-action="review-product-margin"]');
+    if (lowMarginItem) {
+      openLowMarginReviewModal(lowMarginItem.dataset.id);
+      return;
+    }
+
+    // Cerrar banner de feedback de ingreso
+    const closeFeedbackBtn = e.target.closest('#btn-close-receipt-feedback');
+    if (closeFeedbackBtn) {
+      const banner = document.getElementById('receipt-feedback-banner');
+      if (banner) banner.style.display = 'none';
+      return;
+    }
+
+    // Ir a historial desde tabla de sesión de ingreso
+    const gotoHistoryBtn = e.target.closest('#btn-goto-history');
+    if (gotoHistoryBtn) {
+      switchTab('historial');
       return;
     }
 
