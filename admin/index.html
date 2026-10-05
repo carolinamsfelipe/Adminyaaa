@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sistema de Gestión Mayorista | Mayorista a tu Casa — AdminYAAA</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../img/logo.png">
+
+  <!-- Google Fonts (Figtree & Poppins) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap">
+
+  <!-- Estilos del Sistema SaaS -->
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ============================================================
+       SIDEBAR DE NAVEGACIÓN
+       ============================================================ -->
+  <aside class="admin-sidebar" id="admin-sidebar" aria-label="Menú principal de gestión">
+    <div class="sidebar-header">
+      <a href="#dashboard" class="sidebar-brand">
+        <img src="../img/logo.png" alt="Logo" class="sidebar-brand-img">
+        <div class="sidebar-brand-texts">
+          <span class="sidebar-brand-title">MAYORISTA ADMIN</span>
+          <span class="sidebar-brand-badge">AdminYAAA Gestión</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Selector de Rol Activo -->
+    <div class="sidebar-role-box">
+      <div>
+        <span class="role-pill" id="role-pill-badge">Administrador</span>
+      </div>
+      <select class="role-select" id="select-admin-role" title="Cambiar rol para probar permisos">
+        <option value="Administrador">Administrador</option>
+        <option value="Operador">Operador</option>
+        <option value="Solo lectura">Solo lectura</option>
+      </select>
+    </div>
+
+    <!-- Links de Navegación -->
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">Principal</div>
+      <a class="sidebar-link is-active" data-tab="dashboard">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>Dashboard</span>
+        </div>
+      </a>
+
+      <div class="nav-section-title">Catálogo & Stock</div>
+      <a class="sidebar-link" data-tab="productos">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          <span>Productos</span>
+        </div>
+      </a>
+      <a class="sidebar-link" data-tab="inventario">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <span>Inventario / Stock</span>
+        </div>
+        <span class="sidebar-counter counter--warning" id="sidebar-low-stock-count" style="display:none">0</span>
+      </a>
+      <a class="sidebar-link" data-tab="ingresos">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          <span>Ingreso de mercadería</span>
+        </div>
+      </a>
+      <a class="sidebar-link" data-tab="historial">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Historial / Auditoría</span>
+        </div>
+      </a>
+
+      <div class="nav-section-title">Comercial & Finanzas</div>
+      <a class="sidebar-link" data-tab="pedidos">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span>Ventas / Pedidos</span>
+        </div>
+      </a>
+      <a class="sidebar-link" data-tab="precios">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span>Precios y costos</span>
+        </div>
+      </a>
+      <a class="sidebar-link" data-tab="rentabilidad">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <span>Rentabilidad</span>
+        </div>
+      </a>
+
+      <div class="nav-section-title">Reportes & Contactos</div>
+      <a class="sidebar-link" data-tab="reporte-semanal">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Resumen semanal</span>
+        </div>
+      </a>
+      <a class="sidebar-link" data-tab="reporte-mensual">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          <span>Resumen mensual</span>
+        </div>
+      </a>
+      <a class="sidebar-link" data-tab="proveedores">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span>Proveedores</span>
+        </div>
+      </a>
+      <a class="sidebar-link" data-tab="clientes">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Clientes</span>
+        </div>
+      </a>
+      <a class="sidebar-link" data-tab="configuracion">
+        <div class="sidebar-link-content">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Configuración</span>
+        </div>
+      </a>
+    </nav>
+
+    <!-- Footer del Sidebar -->
+    <div class="sidebar-footer">
+      <a href="../" target="_blank" class="store-public-link">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <span>Ver tienda online</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       WRAPPER PRINCIPAL (HEADER + VISTAS)
+       ============================================================ -->
+  <div class="admin-main-wrap">
+    
+    <!-- Header Superior -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button type="button" class="sidebar-toggle-btn" id="btn-sidebar-toggle" aria-label="Abrir menú">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="header-title-box">
+          <h1 class="header-page-title" id="header-current-title">Dashboard General</h1>
+          <span class="header-breadcrumb" id="header-breadcrumb-title">Panel de Control</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="header-actions">
+          <div class="admin-user-badge">
+            <div class="user-avatar">C</div>
+            <span class="user-name-text">Carolina Felipe</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contenido Dinámico de Vistas -->
+    <main class="admin-content" role="main">
+
+      <!-- ========================================================
+           1. VISTA DASHBOARD (SECCIÓN 2)
+           ======================================================== -->
+      <section class="admin-view is-active" id="view-dashboard">
+        <!-- 8 Cards Superiores -->
+        <div class="stats-grid-8">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Ventas de Hoy</span>
+              <div class="stat-icon-wrap is-primary">💵</div>
+            </div>
+            <div class="stat-value" id="kpi-sales-today">$0</div>
+            <div class="stat-meta">Facturación del día</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Ventas Semana</span>
+              <div class="stat-icon-wrap is-primary">📅</div>
+            </div>
+            <div class="stat-value" id="kpi-sales-week">$0</div>
+            <div class="stat-meta"><span class="trend-badge trend-up">↑ 12.4%</span> vs semana anterior</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Ventas del Mes</span>
+              <div class="stat-icon-wrap is-primary">📊</div>
+            </div>
+            <div class="stat-value" id="kpi-sales-month">$0</div>
+            <div class="stat-meta">Mes en curso</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Cant. Pedidos</span>
+              <div class="stat-icon-wrap is-primary">🛒</div>
+            </div>
+            <div class="stat-value" id="kpi-orders-count">0</div>
+            <div class="stat-meta">Total recibidos</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Stock Bajo</span>
+              <div class="stat-icon-wrap is-warning">⚠️</div>
+            </div>
+            <div class="stat-value" id="kpi-low-stock">0</div>
+            <div class="stat-meta">Reposición sugerida</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Sin Stock</span>
+              <div class="stat-icon-wrap is-danger">🚫</div>
+            </div>
+            <div class="stat-value" id="kpi-out-stock">0</div>
+            <div class="stat-meta">Productos agotados</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Ganancia Est.</span>
+              <div class="stat-icon-wrap is-success">📈</div>
+            </div>
+            <div class="stat-value" id="kpi-profit-month">$0</div>
+            <div class="stat-meta">Margen bruto acumulado</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Margen Promedio</span>
+              <div class="stat-icon-wrap is-success">🏷️</div>
+            </div>
+            <div class="stat-value" id="kpi-avg-margin">0%</div>
+            <div class="stat-meta">Sobre precio de venta</div>
+          </div>
+        </div>
+
+        <!-- Alertas Inteligentes Automáticas (Sección 19) -->
+        <div class="alerts-container" id="dashboard-alerts-container"></div>
+
+        <!-- Gráficos Nativos SVG (Ventas y Ganancias) -->
+        <div class="charts-grid-2">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3 class="chart-title">Evolución de Ventas por Día ($ ARS)</h3>
+            </div>
+            <div class="chart-svg-container" id="chart-sales-daily"></div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3 class="chart-title">Ganancia Bruta por Día ($ ARS)</h3>
+            </div>
+            <div class="chart-svg-container" id="chart-profit-daily"></div>
+          </div>
+        </div>
+
+        <!-- 4 Rankings de Productos (Sección 2) -->
+        <div class="rankings-grid-4">
+          <div class="ranking-card">
+            <div class="ranking-card-title">
+              <span>🔥 Más Vendidos</span>
+              <small style="color:#64748B;font-weight:600">Por unidades</small>
+            </div>
+            <div class="ranking-list" id="ranking-top-sellers"></div>
+          </div>
+
+          <div class="ranking-card">
+            <div class="ranking-card-title">
+              <span>💰 Mayor Facturación</span>
+              <small style="color:#64748B;font-weight:600">Total ingresos</small>
+            </div>
+            <div class="ranking-list" id="ranking-top-revenue"></div>
+          </div>
+
+          <div class="ranking-card">
+            <div class="ranking-card-title">
+              <span>⭐ Mayor Margen %</span>
+              <small style="color:#64748B;font-weight:600">Rentabilidad</small>
+            </div>
+            <div class="ranking-list" id="ranking-top-margin"></div>
+          </div>
+
+          <div class="ranking-card">
+            <div class="ranking-card-title">
+              <span>⚠️ Menor Margen %</span>
+              <small style="color:#EF4444;font-weight:600">Revisar precio</small>
+            </div>
+            <div class="ranking-list" id="ranking-lowest-margin"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           2. VISTA PRODUCTOS (SECCIÓN 3)
+           ======================================================== -->
+      <section class="admin-view" id="view-productos">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Catálogo Mayorista de Productos</h2>
+            <span class="view-subtitle" id="products-count-badge">Cargando catálogo...</span>
+          </div>
+          <div class="view-actions-group">
+            <button type="button" class="btn btn--secondary btn--sm" data-export="csv" data-target-table="products-table">Exportar CSV</button>
+            <button type="button" class="btn btn--secondary btn--sm" data-export="excel" data-target-table="products-table">Exportar Excel</button>
+            <button type="button" class="btn btn--primary" id="btn-open-new-product-modal" data-permission="write">+ Nuevo Producto</button>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-filter-bar">
+            <div class="filter-group">
+              <input type="search" class="form-input" id="products-search-input" placeholder="Buscar por nombre, SKU o marca..." style="width:260px">
+              <select class="form-select" id="products-section-select">
+                <option value="todos">Todas las Secciones</option>
+                <option value="Almacén">Almacén</option>
+                <option value="Desayuno y merienda">Desayuno y merienda</option>
+                <option value="Fiambrería y quesos">Fiambrería y quesos</option>
+                <option value="Bebidas">Bebidas</option>
+                <option value="Limpieza del hogar">Limpieza</option>
+                <option value="Perfumería e higiene personal">Perfumería</option>
+                <option value="Snacks">Snacks</option>
+              </select>
+              <select class="form-select" id="products-stock-select">
+                <option value="todos">Todos los Estados de Stock</option>
+                <option value="normal">🟢 Stock Normal</option>
+                <option value="bajo">🟡 Stock Bajo / Crítico</option>
+                <option value="agotado">🔴 Agotados (Sin Stock)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="products-table">
+              <thead>
+                <tr>
+                  <th>Packshot</th>
+                  <th>SKU</th>
+                  <th>Producto</th>
+                  <th>Sección</th>
+                  <th>Marca</th>
+                  <th>Unidad</th>
+                  <th>Stock Actual</th>
+                  <th>Mínimo</th>
+                  <th>Costo</th>
+                  <th>Precio Venta</th>
+                  <th>Margen $</th>
+                  <th>Margen %</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody id="products-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           3. VISTA INVENTARIO / STOCK (SECCIÓN 8)
+           ======================================================== -->
+      <section class="admin-view" id="view-inventario">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Control de Inventario y Existencias</h2>
+            <span class="view-subtitle">Ecuación: Stock Inicial + Ingresos - Ventas ± Ajustes = Stock Actual</span>
+          </div>
+          <div class="view-actions-group">
+            <button type="button" class="btn btn--secondary btn--sm" data-export="csv" data-target-table="inventory-table">Exportar Inventario</button>
+            <button type="button" class="btn btn--secondary btn--sm" data-export="pdf">Imprimir / PDF</button>
+          </div>
+        </div>
+
+        <div class="stats-grid-8" style="grid-template-columns:repeat(3, 1fr);margin-bottom:1.5rem">
+          <div class="stat-card">
+            <span class="stat-label">Total Unidades en Depósito</span>
+            <div class="stat-value" id="inv-stat-total-units">0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Valuación a Costo de Compra</span>
+            <div class="stat-value" id="inv-stat-valuation-cost">$0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Valuación a Precio de Venta</span>
+            <div class="stat-value" id="inv-stat-valuation-price">$0</div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="data-table" id="inventory-table">
+              <thead>
+                <tr>
+                  <th>SKU</th>
+                  <th>Producto y Categoría</th>
+                  <th>Stock Físico</th>
+                  <th>Mínimo Sugerido</th>
+                  <th>Máximo</th>
+                  <th>Ingresadas (Histórico)</th>
+                  <th>Vendidas (Histórico)</th>
+                  <th>Estado</th>
+                  <th>Ajuste</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           4. VISTA INGRESO DE MERCADERÍA (SECCIÓN 5)
+           ======================================================== -->
+      <section class="admin-view" id="view-ingresos">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Registrar Ingreso de Mercadería</h2>
+            <span class="view-subtitle">Aumenta el stock automáticamente, guarda el costo histórico y recalcula márgenes</span>
+          </div>
+        </div>
+
+        <div class="modal-card" style="max-width:800px;margin:0 auto">
+          <form id="form-goods-receipt">
+            <div class="modal-body">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="receipt-supplier-select">1. Proveedor *</label>
+                  <select class="form-select" id="receipt-supplier-select" required></select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="receipt-date-input">Fecha de Ingreso *</label>
+                  <input type="datetime-local" class="form-input" id="receipt-date-input">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="receipt-product-select">2. Producto a Ingresar *</label>
+                <select class="form-select" id="receipt-product-select" required></select>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="receipt-qty-input">3. Cantidad Ingresada *</label>
+                  <input type="number" min="1" class="form-input" id="receipt-qty-input" placeholder="Ej: 50" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="receipt-cost-input">4. Costo Unitario de Compra ($ ARS) *</label>
+                  <input type="number" min="1" step="any" class="form-input" id="receipt-cost-input" placeholder="Ej: 1250" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="receipt-invoice-num">5. N° de Remito / Factura Proveedor</label>
+                <input type="text" class="form-input" id="receipt-invoice-num" placeholder="Ej: REM-0001-002490">
+              </div>
+
+              <!-- Caja de Sugerencia de Precio de Venta (Sección 6) -->
+              <div style="background:#EFF6FF;border:1px solid #BFDBFE;padding:1.25rem;border-radius:8px;margin-bottom:1rem">
+                <div style="font-weight:700;color:#1E40AF;margin-bottom:0.5rem">💡 Sugerencia Automática de Precio de Venta</div>
+                <div style="font-size:0.85rem;color:#1E3A8A;display:flex;justify-content:space-between;margin-bottom:0.75rem">
+                  <span>Precio sugerido (Margen objetivo <strong id="receipt-suggested-margin-val">30%</strong>):</span>
+                  <strong style="font-size:1.15rem;color:#2563EB" id="receipt-suggested-price-val">—</strong>
+                </div>
+                <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:600;cursor:pointer">
+                  <input type="checkbox" id="receipt-update-price-check" checked>
+                  Actualizar precio de venta del producto al precio sugerido
+                </label>
+                <div style="margin-top:0.5rem">
+                  <input type="number" step="any" class="form-input" id="receipt-new-price-input" placeholder="Precio de venta final a fijar">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="receipt-notes-input">Observaciones / Lote</label>
+                <textarea class="form-textarea" id="receipt-notes-input" rows="2" placeholder="Ej: Vencimiento 12/2027, embalaje en perfecto estado"></textarea>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn--primary" data-permission="write">
+                ✅ Confirmar Ingreso de Mercadería
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           5. VISTA HISTORIAL Y AUDITORÍA (SECCIÓN 7)
+           ======================================================== -->
+      <section class="admin-view" id="view-historial">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Historial de Movimientos y Auditoría</h2>
+            <span class="view-subtitle">Registro inmutable de ingresos, ventas, mermas y ajustes de inventario</span>
+          </div>
+          <div class="view-actions-group">
+            <button type="button" class="btn btn--secondary btn--sm" data-export="csv" data-target-table="movements-table">Exportar Auditoría CSV</button>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-filter-bar">
+            <div class="filter-group">
+              <select class="form-select" id="movements-date-select">
+                <option value="todos">Cualquier Fecha</option>
+                <option value="hoy">Hoy</option>
+                <option value="7dias">Últimos 7 días</option>
+                <option value="esteMes">Este mes</option>
+              </select>
+              <select class="form-select" id="movements-type-select">
+                <option value="todos">Todos los Tipos de Movimiento</option>
+                <option value="INGRESO">📦 Ingresos de mercadería</option>
+                <option value="VENTA">🛒 Ventas tienda</option>
+                <option value="AJUSTE_NEGATIVO">📉 Ajustes negativos / Mermas</option>
+                <option value="AJUSTE_POSITIVO">📈 Ajustes positivos</option>
+                <option value="CANCELACION_VENTA">↩️ Cancelación de venta</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="movements-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Fecha y Hora</th>
+                  <th>Tipo</th>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+                  <th>Stock (Prev → Nuevo)</th>
+                  <th>Costo Unit.</th>
+                  <th>Doc. / Remito</th>
+                  <th>Motivo / Detalle</th>
+                  <th>Usuario</th>
+                </tr>
+              </thead>
+              <tbody id="movements-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           6. VISTA VENTAS / PEDIDOS (SECCIÓN 13)
+           ======================================================== -->
+      <section class="admin-view" id="view-pedidos">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Ventas y Pedidos de la Tienda</h2>
+            <span class="view-subtitle">Confirmar un pedido descuenta stock; cancelarlo restablece las unidades</span>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="data-table" id="orders-table">
+              <thead>
+                <tr>
+                  <th>N° Pedido</th>
+                  <th>Fecha</th>
+                  <th>Cliente y Teléfono</th>
+                  <th>Ítems</th>
+                  <th>Total</th>
+                  <th>Estado Actual</th>
+                  <th>Cambiar Estado</th>
+                  <th>WhatsApp</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           7. VISTA PRECIOS Y COSTOS (SECCIÓN 6)
+           ======================================================== -->
+      <section class="admin-view" id="view-precios">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Control de Costos, Precios y Márgenes</h2>
+            <span class="view-subtitle">Fórmula: Ganancia = Venta - Costo | Margen = Ganancia / Venta</span>
+          </div>
+          <div class="view-actions-group">
+            <button type="button" class="btn btn--primary" id="btn-open-bulk-price-modal" data-permission="write">
+              ⚡ Actualizar Precios en Lote
+            </button>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="data-table" id="pricing-table">
+              <thead>
+                <tr>
+                  <th>SKU</th>
+                  <th>Producto</th>
+                  <th>Sección</th>
+                  <th>Costo Actual</th>
+                  <th>Precio Venta</th>
+                  <th>Ganancia $</th>
+                  <th>Margen %</th>
+                  <th>Margen Obj.</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody id="pricing-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           8. VISTA RENTABILIDAD (SECCIÓN 9)
+           ======================================================== -->
+      <section class="admin-view" id="view-rentabilidad">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Análisis de Rentabilidad y Unit Economics</h2>
+            <span class="view-subtitle">Ventas netas contra Costo de Mercadería Vendida (CMV)</span>
+          </div>
+        </div>
+
+        <div class="stats-grid-8" style="grid-template-columns:repeat(auto-fit, minmax(220px, 1fr))">
+          <div class="stat-card">
+            <span class="stat-label">Facturación Total (Ventas)</span>
+            <div class="stat-value" id="prof-stat-revenue">$0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Costo Mercadería Vendida (CMV)</span>
+            <div class="stat-value" id="prof-stat-cogs">$0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Ganancia Bruta Real</span>
+            <div class="stat-value" id="prof-stat-gross-profit">$0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Margen Bruto Global</span>
+            <div class="stat-value" id="prof-stat-margin-pct">0%</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Ticket Promedio</span>
+            <div class="stat-value" id="prof-stat-avg-ticket">$0</div>
+          </div>
+        </div>
+
+        <div class="chart-card" style="margin-bottom:2rem">
+          <h3 class="chart-title" style="margin-bottom:1.5rem">Desglose de Rentabilidad por Categoría de Alimentos</h3>
+          <div id="profitability-category-breakdown"></div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           9. VISTA RESUMEN SEMANAL (SECCIÓN 10)
+           ======================================================== -->
+      <section class="admin-view" id="view-reporte-semanal">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Resumen Semanal Comparativo</h2>
+            <span class="view-subtitle">Rendimiento de los últimos 7 días contra la semana previa</span>
+          </div>
+        </div>
+
+        <div class="stats-grid-8" style="grid-template-columns:repeat(auto-fit, minmax(220px, 1fr))">
+          <div class="stat-card">
+            <span class="stat-label">Ventas Semanales</span>
+            <div class="stat-value" id="wrep-sales">$0</div>
+            <div class="stat-meta"><span class="trend-badge trend-up" id="wrep-var-sales">↑ 12.4%</span></div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Costos CMV</span>
+            <div class="stat-value" id="wrep-costs">$0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Ganancia Neta</span>
+            <div class="stat-value" id="wrep-profit">$0</div>
+            <div class="stat-meta"><span class="trend-badge trend-up" id="wrep-var-profit">↑ 8.1%</span></div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Margen Bruto</span>
+            <div class="stat-value" id="wrep-margin">0%</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Pedidos Confirmados</span>
+            <div class="stat-value" id="wrep-orders">0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Unidades Vendidas</span>
+            <div class="stat-value" id="wrep-units">0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Ticket Promedio</span>
+            <div class="stat-value" id="wrep-avg-ticket">$0</div>
+          </div>
+        </div>
+
+        <div class="charts-grid-2">
+          <div class="table-card">
+            <div style="padding:1rem 1.25rem;border-bottom:1px solid #E2E8F0;font-weight:700">
+              Top Productos por Volumen (Semanal)
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Producto</th>
+                  <th>Unidades</th>
+                  <th>Facturación</th>
+                </tr>
+              </thead>
+              <tbody id="wrep-top-units-body"></tbody>
+            </table>
+          </div>
+
+          <div class="table-card">
+            <div style="padding:1rem 1.25rem;border-bottom:1px solid #E2E8F0;font-weight:700">
+              Top Productos por Ganancia Real (Semanal)
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Producto</th>
+                  <th>Ganancia</th>
+                  <th>Facturación</th>
+                </tr>
+              </thead>
+              <tbody id="wrep-top-profit-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           10. VISTA RESUMEN MENSUAL (SECCIÓN 11)
+           ======================================================== -->
+      <section class="admin-view" id="view-reporte-mensual">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Resumen Mensual de Operaciones</h2>
+            <span class="view-subtitle">Consolidado mensual con selector de mes y año</span>
+          </div>
+          <div class="view-actions-group">
+            <select class="form-select" id="mrep-month-select">
+              <option value="9" selected>Octubre</option>
+              <option value="8">Septiembre</option>
+              <option value="7">Agosto</option>
+            </select>
+            <select class="form-select" id="mrep-year-select">
+              <option value="2026" selected>2026</option>
+              <option value="2025">2025</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="stats-grid-8" style="grid-template-columns:repeat(auto-fit, minmax(220px, 1fr))">
+          <div class="stat-card">
+            <span class="stat-label">Facturación del Mes</span>
+            <div class="stat-value" id="mrep-sales">$0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Costos Totales</span>
+            <div class="stat-value" id="mrep-costs">$0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Ganancia Bruta</span>
+            <div class="stat-value" id="mrep-profit">$0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Margen Bruto</span>
+            <div class="stat-value" id="mrep-margin">0%</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Pedidos Realizados</span>
+            <div class="stat-value" id="mrep-orders">0</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Unidades Totales</span>
+            <div class="stat-value" id="mrep-units">0</div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3 class="chart-title" style="margin-bottom:1.5rem">Ventas Diarias del Mes ($ ARS)</h3>
+          <div class="chart-svg-container" id="mrep-chart-daily-sales"></div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           11. VISTA PROVEEDORES (SECCIÓN 12)
+           ======================================================== -->
+      <section class="admin-view" id="view-proveedores">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Directorio de Proveedores y Fabricantes</h2>
+            <span class="view-subtitle">Seguimiento de compras mayoristas y proveedores asociados</span>
+          </div>
+          <div class="view-actions-group">
+            <button type="button" class="btn btn--primary" id="btn-open-new-supplier-modal" data-permission="write">
+              + Nuevo Proveedor
+            </button>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="data-table" id="suppliers-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Razón Social</th>
+                  <th>CUIT</th>
+                  <th>Contacto</th>
+                  <th>Teléfono</th>
+                  <th>Email</th>
+                  <th>Rubro / Categorías</th>
+                  <th>Total Comprado</th>
+                  <th>Ingresos</th>
+                  <th>Última Compra</th>
+                </tr>
+              </thead>
+              <tbody id="suppliers-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           12. VISTA CLIENTES (SECCIÓN 14)
+           ======================================================== -->
+      <section class="admin-view" id="view-clientes">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Directorio de Clientes Mayoristas</h2>
+            <span class="view-subtitle">Métricas de compra, recurrencia y valor de vida del cliente</span>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="data-table" id="customers-table">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Email</th>
+                  <th>Teléfono</th>
+                  <th>Localidad</th>
+                  <th>Pedidos</th>
+                  <th>Total Comprado</th>
+                  <th>Ticket Promedio</th>
+                  <th>Última Compra</th>
+                </tr>
+              </thead>
+              <tbody id="customers-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           13. VISTA CONFIGURACIÓN (SECCIÓN 16)
+           ======================================================== -->
+      <section class="admin-view" id="view-configuracion">
+        <div class="view-toolbar">
+          <div class="view-heading">
+            <h2 class="view-title">Configuración del Negocio y Permisos</h2>
+            <span class="view-subtitle">Parámetros operativos de Mayorista a tu Casa</span>
+          </div>
+        </div>
+
+        <div class="modal-card" style="max-width:800px;margin:0 auto">
+          <div class="modal-body">
+            <h3 style="font-size:1.1rem;margin-bottom:1rem">Reglas Operativas Mayoristas</h3>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Compra Mínima en Tienda ($ ARS)</label>
+                <input type="number" class="form-input" value="15000" disabled>
+                <span class="form-hint">Monto mínimo para habilitar el envío por WhatsApp</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Margen Objetivo Sugerido (%)</label>
+                <input type="number" class="form-input" value="30" disabled>
+                <span class="form-hint">Margen predeterminado aplicado en nuevos ingresos</span>
+              </div>
+            </div>
+
+            <h3 style="font-size:1.1rem;margin:1.5rem 0 1rem">Roles y Permisos de Usuarios</h3>
+            <table class="data-table" style="border:1px solid #E2E8F0;border-radius:8px">
+              <thead>
+                <tr>
+                  <th>Rol</th>
+                  <th>Acceso al Catálogo</th>
+                  <th>Ingresos & Stock</th>
+                  <th>Márgenes & Precios</th>
+                  <th>Configuración</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Administrador</strong></td>
+                  <td>✅ Total</td>
+                  <td>✅ Total</td>
+                  <td>✅ Total</td>
+                  <td>✅ Total</td>
+                </tr>
+                <tr>
+                  <td><strong>Operador</strong></td>
+                  <td>✅ Ver y editar</td>
+                  <td>✅ Ingresar y ajustar</td>
+                  <td>⚠️ Solo lectura</td>
+                  <td>❌ Sin acceso</td>
+                </tr>
+                <tr>
+                  <td><strong>Solo lectura</strong></td>
+                  <td>👁️ Solo lectura</td>
+                  <td>👁️ Solo lectura</td>
+                  <td>👁️ Solo lectura</td>
+                  <td>❌ Sin acceso</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============================================================
+       MODAL 1: FICHA INDIVIDUAL DEL PRODUCTO (SECCIÓN 4)
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-product-detail">
+    <div class="modal-card modal-card--lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-pdetail-title">Ficha de Producto</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="modal-product-detail">&times;</button>
+      </div>
+
+      <form id="form-product-detail">
+        <div class="modal-body">
+          <div class="stats-grid-8" style="grid-template-columns:repeat(4, 1fr);margin-bottom:1.5rem">
+            <div class="stat-card" style="padding:1rem">
+              <span class="stat-label">Margen $</span>
+              <div class="stat-value" id="pdetail-stat-margin-ars" style="font-size:1.35rem">$0</div>
+            </div>
+            <div class="stat-card" style="padding:1rem">
+              <span class="stat-label">Margen %</span>
+              <div class="stat-value" id="pdetail-stat-margin-pct" style="font-size:1.35rem">0%</div>
+            </div>
+            <div class="stat-card" style="padding:1rem">
+              <span class="stat-label">Ingresadas Histórico</span>
+              <div class="stat-value" id="pdetail-stat-units-in" style="font-size:1.35rem">0</div>
+            </div>
+            <div class="stat-card" style="padding:1rem">
+              <span class="stat-label">Vendidas Histórico</span>
+              <div class="stat-value" id="pdetail-stat-units-out" style="font-size:1.35rem">0</div>
+            </div>
+          </div>
+
+          <h4 style="font-size:0.95rem;font-weight:700;margin-bottom:0.75rem">Información Básica</h4>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Nombre del Producto</label>
+              <input type="text" class="form-input" id="pdetail-name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Marca</label>
+              <input type="text" class="form-input" id="pdetail-brand" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">SKU</label>
+              <input type="text" class="form-input" id="pdetail-sku" disabled>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Código de Barras (EAN)</label>
+              <input type="text" class="form-input" id="pdetail-barcode" disabled>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Sección</label>
+              <input type="text" class="form-input" id="pdetail-section" disabled>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Presentación (Bulto)</label>
+              <input type="text" class="form-input" id="pdetail-presentation">
+            </div>
+          </div>
+
+          <h4 style="font-size:0.95rem;font-weight:700;margin:1.5rem 0 0.75rem">Stock y Parámetros de Reposición</h4>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Stock Actual (Físico)</label>
+              <input type="number" class="form-input" id="pdetail-stock" disabled>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stock Mínimo (Alerta)</label>
+              <input type="number" class="form-input" id="pdetail-minstock" required>
+            </div>
+          </div>
+
+          <h4 style="font-size:0.95rem;font-weight:700;margin:1.5rem 0 0.75rem">Costos y Precios Actuales</h4>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Costo Unitario ($ ARS)</label>
+              <input type="number" step="any" class="form-input" id="pdetail-cost" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Precio de Venta ($ ARS)</label>
+              <input type="number" step="any" class="form-input" id="pdetail-price" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Margen Objetivo Deseado (%)</label>
+            <input type="number" step="any" class="form-input" id="pdetail-target-margin" required>
+          </div>
+
+          <h4 style="font-size:0.95rem;font-weight:700;margin:1.5rem 0 0.75rem">Historial de Cambios de Precio y Costo</h4>
+          <div class="table-responsive" style="max-height:200px;overflow-y:auto">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Costo</th>
+                  <th>Precio Venta</th>
+                  <th>Margen %</th>
+                  <th>Motivo</th>
+                  <th>Usuario</th>
+                </tr>
+              </thead>
+              <tbody id="pdetail-price-history-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn--secondary" data-close-modal="modal-product-detail">Cerrar</button>
+          <button type="submit" class="btn btn--primary" data-permission="write">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 2: ACTUALIZACIÓN MASIVA DE PRECIOS (SECCIÓN 6)
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-bulk-price-update">
+    <div class="modal-card modal-card--lg">
+      <div class="modal-header">
+        <h3 class="modal-title">⚡ Actualización Masiva de Precios</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="modal-bulk-price-update">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">1. Alcance de la Actualización</label>
+            <select class="form-select" id="bulk-scope-select">
+              <option value="section">Por Sección / Categoría</option>
+              <option value="all">Todos los productos</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sección Seleccionada</label>
+            <select class="form-select" id="bulk-category-select">
+              <option value="todos">Todas las Secciones</option>
+              <option value="Almacén">Almacén</option>
+              <option value="Desayuno y merienda">Desayuno y merienda</option>
+              <option value="Fiambrería y quesos">Fiambrería y quesos</option>
+              <option value="Bebidas">Bebidas</option>
+              <option value="Limpieza del hogar">Limpieza</option>
+              <option value="Perfumería e higiene personal">Perfumería</option>
+              <option value="Snacks">Snacks</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label">2. Método de Ajuste</label>
+            <select class="form-select" id="bulk-type-select">
+              <option value="percent">Aumento Porcentual (%)</option>
+              <option value="targetMargin">Fijar Margen Objetivo (%) sobre Costo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Valor del Ajuste</label>
+            <input type="number" step="any" class="form-input" id="bulk-value-input" value="10" placeholder="Ej: 10 para +10%">
+          </div>
+        </div>
+
+        <div style="margin-bottom:1rem">
+          <button type="button" class="btn btn--secondary btn--block" id="btn-preview-bulk-update">
+            👁️ Previsualizar Cambios de Precio
+          </button>
+        </div>
+
+        <!-- Tabla de Previsualización -->
+        <div style="margin-bottom:0.5rem;font-weight:700" id="bulk-preview-summary-text">
+          Hacé clic en previsualizar para auditar los precios antes de aplicar.
+        </div>
+        <div class="table-responsive" style="max-height:240px;overflow-y:auto;border:1px solid #E2E8F0;border-radius:6px">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Costo</th>
+                <th>Precio Anterior</th>
+                <th>Nuevo Precio</th>
+                <th>Variación %</th>
+                <th>Nuevo Margen</th>
+              </tr>
+            </thead>
+            <tbody id="bulk-preview-tbody">
+              <tr><td colspan="6" style="text-align:center;padding:1.5rem;color:#94A3B8">Sin previsualización activa</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="form-group" style="margin-top:1rem">
+          <label class="form-label">Motivo para el Historial de Auditoría</label>
+          <input type="text" class="form-input" id="bulk-reason-input" placeholder="Ej: Aumento general de costos inflacionarios de distribuidora">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn--secondary" data-close-modal="modal-bulk-price-update">Cancelar</button>
+        <button type="button" class="btn btn--primary" id="btn-apply-bulk-update" disabled data-permission="write">
+          ✅ Confirmar y Aplicar Nuevos Precios
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 3: NUEVO PRODUCTO
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-new-product">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">+ Crear Nuevo Producto</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="modal-new-product">&times;</button>
+      </div>
+      <form id="form-new-product">
+        <div class="modal-body">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Nombre del Producto *</label>
+              <input type="text" class="form-input" id="newp-name" required placeholder="Ej: Arroz Integral Gallo 1kg">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Marca *</label>
+              <input type="text" class="form-input" id="newp-brand" required placeholder="Ej: Gallo">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Sección *</label>
+              <select class="form-select" id="newp-section" required>
+                <option value="Almacén">Almacén</option>
+                <option value="Desayuno y merienda">Desayuno y merienda</option>
+                <option value="Fiambrería y quesos">Fiambrería y quesos</option>
+                <option value="Bebidas">Bebidas</option>
+                <option value="Limpieza del hogar">Limpieza</option>
+                <option value="Perfumería e higiene personal">Perfumería</option>
+                <option value="Snacks">Snacks</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Unidad de Venta *</label>
+              <select class="form-select" id="newp-unit">
+                <option value="un.">Unidad (un.)</option>
+                <option value="kg">Kilogramo (kg)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Presentación en Bulto</label>
+            <input type="text" class="form-input" id="newp-presentation" placeholder="Ej: Caja cerrada x 12 unidades">
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Costo de Compra ($ ARS) *</label>
+              <input type="number" step="any" class="form-input" id="newp-cost" required placeholder="Ej: 1400">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Precio de Venta ($ ARS) *</label>
+              <input type="number" step="any" class="form-input" id="newp-price" required placeholder="Ej: 2000">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Stock Inicial Físico *</label>
+              <input type="number" class="form-input" id="newp-stock" value="24" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Stock Mínimo (Alerta)</label>
+              <input type="number" class="form-input" id="newp-minstock" value="12" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Descripción Opcional</label>
+            <textarea class="form-textarea" id="newp-desc" rows="2" placeholder="Detalles de calidad o condiciones"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn--secondary" data-close-modal="modal-new-product">Cancelar</button>
+          <button type="submit" class="btn btn--primary" data-permission="write">Crear Producto</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 4: AJUSTE MANUAL DE STOCK
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-stock-adjust">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Ajuste Manual de Stock</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="modal-stock-adjust">&times;</button>
+      </div>
+      <form id="form-stock-adjust">
+        <div class="modal-body">
+          <p style="margin-bottom:1rem">
+            Producto: <strong id="adjust-product-name">—</strong><br>
+            Stock actual registrado: <strong id="adjust-current-stock">—</strong>
+          </p>
+          <div class="form-group">
+            <label class="form-label">Nuevo Stock Físico Real *</label>
+            <input type="number" min="0" class="form-input" id="adjust-new-stock-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Motivo o Justificación Obligatoria *</label>
+            <input type="text" class="form-input" id="adjust-reason-input" placeholder="Ej: Recuento físico de depósito mensual / Rotura de empaque" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn--secondary" data-close-modal="modal-stock-adjust">Cancelar</button>
+          <button type="submit" class="btn btn--primary" data-permission="write">Guardar Ajuste Auditado</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 5: NUEVO PROVEEDOR
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-new-supplier">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">+ Registrar Nuevo Proveedor</h3>
+        <button type="button" class="modal-close-btn" data-close-modal="modal-new-supplier">&times;</button>
+      </div>
+      <form id="form-new-supplier">
+        <div class="modal-body">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Razón Social *</label>
+              <input type="text" class="form-input" id="newsup-name" required placeholder="Ej: Distribuidora Alimenticia Norte S.A.">
+            </div>
+            <div class="form-group">
+              <label class="form-label">CUIT *</label>
+              <input type="text" class="form-input" id="newsup-cuit" required placeholder="30-71000000-0">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Contacto Comercial</label>
+              <input type="text" class="form-input" id="newsup-contact" placeholder="Nombre del preventista">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Teléfono *</label>
+              <input type="text" class="form-input" id="newsup-phone" required placeholder="11 4000-0000">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" id="newsup-email" placeholder="pedidos@proveedor.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Categoría Principal</label>
+              <select class="form-select" id="newsup-category">
+                <option value="Almacén">Almacén</option>
+                <option value="Bebidas">Bebidas</option>
+                <option value="Fiambrería y quesos">Fiambrería y quesos</option>
+                <option value="Limpieza del hogar">Limpieza</option>
+                <option value="Perfumería e higiene personal">Perfumería</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Dirección / Depósito</label>
+            <input type="text" class="form-input" id="newsup-address" placeholder="Av. San Martín 1500, San Martín">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn--secondary" data-close-modal="modal-new-supplier">Cancelar</button>
+          <button type="submit" class="btn btn--primary" data-permission="write">Guardar Proveedor</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Controlador Modular ES6 -->
+  <script type="module" src="js/adminApp.js"></script>
+</body>
+</html>

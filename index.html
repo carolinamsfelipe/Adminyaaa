@@ -1,438 +1,1057 @@
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Administración tercerizada para PyMEs | AdminYAAA, Ciudadela</title>
-<meta name="description" content="Administración de tu negocio: facturación, pagos, cobranzas, sistemas a tu medida y ayuda para vender online. Junto a tu contador. Ciudadela, Zona Oeste.">
-<meta name="theme-color" content="#02264A">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mayorista a tu Casa | Tu Compra Grande en tu Puerta — AdminYAAA</title>
+  
+  <!-- SEO y Meta Tags -->
+  <meta name="description" content="Venta mayorista de supermercado, almacén, limpieza, bebidas y cuidado personal en tu casa o comercio. Armá tu compra online y confirmá directo por WhatsApp. Una iniciativa de AdminYAAA.">
+  <meta name="keywords" content="mayorista a domicilio, compras mayoristas, mayorista buenos aires, productos mayoristas Ituzaingó, distribuidora de almacén, combos mayoristas">
+  <meta name="author" content="AdminYAAA">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mayorista a tu Casa | Una iniciativa de AdminYAAA">
+  <meta property="og:description" content="Precios mayoristas directos a tu puerta. Combos de despensa, limpieza y almacén con envío sin cargo en Ituzaingó.">
+  <meta property="og:image" content="img/logo.png">
+  <meta property="og:locale" content="es_AR">
 
-<!-- BORRADOR: no indexar hasta publicar. Al publicar, borrar la línea de abajo (ver README.md). -->
-<meta name="robots" content="noindex, nofollow">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo.png">
 
-<!-- Dominio definitivo: https://adminya.com.ar/ (el www redirige a esta dirección). -->
-<link rel="canonical" href="https://adminya.com.ar/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://adminya.com.ar/">
-<meta property="og:locale" content="es_AR">
-<meta property="og:site_name" content="AdminYAAA">
-<meta property="og:title" content="AdminYAAA: vos ocupate del negocio, de la administración nos ocupamos nosotros">
-<meta property="og:description" content="Administración tercerizada para PyMEs, comercios, emprendedores y profesionales. Trabajamos junto a tu contador.">
-<meta property="og:image" content="https://adminya.com.ar/assets/img/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
+  <!-- Tipografías de Google (Poppins & Figtree) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap">
 
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/styles.css">
-<script>document.documentElement.classList.add('js');</script>
+  <!-- Estilos del Sistema de Diseño -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/responsive.css">
 
-<!-- Datos estructurados: negocio local. Solo incluye datos CONFIRMADOS.
-     [DATO A COMPLETAR: "openingHours" (cuando haya horarios); sumar el enlace de la ficha de Google a "sameAs"] -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "AdminYAAA",
-  "url": "https://adminya.com.ar/",
-  "logo": "https://adminya.com.ar/assets/img/apple-touch-icon.png",
-  "image": "https://adminya.com.ar/assets/img/og-image.png",
-  "description": "Administración tercerizada para PyMEs, comercios, emprendedores y profesionales: facturación, pagos, cobranzas, trámites, números claros, análisis de mercado, sistemas administrativos a medida y ayuda para vender online. Trabajamos junto al contador del cliente.",
-  "telephone": ["+5491125604901", "+5491130332341"],
-  "email": "adminyaaa@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Av. Gaona 4385",
-    "addressLocality": "Ciudadela",
-    "addressRegion": "Provincia de Buenos Aires",
-    "addressCountry": "AR"
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": -34.6344412, "longitude": -58.550395 },
-  "sameAs": ["https://www.instagram.com/admin.yaaa/", "https://www.linkedin.com/company/adminya/"]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "¿Reemplazan a mi contador?", "acceptedAnswer": { "@type": "Answer", "text": "No. Trabajamos junto a tu contador: nosotros nos ocupamos de la administración diaria y de ordenar la información, y él sigue a cargo de lo que le corresponde." } },
-    { "@type": "Question", "name": "¿Qué servicios incluyen?", "acceptedAnswer": { "@type": "Answer", "text": "Nos ocupamos de la administración diaria: facturación, pagos a proveedores, cobranzas y trámites impositivos. También te ayudamos a ordenar tus números (flujo de caja, stock y compras, presupuesto, costeo y márgenes), a simplificar el trabajo, a vender online, a analizar tu mercado (precios, competidores, demanda y oportunidades) y a crear sistemas administrativos a tu medida para automatizar tareas. Podés necesitar solo una parte: lo definimos según tu situación." } },
-    { "@type": "Question", "name": "¿Para qué tipo de negocio trabajan?", "acceptedAnswer": { "@type": "Answer", "text": "Para PyMEs, comercios, emprendedores y profesionales. Si no estás seguro de si tu caso encaja, contanos cómo funciona tu negocio y lo vemos." } },
-    { "@type": "Question", "name": "¿El servicio es presencial o remoto?", "acceptedAnswer": { "@type": "Answer", "text": "Es remoto, así que trabajamos con clientes de Buenos Aires y también del interior del país. Además tenemos oficina en Zona Oeste, en Av. Gaona 4385, Ciudadela." } },
-    { "@type": "Question", "name": "¿Cómo empiezo?", "acceptedAnswer": { "@type": "Answer", "text": "Escribinos por cualquiera de los dos WhatsApp o por correo a adminyaaa@gmail.com. Nos contás qué necesitás y a partir de ahí vemos cómo ayudarte." } },
-    { "@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": { "@type": "Answer", "text": "Depende de lo que necesite cada negocio. Trabajamos con un abono mensual o por proyecto puntual. Escribinos y te lo explicamos según tu caso." } }
-  ]
-}
-</script>
+  <!-- Schema.org Datos Estructurados -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WholesaleStore",
+    "name": "Mayorista a tu Casa",
+    "description": "Venta mayorista de alimentos, bebidas, limpieza e higiene personal con entrega a domicilio y atención personalizada por WhatsApp.",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "AdminYAAA"
+    },
+    "telephone": "+5491130332341",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ituzaingó",
+      "addressRegion": "Buenos Aires",
+      "addressCountry": "AR"
+    }
+  }
+  </script>
 </head>
 <body>
 
-<!-- Iconos (se reutilizan con <use>) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.3-.4A8 8 0 0 1 12 4Zm-3 3.5c-.3 0-.7.1-1 .5-.3.4-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3 2.4 1 2.9.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4l-1.9-.9c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2.1-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5Z"/></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
-  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
-  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6M18 14.4c1.8.8 3 2.7 3 5.6"/></symbol>
-  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
-  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></symbol>
-  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-9"/><path d="M15 7h5v5"/></symbol>
-  <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9v11h16V9"/><path d="M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9"/><path d="M10 20v-5h4v5"/></symbol>
-  <symbol id="i-tasks" viewBox="0 0 24 24"><path d="M10 6h10M10 12h10M10 18h10"/><path d="M3.5 6l1.5 1.5L7.5 5M3.5 12l1.5 1.5L7.5 11M3.5 18l1.5 1.5L7.5 17"/></symbol>
-  <symbol id="i-flow" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect x="13" y="13" width="8" height="8" rx="2"/></symbol>
-  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8.5 13v-2M11 13V9M13.5 13v-3"/></symbol>
-  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
-</svg>
+  <!-- Accesibilidad: Saltar al contenido -->
+  <a href="#catalogo" class="skip-link">Saltar al catálogo de productos</a>
 
-<a class="skip-link" href="#contenido">Saltar al contenido</a>
-
-<!-- ============================ ENCABEZADO ============================ -->
-<header class="site-header navy">
-  <div class="wrap header-inner">
-    <a class="brand-block" href="#inicio">
-      <picture>
-        <source srcset="assets/img/adminyaaa-logo-dark.webp" type="image/webp">
-        <img src="assets/img/adminyaaa-logo-dark.png" alt="AdminYAAA" width="760" height="214">
-      </picture>
-      <span class="brand-tag">Para tu negocio</span>
-    </a>
-    <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">
-      <svg class="i" aria-hidden="true"><use href="#i-menu"/></svg><span>Menú</span>
-    </button>
-    <nav class="header-nav" id="menu" aria-label="Principal">
-      <ul class="nav-list">
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#ejemplo">Un ejemplo</a></li>
-        <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
-        <li><a href="#preguntas">Preguntas</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="header-cta">
-      <a class="wa wa--sm" href="https://wa.me/5491125604901?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
-        <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg><span class="sr-only">WhatsApp </span><span class="wa-num">11 2560-4901</span><span class="sr-only">(se abre en una pestaña nueva)</span>
-      </a>
-      <a class="wa wa--sm" href="https://wa.me/5491130332341?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
-        <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg><span class="sr-only">WhatsApp </span><span class="wa-num">11 3033-2341</span><span class="sr-only">(se abre en una pestaña nueva)</span>
-      </a>
+  <!-- ============================================================
+       TOPBAR DE BENEFICIOS
+       ============================================================ -->
+  <aside class="topbar" aria-label="Beneficios de entrega">
+    <div class="container topbar-content" id="topbar-info">
+      <!-- Se inyecta dinámicamente con config.js -->
     </div>
-  </div>
-</header>
+  </aside>
 
-<main id="contenido">
+  <!-- ============================================================
+       HEADER PRINCIPAL
+       ============================================================ -->
+  <header class="header" id="header" role="banner">
+    <div class="container header-container">
+      
+      <!-- Brand Logo & Iniciativa -->
+      <a href="#inicio" class="brand" aria-label="Mayorista a tu Casa, ir a la página de inicio">
+        <img src="img/logo.png" alt="Mayorista a tu Casa Logo" class="brand-logo-img">
+        <div class="brand-texts">
+          <span class="brand-name">MAYORISTA <span>a tu casa</span></span>
+          <span class="brand-tagline brand-sub-initiative">Una iniciativa de <strong>AdminYAAA</strong></span>
+        </div>
+      </a>
 
-  <!-- ============================ PORTADA ============================ -->
-  <section class="hero navy" id="inicio" aria-labelledby="t-inicio">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">Administración tercerizada · Zona Oeste</p>
-        <h1 id="t-inicio">Vos ocupate del negocio. De la administración nos ocupamos <span class="mark">nosotros</span>.</h1>
-        <p class="lead">Nos encargamos de la facturación, los pagos, las cobranzas y los trámites de tu negocio, y te ayudamos a ordenar tus números, a vender online y a automatizar el trabajo.</p>
+      <!-- Navegación Desktop -->
+      <nav class="nav-desktop" aria-label="Navegación principal">
+        <a href="#inicio" class="nav-link is-active">Inicio</a>
+        <a href="#catalogo" class="nav-link">Productos</a>
+        <a href="#combos" class="nav-link">Combos <span class="nav-link-badge">Ahorro</span></a>
+        <a href="#ofertas" class="nav-link">Ofertas</a>
+        <a href="#como-comprar" class="nav-link">Cómo comprar</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+        <a href="admin/" class="nav-link" style="color:var(--color-primary-600);font-weight:700;display:inline-flex;align-items:center;gap:0.35rem" title="Panel de Gestión Mayorista">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Admin
+        </a>
+      </nav>
 
-        <div class="hero-cta" id="hero-cta">
-          <p class="cta-title">Contanos qué necesitás resolver</p>
-          <div class="wa-pair">
-            <a class="wa" href="https://wa.me/5491125604901?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
-              <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>
-              <span class="wa-text"><span class="wa-label">WhatsApp</span><span class="wa-num">11 2560-4901</span></span>
-              <span class="sr-only">(se abre en una pestaña nueva)</span>
-            </a>
-            <a class="wa" href="https://wa.me/5491130332341?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
-              <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>
-              <span class="wa-text"><span class="wa-label">WhatsApp</span><span class="wa-num">11 3033-2341</span></span>
-              <span class="sr-only">(se abre en una pestaña nueva)</span>
-            </a>
+      <!-- Barra de Búsqueda Rápida en Header -->
+      <div class="header-search">
+        <div class="search-input-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="search" id="catalog-search-input" class="header-search-input" placeholder="Buscar fideos, aceite, jabón..." aria-label="Buscar en el catálogo mayorista">
+        </div>
+      </div>
+
+      <!-- Acciones de Usuario -->
+      <div class="header-actions">
+        <!-- Favoritos -->
+        <button type="button" class="action-btn action-btn--fav" id="header-btn-fav" aria-label="Ver productos favoritos">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="action-badge fav-count-badge" style="display:none">0</span>
+        </button>
+
+        <!-- Mi Cuenta -->
+        <button type="button" class="action-btn action-btn--account" id="header-btn-account" aria-label="Acceder a mi cuenta o perfil">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Ingresar</span>
+        </button>
+
+        <!-- Carrito de Pedido -->
+        <button type="button" class="action-btn action-btn--cart" data-open-drawer="cart-drawer" aria-label="Abrir carrito de compras">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span>Tu pedido</span>
+          <span class="action-badge cart-count-badge" style="display:none">0</span>
+        </button>
+
+        <!-- Botón Menú Móvil -->
+        <button type="button" class="nav-mobile-toggle" data-open-drawer="mobile-drawer" aria-label="Abrir menú de navegación móvil">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       BARRA DE DEPARTAMENTOS RÁPIDOS (Estilo Farmacity / DIA)
+       ============================================================ -->
+  <nav class="supermarket-dept-bar" aria-label="Departamentos de supermercado">
+    <div class="container supermarket-dept-container">
+      <button type="button" class="dept-chip is-active" data-section-filter="todos">
+        <span class="dept-chip-icon">🛒</span>
+        <span>Todos los productos</span>
+      </button>
+      <a href="#ofertas" class="dept-chip dept-chip--promo">
+        <span class="dept-chip-icon">🔥</span>
+        <span>Ofertas Bomba</span>
+      </a>
+      <a href="#combos" class="dept-chip dept-chip--combo">
+        <span class="dept-chip-icon">📦</span>
+        <span>Combos Ahorro</span>
+      </a>
+      <button type="button" class="dept-chip" data-section-filter="Almacén">
+        <span class="dept-chip-icon">🥫</span>
+        <span>Almacén</span>
+      </button>
+      <button type="button" class="dept-chip" data-section-filter="Desayuno y merienda">
+        <span class="dept-chip-icon">☕</span>
+        <span>Desayuno & Merienda</span>
+      </button>
+      <button type="button" class="dept-chip" data-section-filter="Fiambrería y quesos">
+        <span class="dept-chip-icon">🧀</span>
+        <span>Fiambrería & Quesos</span>
+      </button>
+      <button type="button" class="dept-chip" data-section-filter="Bebidas">
+        <span class="dept-chip-icon">🥤</span>
+        <span>Bebidas</span>
+      </button>
+      <button type="button" class="dept-chip" data-section-filter="Limpieza del hogar">
+        <span class="dept-chip-icon">🧹</span>
+        <span>Limpieza</span>
+      </button>
+      <button type="button" class="dept-chip" data-section-filter="Perfumería e higiene personal">
+        <span class="dept-chip-icon">🧴</span>
+        <span>Perfumería & Higiene</span>
+      </button>
+      <button type="button" class="dept-chip" data-section-filter="Snacks">
+        <span class="dept-chip-icon">🍿</span>
+        <span>Snacks</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL
+       ============================================================ -->
+  <main id="inicio" role="main">
+
+    <!-- HERO SECTION COMERCIAL -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span>Mayorista directo a tu puerta</span>
           </div>
-          <div class="hero-address">
-            <svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>
-            <p>Oficina: Av. Gaona 4385, Ciudadela, Provincia de Buenos Aires.
-              <a class="link-go" href="https://share.google/GwaTx7BCfUCzjgzkv" target="_blank" rel="noopener">Cómo llegar en Google Maps<svg class="i" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> (se abre en una pestaña nueva)</span></a>
+          <h1 class="hero-title" id="hero-title">
+            Tu compra grande, <em>a precio mayorista real.</em>
+          </h1>
+          <p class="hero-lead">
+            Ahorrá comprando packs cerrados y combos familiares o comerciales de supermercado, almacén, limpieza y fiambrería. Armá tu pedido online y coordiná la entrega directa por WhatsApp.
+          </p>
+          <div class="hero-ctas">
+            <a href="#combos" class="btn btn--primary btn--lg">Ver combos sugeridos</a>
+            <a href="#catalogo" class="btn btn--outline btn--lg" style="color:#FFFFFF;border-color:rgba(255,255,255,0.4)">Explorar catálogo (300+ productos)</a>
+          </div>
+
+          <div class="hero-badges-row">
+            <div class="hero-badge-item">
+              <svg class="hero-badge-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Envío bonificado en Ituzaingó</span>
+            </div>
+            <div class="hero-badge-item">
+              <svg class="hero-badge-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Primeras marcas garantizadas</span>
+            </div>
+            <div class="hero-badge-item">
+              <svg class="hero-badge-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>Atención humana al 11 3033-2341</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview de Combo en Hero -->
+        <div class="hero-preview-col" id="hero-combos-preview">
+          <!-- Renderizado dinámico -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CÓMO COMPRAR (4 PASOS) -->
+    <section class="section section--tint" id="como-comprar" aria-labelledby="como-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Proceso simple y transparente</span>
+          <h2 class="section-title" id="como-title">¿Cómo comprar en Mayorista a tu Casa?</h2>
+          <p class="section-subtitle">Sin vueltas ni registros complicados. Armás tu carrito con tranquilidad y lo confirmamos juntos por WhatsApp.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Elegí tus productos</h3>
+            <p class="step-desc">Navegá entre más de 300 productos o seleccioná un combo listo para usar con hasta 18% de ahorro.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Armá tu pedido</h3>
+            <p class="step-desc">Modificá cantidades y revisá el subtotal en tiempo real. Tu carrito se guarda automáticamente.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Completá tus datos</h3>
+            <p class="step-desc">Indicá tu dirección de entrega y cómo preferís pagar (efectivo, transferencia o Mercado Pago).</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h3 class="step-title">Enviá por WhatsApp</h3>
+            <p class="step-desc">Se genera el mensaje detallado al 11 3033-2341. Confirmamos stock, día de entrega y ¡listo!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN COMBOS DESTACADOS -->
+    <section class="section" id="combos" aria-labelledby="combos-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Ahorro Inteligente</span>
+          <h2 class="section-title" id="combos-title">Combos Mayoristas Sugeridos</h2>
+          <p class="section-subtitle">Selecciones armadas para despensa, desayuno, limpieza y PyMEs. Podés agregarlos completos con 1 solo clic.</p>
+        </div>
+
+        <div class="combos-grid" id="combos-grid">
+          <!-- Renderizado dinámicamente con combos.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN OFERTAS DE LA SEMANA -->
+    <section class="section section--tint" id="ofertas" aria-labelledby="ofertas-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Oportunidades destacadas</span>
+          <h2 class="section-title" id="ofertas-title">Ofertas de la Semana</h2>
+          <p class="section-subtitle">Productos esenciales de alta rotación con descuentos especiales por volumen.</p>
+        </div>
+
+        <div class="products-grid" id="offers-grid">
+          <!-- Renderizado dinámicamente -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN LOS MÁS ELEGIDOS (RANKING 1, 2, 3, 4) -->
+    <section class="section" id="mas-vendidos" aria-labelledby="mas-vendidos-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Favoritos de nuestros clientes</span>
+          <h2 class="section-title" id="mas-vendidos-title">Los Más Elegidos</h2>
+          <p class="section-subtitle">Los productos infaltables que más se repiten en los pedidos mayoristas.</p>
+        </div>
+
+        <div class="combos-grid" id="top-sellers-grid">
+          <!-- Renderizado dinámicamente -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CATÁLOGO COMPLETO Y FILTROS -->
+    <section class="section section--tint" id="catalogo" aria-labelledby="catalogo-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Catálogo Completo</span>
+          <h2 class="section-title" id="catalogo-title">Explorá Todos los Productos</h2>
+          <p class="section-subtitle">Almacén, fiambrería, bebidas, limpieza y perfumería con stock y precios transparentes.</p>
+        </div>
+
+        <!-- Filtros por sección / categoría -->
+        <div style="margin-bottom:1.5rem;overflow-x:auto;padding-bottom:0.5rem">
+          <div id="category-filter-pills" style="display:flex;gap:0.5rem;min-width:max-content">
+            <!-- Pills generadas dinámicamente -->
+          </div>
+        </div>
+
+        <!-- Barra de herramientas (Conteo, Búsqueda secundaria, Orden) -->
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:2rem;background:#FFFFFF;padding:1rem 1.25rem;border-radius:var(--radius-lg);border:1px solid var(--color-border)">
+          <div style="font-weight:700;color:var(--color-primary-900)" id="catalog-count">Cargando productos...</div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center">
+            <label style="font-size:0.875rem;color:var(--color-text-muted);display:flex;align-items:center;gap:0.5rem">
+              <span>Etiqueta:</span>
+              <select id="catalog-badge-filter" class="form-select" style="padding:0.4rem 0.75rem;font-size:0.8125rem">
+                <option value="todos">Todas</option>
+                <option value="OFERTA">Ofertas</option>
+                <option value="MÁS VENDIDO">Más vendidos</option>
+                <option value="NUEVO">Nuevos</option>
+              </select>
+            </label>
+
+            <label style="font-size:0.875rem;color:var(--color-text-muted);display:flex;align-items:center;gap:0.5rem">
+              <span>Ordenar:</span>
+              <select id="catalog-sort-select" class="form-select" style="padding:0.4rem 0.75rem;font-size:0.8125rem">
+                <option value="destacados">Destacados</option>
+                <option value="precio-menor">Menor precio</option>
+                <option value="precio-mayor">Mayor precio</option>
+                <option value="nombre">Nombre (A-Z)</option>
+                <option value="ofertas">Mayor ahorro</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- Grilla de Productos -->
+        <div class="products-grid" id="products-grid" aria-live="polite">
+          <!-- Renderizado dinámicamente -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN PREGUNTAS FRECUENTES -->
+    <section class="section" id="preguntas" aria-labelledby="faq-title">
+      <div class="container" style="max-width:840px">
+        <div class="section-header">
+          <span class="section-kicker">Dudas habituales</span>
+          <h2 class="section-title" id="faq-title">Preguntas Frecuentes</h2>
+          <p class="section-subtitle">Todo lo que necesitás saber sobre envíos, pagos y compras mayoristas.</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <details style="background:#FFFFFF;border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.25rem;cursor:pointer">
+            <summary style="font-weight:700;color:var(--color-primary-900);font-size:1.0625rem">¿Hay un monto mínimo de compra?</summary>
+            <p style="margin-top:0.75rem;color:var(--color-text-muted);font-size:0.9375rem;line-height:1.6">
+              Para productos individuales podés armar el pedido que necesites. Para acceder a la bonificación de envío o a nuestros combos completos recomendados, el piso sugerido parte desde $200.000 (Combo Esenciales).
             </p>
-          </div>
+          </details>
+
+          <details style="background:#FFFFFF;border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.25rem;cursor:pointer">
+            <summary style="font-weight:700;color:var(--color-primary-900);font-size:1.0625rem">¿Cuáles son las zonas y costos de entrega?</summary>
+            <p style="margin-top:0.75rem;color:var(--color-text-muted);font-size:0.9375rem;line-height:1.6">
+              En Ituzaingó el envío es <strong>100% gratuito sin cargo</strong>. En Castelar, Morón, Haedo, Ramos Mejía y San Justo el envío es bonificado en compras desde $250.000. Para otras zonas de GBA o CABA coordinamos días de entrega fijos al confirmar el pedido por WhatsApp.
+            </p>
+          </details>
+
+          <details style="background:#FFFFFF;border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.25rem;cursor:pointer">
+            <summary style="font-weight:700;color:var(--color-primary-900);font-size:1.0625rem">¿Cómo se realiza el pago?</summary>
+            <p style="margin-top:0.75rem;color:var(--color-text-muted);font-size:0.9375rem;line-height:1.6">
+              No cobramos online con tarjeta de forma automática. Podés abonar en efectivo al recibir tu pedido en tu domicilio, transferir a nuestro CBU/Alias bancario, o abonar por Mercado Pago (dinero en cuenta / QR).
+            </p>
+          </details>
+
+          <details style="background:#FFFFFF;border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.25rem;cursor:pointer">
+            <summary style="font-weight:700;color:var(--color-primary-900);font-size:1.0625rem">¿Cómo sé si hay stock de una variedad específica?</summary>
+            <p style="margin-top:0.75rem;color:var(--color-text-muted);font-size:0.9375rem;line-height:1.6">
+              En los productos que tienen sabores o variedades (ej. fideos, galletitas, atún), podés indicarlo en las notas o al momento de confirmar por WhatsApp. Nuestro equipo verifica el stock físico al instante antes de coordinar el horario de entrega.
+            </p>
+          </details>
         </div>
       </div>
+    </section>
 
-      <div class="split" role="group" aria-label="Cómo nos repartimos el trabajo">
-        <div class="split-you">
-          <p class="split-title">Vos</p>
-          <ul>
-            <li>Atendés a tus clientes</li>
-            <li>Producís y vendés</li>
-            <li>Decidís hacia dónde crece el negocio</li>
-          </ul>
+    <!-- SECCIÓN CONTACTO / ATENCIÓN -->
+    <section class="section section--tint" id="contacto" aria-labelledby="contacto-title">
+      <div class="container" style="max-width:800px;text-align:center">
+        <span class="section-kicker">Atención Personalizada</span>
+        <h2 class="section-title" id="contacto-title">¿Necesitás armar un pedido especial para tu negocio?</h2>
+        <p class="section-subtitle" style="margin-bottom:2rem">
+          Si tenés un comercio, rotisería, comedor, despensa o PyME, escribinos directamente para presupuestos por volumen o listas personalizadas.
+        </p>
+
+        <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap">
+          <a href="https://wa.me/5491130332341?text=Hola%2C%20quiero%20hacer%20una%20consulta%20por%20pedidos%20mayoristas." target="_blank" rel="noopener" class="btn btn--wa btn--lg">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.3-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.6 6.6 0 0 1-2-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4s.1-.3 0-.4-.5-1.3-.7-1.8-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8s2 3 4.8 4.2c.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4s.2-1.3.1-1.4-.2-.1-.5-.2z"/></svg>
+            Escribir a WhatsApp: 11 3033-2341
+          </a>
+          <a href="mailto:adminyaaa@gmail.com" class="btn btn--outline btn--lg">
+            Enviar correo electrónico
+          </a>
         </div>
-        <div class="split-us">
-          <p class="split-title">Nosotros</p>
-          <ul>
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Facturación</li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Pagos a proveedores</li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Cobranzas</li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Trámites impositivos</li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Números claros para que decidas</li>
-          </ul>
-        </div>
-        <p class="split-foot"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Y siempre en contacto con tu contador.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================ SERVICIOS ============================ -->
-  <!-- Los textos de estas tarjetas parten de la versión que envió el dueño y de sus piezas gráficas (análisis de mercado y sistemas a medida). Se evitaron frases absolutas ("cualquier proceso", "100 %") que no se pueden demostrar. -->
-  <section class="section section--tint" id="servicios" aria-labelledby="t-servicios">
-    <div class="wrap">
-      <p class="kicker">Servicios</p>
-      <h2 id="t-servicios">¿Qué necesitás resolver?</h2>
-      <p class="intro">Cada negocio tiene sus desafíos. Estos son algunos puntos de partida.</p>
+  </main>
 
-      <div class="needs">
-        <article class="need need--main">
-          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></div>
-          <h3>Quiero olvidarme de facturar, pagar y cobrar</h3>
-          <p>Nos ocupamos de la administración de todos los días, en coordinación con tu contador.</p>
-          <ul class="need-list">
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Facturación</li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Pagos a proveedores</li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Cobranzas</li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Trámites impositivos</li>
-          </ul>
-        </article>
-
-        <article class="need">
-          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-trend"/></svg></div>
-          <h3>Necesito ordenar mis números</h3>
-          <p>Organizamos tu información y armamos con vos las planillas y herramientas para entender qué entra, qué sale y cuánto te deja lo que vendés. Flujo de caja, stock y compras, presupuesto y costeo.</p>
-        </article>
-
-        <article class="need">
-          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-store"/></svg></div>
-          <h3>Quiero vender online</h3>
-          <p>Te asesoramos y ponemos en marcha tu catálogo, tu tienda y tus publicaciones, según lo que necesite tu negocio.</p>
-        </article>
-
-        <article class="need">
-          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-tasks"/></svg></div>
-          <h3>Quiero simplificar el trabajo</h3>
-          <p>Revisamos cómo trabajan hoy y buscamos cómo ordenar las tareas, evitar repeticiones y hacer más simple el día a día.</p>
-        </article>
-
-        <article class="need">
-          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-flow"/></svg></div>
-          <h3>Quiero un sistema hecho a mi medida</h3>
-          <p>Creamos sistemas administrativos a tu medida: compras, ventas, stock, facturación, cobros, pagos y reportes, conectados en un solo lugar. Automatizás tareas repetitivas y tenés más control y menos errores.</p>
-        </article>
-
-        <article class="need">
-          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></div>
-          <h3>Quiero conocer mi mercado</h3>
-          <p>Analizamos tu mercado: precios, competidores, demanda y oportunidades. Te ayudamos a definir cómo posicionarte y a decidir con información clara.</p>
-        </article>
-
-        <article class="need">
-          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-bulb"/></svg></div>
-          <h3>Necesito otra mirada</h3>
-          <p>Analizamos tu situación, pensamos opciones y te ayudamos a definir los próximos pasos con información clara.</p>
-        </article>
-      </div>
-
-      <div class="needs-cta">
-        <a class="btn btn--navy" href="#contacto">Contanos qué necesitás resolver</a>
-        <p>Podés necesitar solo una parte. Lo definimos según tu situación.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ EJEMPLO ILUSTRATIVO ============================ -->
-  <!-- Ejemplo ficticio, pedido por el usuario para hacer tangible el servicio "ordenar los números".
-       Juan y su kiosco NO son un cliente real. Está marcado como "Ejemplo ilustrativo" y nunca debe
-       presentarse como testimonio ni caso real. Los montos son redondos a propósito, para que se note
-       que son ilustrativos. -->
-  <section class="section" id="ejemplo" aria-labelledby="t-ejemplo">
-    <div class="wrap">
-      <p class="kicker">Un ejemplo</p>
-      <h2 id="t-ejemplo">Así vemos tu negocio</h2>
-      <p class="intro">Para que te imagines cómo trabajamos. No es un cliente real: es un ejemplo para explicar la idea.</p>
-
-      <div class="example-card">
-        <div class="example-head">
-          <div class="badge"><svg class="i" aria-hidden="true"><use href="#i-store"/></svg></div>
-          <div>
-            <h3>Juan tiene un kiosco</h3>
-            <span class="tag">Ejemplo ilustrativo</span>
-          </div>
-        </div>
-        <ul class="ledger">
-          <li><span>Lo que le entra por mes</span><span>$ 2.400.000</span></li>
-          <li><span>Lo que le sale por mes</span><span>$ 2.150.000</span></li>
-          <li><span>Lo que le queda</span><span>$ 250.000</span></li>
-        </ul>
-        <p class="example-warn">Pero en dos meses tiene que pagar el aguinaldo, y todavía no lo tenía contemplado. Si sigue así, ese mes el número no le va a cerrar.</p>
-        <p class="example-note">Nosotros ordenamos esto antes de que pase, para que lo veas con tiempo y puedas decidir: subir precios, bajar algún gasto, o cubrirlo con anticipación.</p>
-        <a class="btn btn--navy example-cta" href="#contacto">Contanos cómo es tu negocio</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ CÓMO TRABAJAMOS ============================ -->
-  <!-- [DATO A COMPLETAR: validar que estos 3 pasos reflejan el proceso real; agregar plazos solo si son ciertos] -->
-  <section class="section navy" id="como-trabajamos" aria-labelledby="t-como">
-    <div class="wrap">
-      <p class="kicker">Cómo trabajamos</p>
-      <h2 id="t-como">Empezamos por escucharte</h2>
-      <p class="intro">Contanos qué te preocupa, qué querés mejorar o qué idea querés poner en marcha.</p>
-      <ol class="steps">
-        <li>
-          <h3>Entendemos tu situación</h3>
-          <p>Escuchamos cómo vendés, cómo cobrás, cómo pagás y qué te está quitando tiempo.</p>
-        </li>
-        <li>
-          <h3>Definimos juntos cómo ayudarte</h3>
-          <p>Vemos qué necesitás, por dónde conviene empezar y qué parte hacemos nosotros.</p>
-        </li>
-        <li>
-          <h3>Lo ponemos en marcha con vos</h3>
-          <p>Nos ocupamos del día a día, en contacto con vos y con tu contador.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ============================ PREGUNTAS FRECUENTES ============================ -->
-  <!-- [DATO A COMPLETAR: sumar respuestas sobre seguridad de datos/accesos, sistemas con los que trabajan y tiempos de respuesta cuando estén confirmados] -->
-  <section class="section" id="preguntas" aria-labelledby="t-preguntas">
-    <div class="wrap">
-      <p class="kicker">Preguntas frecuentes</p>
-      <h2 id="t-preguntas">Lo que suelen preguntarnos</h2>
-      <div class="faq">
-        <details>
-          <summary>¿Reemplazan a mi contador?</summary>
-          <p class="answer">No. Trabajamos junto a tu contador: nosotros nos ocupamos de la administración diaria y de ordenar la información, y él sigue a cargo de lo que le corresponde.</p>
-        </details>
-        <details>
-          <summary>¿Qué servicios incluyen?</summary>
-          <p class="answer">Nos ocupamos de la administración diaria: facturación, pagos a proveedores, cobranzas y trámites impositivos. También te ayudamos a ordenar tus números (flujo de caja, stock y compras, presupuesto, costeo y márgenes), a simplificar el trabajo, a vender online, a analizar tu mercado (precios, competidores, demanda y oportunidades) y a crear sistemas administrativos a tu medida para automatizar tareas. Podés necesitar solo una parte: lo definimos según tu situación.</p>
-        </details>
-        <details>
-          <summary>¿Para qué tipo de negocio trabajan?</summary>
-          <p class="answer">Para PyMEs, comercios, emprendedores y profesionales. Si no estás seguro de si tu caso encaja, contanos cómo funciona tu negocio y lo vemos.</p>
-        </details>
-        <details>
-          <summary>¿El servicio es presencial o remoto?</summary>
-          <p class="answer">Es remoto, así que trabajamos con clientes de Buenos Aires y también del interior del país. Además tenemos oficina en Zona Oeste, en Av. Gaona 4385, Ciudadela.</p>
-        </details>
-        <details>
-          <summary>¿Cómo empiezo?</summary>
-          <p class="answer">Escribinos por cualquiera de los dos WhatsApp o por correo a adminyaaa@gmail.com. Nos contás qué necesitás y a partir de ahí vemos cómo ayudarte.</p>
-        </details>
-        <details>
-          <summary>¿Cuánto cuesta?</summary>
-          <p class="answer">Depende de lo que necesite cada negocio. Trabajamos con un abono mensual o por proyecto puntual. Escribinos y te lo explicamos según tu caso.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ CONTACTO Y UBICACIÓN ============================ -->
-  <!-- [DATO A COMPLETAR: horarios de atención; alcance geográfico real del servicio remoto; fotos reales de la oficina] -->
-  <section class="section navy" id="contacto" aria-labelledby="t-contacto">
-    <div class="wrap">
-      <p class="kicker">Contacto</p>
-      <h2 id="t-contacto">Contanos qué necesitás resolver</h2>
-      <p class="intro">Escribinos a cualquiera de los dos WhatsApp o por correo. Los dos números atienden.</p>
-
-      <div class="contact-grid">
+  <!-- ============================================================
+       FOOTER PROFESIONAL Y CORPORATIVO
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Columna 1: Marca & AdminYAAA -->
         <div>
-          <ul class="clist">
-            <li><a class="crow" href="https://wa.me/5491125604901?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
-              <span class="badge"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg></span>
-              <span class="crow-text"><span class="crow-main">11 2560-4901</span><span class="crow-sub">WhatsApp · Escribir ahora</span></span>
-              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a></li>
-            <li><a class="crow" href="https://wa.me/5491130332341?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
-              <span class="badge"><svg class="i i--fill" aria-hidden="true"><use href="#i-wa"/></svg></span>
-              <span class="crow-text"><span class="crow-main">11 3033-2341</span><span class="crow-sub">WhatsApp · Escribir ahora</span></span>
-              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a></li>
-            <li><a class="crow" href="mailto:adminyaaa@gmail.com">
-              <span class="badge"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span>
-              <span class="crow-text"><span class="crow-main crow-main--mail">adminyaaa@gmail.com</span><span class="crow-sub">Correo</span></span>
-              <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a></li>
-            <li><a class="crow" href="https://www.instagram.com/admin.yaaa/" target="_blank" rel="noopener">
-              <span class="badge"><svg class="i" aria-hidden="true"><use href="#i-ig"/></svg></span>
-              <span class="crow-text"><span class="crow-main">@admin.yaaa</span><span class="crow-sub">Instagram</span></span>
-              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a></li>
-            <li><a class="crow" href="https://share.google/GwaTx7BCfUCzjgzkv" target="_blank" rel="noopener">
-              <span class="badge"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></span>
-              <span class="crow-text"><span class="crow-main">Av. Gaona 4385</span><span class="crow-sub">Ciudadela, Buenos Aires · Cómo llegar</span></span>
-              <span class="sr-only">(se abre en una pestaña nueva)</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a></li>
-          </ul>
-          <p class="office-note">Servicio remoto, con oficina en Zona Oeste. Consultanos por WhatsApp para conocer los horarios de atención.</p>
+          <h3 class="footer-brand-title">Mayorista a tu Casa</h3>
+          <span class="footer-brand-subtitle">Una iniciativa de AdminYAAA.</span>
+          <p class="footer-desc">
+            Venta y distribución mayorista directa de productos de consumo masivo para hogares, comercios y PyMEs. Simplificamos tus compras con entrega programada y atención humana.
+          </p>
+          <div style="font-size:0.8125rem;color:#E2E8F0">
+            Oficina central: Zona Oeste, Gran Buenos Aires.<br>
+            Administración: AdminYAAA — Gestión para PyMEs y comercios.
+          </div>
         </div>
 
-        <div class="map">
-          <iframe title="Mapa con la ubicación de AdminYAAA en Av. Gaona 4385, Ciudadela" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-34.6344412,-58.550395&amp;z=16&amp;hl=es&amp;output=embed"></iframe>
+        <!-- Columna 2: Navegación -->
+        <div>
+          <h4 class="footer-col-title">Secciones</h4>
+          <ul class="footer-links-list">
+            <li><a href="#inicio" class="footer-link">Inicio</a></li>
+            <li><a href="#catalogo" class="footer-link">Catálogo de Productos</a></li>
+            <li><a href="#combos" class="footer-link">Combos Sugeridos</a></li>
+            <li><a href="#ofertas" class="footer-link">Ofertas de la Semana</a></li>
+            <li><a href="#como-comprar" class="footer-link">Cómo Comprar</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Servicios y Cuenta -->
+        <div>
+          <h4 class="footer-col-title">Tu Cuenta</h4>
+          <ul class="footer-links-list">
+            <li><a href="#" class="footer-link" id="footer-link-login">Ingresar a Mi Cuenta</a></li>
+            <li><a href="#" class="footer-link" id="footer-link-orders">Mis Pedidos y Recompra</a></li>
+            <li><a href="#" class="footer-link" id="footer-link-favs">Productos Favoritos</a></li>
+            <li><a href="#preguntas" class="footer-link">Preguntas Frecuentes</a></li>
+            <li><a href="admin/" class="footer-link">Panel Administrativo (/admin)</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 4: Contacto y WhatsApp -->
+        <div>
+          <h4 class="footer-col-title">Contacto Directo</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>WhatsApp: <strong>11 3033-2341</strong></span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>adminyaaa@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Atención: Lunes a Sábados 8:00 a 19:00 hs</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 <strong>Mayorista a tu Casa</strong> · Todos los derechos reservados.
+        </div>
+        <div>
+          Desarrollado con arquitectura moderna y segura por <strong>AdminYAAA</strong>.
         </div>
       </div>
     </div>
-  </section>
-</main>
+  </footer>
 
-<!-- ============================ PIE ============================ -->
-<footer class="site-footer">
-  <div class="wrap footer-grid">
-    <div class="footer-brand">
-      <a class="brand" href="#inicio">
-        <picture>
-          <source srcset="assets/img/adminyaaa-logo-dark.webp" type="image/webp">
-          <img src="assets/img/adminyaaa-logo-dark.png" alt="AdminYAAA, volver al inicio" width="760" height="214" loading="lazy">
-        </picture>
-      </a>
-      <p class="footer-slogan">Administración que te ayuda a crecer</p>
-      <p>Administración tercerizada para PyMEs, comercios, emprendedores y profesionales. Trabajamos junto a tu contador.</p>
+  <!-- ============================================================
+       BOTÓN FLOTANTE DE WHATSAPP
+       ============================================================ -->
+  <a href="https://wa.me/5491130332341?text=Hola%2C%20quiero%20consultar%20por%20compras%20mayoristas." target="_blank" rel="noopener" class="wa-float" aria-label="Escribinos por WhatsApp al 11 3033-2341">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.3-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.6 6.6 0 0 1-2-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4s.1-.3 0-.4-.5-1.3-.7-1.8-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8s2 3 4.8 4.2c.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4s.2-1.3.1-1.4-.2-.1-.5-.2z"/></svg>
+    <span>11 3033-2341</span>
+  </a>
+
+  <!-- ============================================================
+       BARRA INFERIOR FIJA MÓVIL (MOBILE BOTTOM NAV)
+       ============================================================ -->
+  <nav class="mobile-bottom-nav" aria-label="Navegación móvil inferior">
+    <a href="#inicio" class="mobile-nav-item is-active">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Inicio</span>
+    </a>
+    <a href="#combos" class="mobile-nav-item">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span>Combos</span>
+    </a>
+    <a href="#catalogo" class="mobile-nav-item">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <span>Buscar</span>
+    </a>
+    <a href="#" class="mobile-nav-item" id="mobile-nav-fav">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span>Favoritos</span>
+      <span class="mobile-nav-badge fav-count-badge" style="display:none">0</span>
+    </a>
+    <a href="#" class="mobile-nav-item" data-open-drawer="cart-drawer">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span>Carrito</span>
+      <span class="mobile-nav-badge cart-count-badge" style="display:none">0</span>
+    </a>
+  </nav>
+
+  <!-- ============================================================
+       DRAWER DEL CARRITO
+       ============================================================ -->
+  <div class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title" aria-hidden="true">
+    <div class="drawer-header">
+      <h2 class="drawer-title" id="cart-drawer-title">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span>Tu Pedido</span>
+      </h2>
+      <button type="button" class="modal-close" data-close-drawer="cart-drawer" aria-label="Cerrar carrito">&times;</button>
     </div>
-    <div class="footer-col">
-      <h3>Contacto</h3>
-      <ul>
-        <li><a href="https://wa.me/5491125604901" target="_blank" rel="noopener">WhatsApp 11 2560-4901<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
-        <li><a href="https://wa.me/5491130332341" target="_blank" rel="noopener">WhatsApp 11 3033-2341<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
-        <li><a href="https://www.instagram.com/admin.yaaa/" target="_blank" rel="noopener">Instagram @admin.yaaa<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
-        <li><a href="https://www.linkedin.com/company/adminya/" target="_blank" rel="noopener">LinkedIn AdminYAAA<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
-        <li><a href="mailto:adminyaaa@gmail.com">adminyaaa@gmail.com</a></li>
-      </ul>
+    <div class="drawer-body" id="cart-drawer-items">
+      <!-- Items inyectados dinámicamente -->
     </div>
-    <div class="footer-col">
-      <h3>Oficina</h3>
-      <address>Av. Gaona 4385<br>Ciudadela, Provincia de Buenos Aires</address>
-      <ul>
-        <li><a href="https://share.google/GwaTx7BCfUCzjgzkv" target="_blank" rel="noopener">Cómo llegar<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li>
-      </ul>
+    <div class="drawer-footer" id="cart-drawer-summary">
+      <!-- Resumen inyectado dinámicamente -->
     </div>
   </div>
-</footer>
+  <div class="drawer-backdrop" aria-hidden="true"></div>
 
-<!-- Barra fija de WhatsApp en celular y tablet: ambos números, mismo tamaño y estilo -->
-<nav class="wa-bar" id="wa-bar" aria-label="WhatsApp">
-  <a class="wa" href="https://wa.me/5491125604901?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
-    <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>
-    <span class="wa-text"><span class="wa-label">WhatsApp</span><span class="wa-num">11 2560-4901</span></span>
-    <span class="sr-only">(se abre en una pestaña nueva)</span>
-  </a>
-  <a class="wa" href="https://wa.me/5491130332341?text=Hola%20AdminYAAA%2C%20quiero%20consultar%20por%20la%20administraci%C3%B3n%20de%20mi%20negocio." target="_blank" rel="noopener">
-    <svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>
-    <span class="wa-text"><span class="wa-label">WhatsApp</span><span class="wa-num">11 3033-2341</span></span>
-    <span class="sr-only">(se abre en una pestaña nueva)</span>
-  </a>
-</nav>
+  <!-- ============================================================
+       DRAWER DE MENÚ MÓVIL
+       ============================================================ -->
+  <div class="drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-labelledby="mobile-drawer-title" aria-hidden="true" style="left:0;right:auto;transform:translateX(-100%)">
+    <div class="drawer-header">
+      <div style="display:flex;align-items:center;gap:0.75rem">
+        <img src="img/logo.png" alt="Mayorista a tu Casa" style="height:36px">
+        <div>
+          <strong style="font-size:1rem;color:var(--color-primary-900);display:block">MAYORISTA</strong>
+          <small style="font-size:0.6875rem;color:var(--color-text-subtle)">Una iniciativa de AdminYAAA</small>
+        </div>
+      </div>
+      <button type="button" class="modal-close" data-close-drawer="mobile-drawer" aria-label="Cerrar menú">&times;</button>
+    </div>
+    <div class="drawer-body" style="padding:1rem">
+      <nav style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem">
+        <a href="#inicio" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start">Inicio</a>
+        <a href="#catalogo" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start">Catálogo de Productos</a>
+        <a href="#combos" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start">Combos Sugeridos</a>
+        <a href="#ofertas" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start">Ofertas de la Semana</a>
+        <a href="#como-comprar" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start">Cómo Comprar</a>
+        <a href="#contacto" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start">Contacto</a>
+        <a href="admin/" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start;color:var(--color-primary-600);font-weight:700">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:0.5rem"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Panel Admin (/admin)
+        </a>
+      </nav>
 
-<script src="assets/js/main.js" defer></script>
+      <div style="border-top:1px solid var(--color-border);padding-top:1rem;margin-bottom:1.5rem">
+        <button type="button" class="btn btn--primary btn--block" id="mobile-nav-account" style="margin-bottom:0.75rem">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Mi Cuenta / Ingresar
+        </button>
+        <a href="https://wa.me/5491130332341?text=Hola%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener" class="btn btn--wa btn--block">
+          WhatsApp 11 3033-2341
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       MODAL DE VISTA RÁPIDA DE PRODUCTO
+       ============================================================ -->
+  <div class="modal" id="quick-view-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="quick-view-modal"></div>
+    <div class="modal-dialog modal-dialog--lg">
+      <div class="modal-header">
+        <h3 class="modal-title">Detalle del Producto</h3>
+        <button type="button" class="modal-close" data-close-modal="quick-view-modal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body quick-view-body">
+        <!-- Contenido inyectado por QuickView.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL DE DETALLE DE COMBO
+       ============================================================ -->
+  <div class="modal" id="combo-details-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="combo-details-modal"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Productos del Combo</h3>
+        <button type="button" class="modal-close" data-close-modal="combo-details-modal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body combo-details-body">
+        <!-- Inyectado dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL DE CHECKOUT EN 5 PASOS
+       ============================================================ -->
+  <div class="modal" id="checkout-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="checkout-modal"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div style="flex:1">
+          <h2 class="modal-title" style="font-size:1.15rem">Confirmación de Pedido Mayorista</h2>
+          <small style="color:var(--color-text-subtle)">Destino: WhatsApp Oficial 11 3033-2341</small>
+        </div>
+        <button type="button" class="modal-close" data-close-modal="checkout-modal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Indicador de 5 pasos -->
+        <div class="checkout-progress">
+          <div class="checkout-step-indicator is-active" data-step="1">
+            <div class="checkout-step-dot">1</div>
+            <span class="checkout-step-label">Datos</span>
+          </div>
+          <div class="checkout-step-indicator" data-step="2">
+            <div class="checkout-step-dot">2</div>
+            <span class="checkout-step-label">Dirección</span>
+          </div>
+          <div class="checkout-step-indicator" data-step="3">
+            <div class="checkout-step-dot">3</div>
+            <span class="checkout-step-label">Entrega</span>
+          </div>
+          <div class="checkout-step-indicator" data-step="4">
+            <div class="checkout-step-dot">4</div>
+            <span class="checkout-step-label">Pago</span>
+          </div>
+          <div class="checkout-step-indicator" data-step="5">
+            <div class="checkout-step-dot">5</div>
+            <span class="checkout-step-label">Resumen</span>
+          </div>
+        </div>
+
+        <div id="checkout-step-content">
+          <!-- Pasos inyectados por renderCheckoutStep() -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL DE LOGIN
+       ============================================================ -->
+  <div class="modal" id="login-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="login-modal"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Ingresá a tu cuenta</h3>
+        <button type="button" class="modal-close" data-close-modal="login-modal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted" style="margin-bottom:1.5rem;font-size:0.875rem">Guardá tus direcciones y repetí pedidos con un solo clic.</p>
+        <form id="form-login">
+          <div class="form-group">
+            <label class="form-label" for="login-email">Correo electrónico</label>
+            <input type="email" id="login-email" class="form-input" required placeholder="tu@negocio.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="login-pass">Contraseña</label>
+            <input type="password" id="login-pass" class="form-input" required placeholder="••••••••">
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;font-size:0.8125rem">
+            <label style="display:flex;align-items:center;gap:0.35rem;cursor:pointer">
+              <input type="checkbox" id="login-remember" checked> Recordar sesión
+            </label>
+            <a href="#" id="link-forgot-pass" style="color:var(--color-accent-600);font-weight:600">¿Olvidaste tu contraseña?</a>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block btn--lg">Ingresar</button>
+        </form>
+
+        <div style="margin:1.5rem 0 1rem;text-align:center;position:relative">
+          <hr style="border:none;border-top:1px solid var(--color-border)">
+          <span style="position:relative;top:-10px;background:#FFFFFF;padding:0 0.75rem;font-size:0.75rem;color:var(--color-text-subtle);text-transform:uppercase">O acceso rápido</span>
+        </div>
+
+        <button type="button" class="btn btn--outline btn--block" id="btn-login-demo">
+          ⚡ Ingresar como Usuario Demo (Carolina)
+        </button>
+
+        <p style="text-align:center;margin-top:1.5rem;font-size:0.875rem">
+          ¿No tenés cuenta todavía? <a href="#" id="link-open-register" style="color:var(--color-accent-600);font-weight:700">Registrate gratis</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL DE REGISTRO
+       ============================================================ -->
+  <div class="modal" id="register-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="register-modal"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Creá tu cuenta mayorista</h3>
+        <button type="button" class="modal-close" data-close-modal="register-modal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-register">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="reg-name">Nombre *</label>
+              <input type="text" id="reg-name" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-lastname">Apellido *</label>
+              <input type="text" id="reg-lastname" class="form-input" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="reg-email">Correo electrónico *</label>
+              <input type="email" id="reg-email" class="form-input" required placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-phone">Teléfono / Celular *</label>
+              <input type="tel" id="reg-phone" class="form-input" required placeholder="11 3033-2341">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="reg-pass">Contraseña *</label>
+              <input type="password" id="reg-pass" class="form-input" required minlength="6" placeholder="Mínimo 6 caracteres">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-confirm-pass">Confirmar Contraseña *</label>
+              <input type="password" id="reg-confirm-pass" class="form-input" required minlength="6">
+            </div>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block btn--lg">Crear mi cuenta</button>
+        </form>
+
+        <p style="text-align:center;margin-top:1.25rem;font-size:0.875rem">
+          ¿Ya tenés cuenta? <a href="#" id="link-back-to-login" style="color:var(--color-accent-600);font-weight:700">Iniciá sesión acá</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL DE RECUPERAR CONTRASEÑA
+       ============================================================ -->
+  <div class="modal" id="forgot-pass-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="forgot-pass-modal"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Recuperar contraseña</h3>
+        <button type="button" class="modal-close" data-close-modal="forgot-pass-modal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted" style="margin-bottom:1.25rem;font-size:0.875rem">Ingresá tu correo y te enviaremos las instrucciones de restablecimiento.</p>
+        <form id="form-forgot-pass">
+          <div class="form-group">
+            <label class="form-label" for="forgot-email">Correo registrado</label>
+            <input type="email" id="forgot-email" class="form-input" required placeholder="tu@negocio.com">
+          </div>
+          <button type="submit" class="btn btn--primary btn--block">Enviar enlace</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL DE MI PERFIL Y GESTIÓN DE CUENTA
+       ============================================================ -->
+  <div class="modal" id="profile-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="profile-modal"></div>
+    <div class="modal-dialog modal-dialog--lg">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="profile-user-name">Mi Perfil</h3>
+          <small class="text-muted" id="profile-user-email">usuario@correo.com</small>
+        </div>
+        <button type="button" class="modal-close" data-close-modal="profile-modal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Pestaña 1: Mis Pedidos Anteriores -->
+        <div style="margin-bottom:2rem">
+          <h4 style="font-size:1.0625rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Mis Pedidos e Historial de Recompra
+          </h4>
+          <div id="profile-orders-list">
+            <!-- Pedidos inyectados -->
+          </div>
+        </div>
+
+        <!-- Pestaña 2: Direcciones Guardadas -->
+        <div style="margin-bottom:2rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+            <h4 style="font-size:1.0625rem;display:flex;align-items:center;gap:0.5rem">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Direcciones de Entrega
+            </h4>
+            <button type="button" class="btn btn--outline btn--sm" data-open-modal="add-address-modal">+ Nueva dirección</button>
+          </div>
+          <div id="profile-addresses-list">
+            <!-- Direcciones inyectadas -->
+          </div>
+        </div>
+
+        <!-- Pestaña 3: Tarjetas y Billetera Segura -->
+        <div style="margin-bottom:2rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+            <h4 style="font-size:1.0625rem;display:flex;align-items:center;gap:0.5rem">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Billetera y Medios de Pago
+            </h4>
+            <button type="button" class="btn btn--outline btn--sm" data-open-modal="add-card-modal">+ Agregar tarjeta</button>
+          </div>
+          <div id="profile-cards-list">
+            <!-- Tarjetas inyectadas -->
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn--outline text-danger" id="btn-logout">Cerrar sesión</button>
+        <button type="button" class="btn btn--secondary" data-close-modal="profile-modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL DE AGREGAR TARJETA (SIMULACIÓN SEGURA)
+       ============================================================ -->
+  <div class="modal" id="add-card-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="add-card-modal"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Agregar Tarjeta a tu Billetera</h3>
+        <button type="button" class="modal-close" data-close-modal="add-card-modal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Vista previa plástica de la tarjeta -->
+        <div class="card-preview" aria-hidden="true">
+          <div class="card-preview-top">
+            <div class="card-preview-chip"></div>
+            <span class="card-preview-brand">TARJETA</span>
+          </div>
+          <div class="card-preview-number">•••• •••• •••• ••••</div>
+          <div class="card-preview-bottom">
+            <span class="card-preview-holder">NOMBRE Y APELLIDO</span>
+            <span class="card-preview-expiry">MM/AA</span>
+          </div>
+        </div>
+
+        <form id="form-add-card">
+          <div class="form-group">
+            <label class="form-label" for="card-number">Número de tarjeta</label>
+            <input type="text" id="card-number" class="form-input" required maxlength="19" placeholder="4500 0000 0000 0000" inputmode="numeric">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="card-holder">Titular de la tarjeta</label>
+            <input type="text" id="card-holder" class="form-input" required placeholder="Como figura en el plástico">
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="card-month">Mes vencimiento</label>
+              <select id="card-month" class="form-select" required>
+                <option value="">Mes</option>
+                <option value="01">01 - Ene</option>
+                <option value="02">02 - Feb</option>
+                <option value="03">03 - Mar</option>
+                <option value="04">04 - Abr</option>
+                <option value="05">05 - May</option>
+                <option value="06">06 - Jun</option>
+                <option value="07">07 - Jul</option>
+                <option value="08">08 - Ago</option>
+                <option value="09">09 - Sep</option>
+                <option value="10">10 - Oct</option>
+                <option value="11">11 - Nov</option>
+                <option value="12">12 - Dic</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="card-year">Año vencimiento</label>
+              <select id="card-year" class="form-select" required>
+                <option value="">Año</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+                <option value="2031">2031</option>
+                <option value="2032">2032</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="background:var(--color-primary-50);padding:0.75rem 1rem;border-radius:var(--radius-md);margin-bottom:1.25rem;font-size:0.75rem;color:var(--color-primary-800)">
+            🔒 <strong>Política de Seguridad:</strong> No solicitamos ni guardamos el código CVV/CVC. Solo guardamos los últimos 4 dígitos y la marca para visualización. No se debitan cargos en este paso.
+          </div>
+
+          <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;margin-bottom:1.25rem;cursor:pointer">
+            <input type="checkbox" id="card-default" checked> Establecer como tarjeta predeterminada
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--block">Guardar Tarjeta</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL DE AGREGAR DIRECCIÓN
+       ============================================================ -->
+  <div class="modal" id="add-address-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="add-address-modal"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Nueva Dirección de Entrega</h3>
+        <button type="button" class="modal-close" data-close-modal="add-address-modal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-add-address">
+          <div class="form-group">
+            <label class="form-label" for="addr-name">Nombre de referencia *</label>
+            <input type="text" id="addr-name" class="form-input" required placeholder="Ej: Casa, Depósito, Local...">
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="addr-street">Calle *</label>
+              <input type="text" id="addr-street" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="addr-number">Altura / Número *</label>
+              <input type="text" id="addr-number" class="form-input" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="addr-floor">Piso / Departamento</label>
+              <input type="text" id="addr-floor" class="form-input" placeholder="Ej: 2 B">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="addr-cp">Código Postal</label>
+              <input type="text" id="addr-cp" class="form-input" placeholder="1714">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="addr-city">Localidad / Zona *</label>
+            <select id="addr-city" class="form-select" required>
+              <option value="Ituzaingó">Ituzaingó (Envío Sin Cargo)</option>
+              <option value="Castelar">Castelar</option>
+              <option value="Morón">Morón</option>
+              <option value="Haedo">Haedo</option>
+              <option value="Ramos Mejía">Ramos Mejía</option>
+              <option value="San Justo">San Justo</option>
+              <option value="Ciudadela">Ciudadela</option>
+              <option value="Merlo">Merlo</option>
+              <option value="Padua">Padua</option>
+              <option value="CABA">CABA (Capital Federal)</option>
+              <option value="Otra">Otra localidad</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="addr-ref">Indicaciones para el repartidor</label>
+            <textarea id="addr-ref" class="form-textarea" rows="2" placeholder="Ej: Timbre blanco, rejas negras, entre qué calles queda..."></textarea>
+          </div>
+          <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;margin-bottom:1.25rem;cursor:pointer">
+            <input type="checkbox" id="addr-default" checked> Establecer como dirección principal
+          </label>
+          <button type="submit" class="btn btn--primary btn--block">Guardar Dirección</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL DE FAVORITOS
+       ============================================================ -->
+  <div class="modal" id="favorites-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="favorites-modal"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Tus Productos Favoritos</h3>
+        <button type="button" class="modal-close" data-close-modal="favorites-modal" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-body favorites-modal-body">
+        <!-- Inyectado dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BARRA DE NAVEGACIÓN INFERIOR MOBILE (Estilo App DIA / Carrefour)
+       ============================================================ -->
+  <nav class="mobile-bottom-nav" aria-label="Navegación inferior móvil">
+    <a href="#inicio" class="mobile-nav-tab is-active">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Inicio</span>
+    </a>
+    <a href="#catalogo" class="mobile-nav-tab">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Productos</span>
+    </a>
+    <a href="#ofertas" class="mobile-nav-tab mobile-nav-tab--promo">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+      <span>Ofertas</span>
+    </a>
+    <button type="button" class="mobile-nav-tab" id="mobile-nav-fav-btn" aria-label="Ver favoritos">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span>Favoritos</span>
+    </button>
+    <button type="button" class="mobile-nav-tab mobile-nav-tab--cart" data-open-drawer="cart-drawer" aria-label="Abrir pedido">
+      <div class="mobile-cart-badge-wrap">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="mobile-cart-badge cart-count-badge" style="display:none">0</span>
+      </div>
+      <span>Pedido</span>
+    </button>
+  </nav>
+
+  <!-- Script principal como ES Module -->
+  <script type="module" src="js/app.js"></script>
+
 </body>
 </html>
