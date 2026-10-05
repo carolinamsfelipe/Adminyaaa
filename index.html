@@ -92,7 +92,7 @@
         <a href="#ofertas" class="nav-link">Ofertas</a>
         <a href="#como-comprar" class="nav-link">Cómo comprar</a>
         <a href="#contacto" class="nav-link">Contacto</a>
-        <a href="admin/" class="nav-link" style="color:var(--color-primary-600);font-weight:700;display:inline-flex;align-items:center;gap:0.35rem" title="Panel de Gestión Mayorista">
+        <a href="admin/" class="nav-link" id="nav-header-admin-link" style="color:var(--color-primary-600);font-weight:700;display:none;align-items:center;gap:0.35rem" title="Panel de Gestión Mayorista">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           Admin
         </a>
@@ -467,7 +467,7 @@
             <li><a href="#" class="footer-link" id="footer-link-orders">Mis Pedidos y Recompra</a></li>
             <li><a href="#" class="footer-link" id="footer-link-favs">Productos Favoritos</a></li>
             <li><a href="#preguntas" class="footer-link">Preguntas Frecuentes</a></li>
-            <li><a href="admin/" class="footer-link">Panel Administrativo (/admin)</a></li>
+            <li><a href="admin/" class="footer-link" id="footer-admin-link">Gestión Mayorista (Acceso Admin / Demo)</a></li>
           </ul>
         </div>
 
@@ -579,9 +579,9 @@
         <a href="#ofertas" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start">Ofertas de la Semana</a>
         <a href="#como-comprar" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start">Cómo Comprar</a>
         <a href="#contacto" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start">Contacto</a>
-        <a href="admin/" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start;color:var(--color-primary-600);font-weight:700">
+        <a href="admin/" id="mobile-drawer-admin-link" class="btn btn--outline btn--block" data-close-drawer="mobile-drawer" style="justify-content:flex-start;color:var(--color-primary-600);font-weight:700;display:none">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:0.5rem"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          Panel Admin (/admin)
+          Panel Admin (Gestión)
         </a>
       </nav>
 

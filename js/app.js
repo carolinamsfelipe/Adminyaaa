@@ -188,6 +188,23 @@ function updateAuthUI() {
     if (btnAuth) btnAuth.innerHTML = `<svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Ingresar`;
     if (btnMobileAuth) btnMobileAuth.innerHTML = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Cuenta</span>`;
   }
+
+  // Visibilidad condicional del acceso de Administración (solo para administradores o demo)
+  const adminSession = StorageService.get('wholesale_admin_session', null);
+  const urlParams = new URLSearchParams(window.location.search);
+  const hasAdminAccess = (adminSession && adminSession.authenticated) || 
+                         urlParams.has('admin') || 
+                         urlParams.has('demo') || 
+                         (user && (user.role === 'admin' || user.email?.includes('admin')));
+
+  const navAdmin = document.getElementById('nav-header-admin-link');
+  if (navAdmin) {
+    navAdmin.style.display = hasAdminAccess ? 'inline-flex' : 'none';
+  }
+  const mobileAdmin = document.getElementById('mobile-drawer-admin-link');
+  if (mobileAdmin) {
+    mobileAdmin.style.display = hasAdminAccess ? 'flex' : 'none';
+  }
 }
 
 // ============================================================

@@ -29,6 +29,145 @@ const state = {
   sessionReceipts: []
 };
 
+const AUTH_SESSION_KEY = 'wholesale_admin_session';
+
+// ============================================================
+// CONTROL DE ACCESO ADMINISTRATIVO / PORTAL DEMO
+// ============================================================
+function checkAdminAuth() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const demoParam = urlParams.get('demo');
+
+  // Si ingresan con parámetro directo de demo (ej: ?demo=admin o ?demo=true)
+  if (demoParam) {
+    let role = 'Administrador';
+    let name = 'Carolina Felipe (Admin Demo)';
+    if (demoParam === 'operador') {
+      role = 'Operador';
+      name = 'Operador Logístico (Demo)';
+    } else if (demoParam === 'auditor' || demoParam === 'viewer') {
+      role = 'Solo lectura';
+      name = 'Auditor Externo (Demo)';
+    }
+    const session = {
+      authenticated: true,
+      email: 'admin@adminya.com.ar',
+      name: name,
+      role: role,
+      loginAt: new Date().toISOString()
+    };
+    StorageService.set(AUTH_SESSION_KEY, session);
+    AdminService.setCurrentRole(role);
+  }
+
+  const session = StorageService.get(AUTH_SESSION_KEY, null);
+  const authGate = document.getElementById('admin-auth-gate');
+  const mainWrap = document.querySelector('.admin-main-wrap');
+  const sidebar = document.getElementById('admin-sidebar');
+
+  if (session && session.authenticated) {
+    if (authGate) authGate.style.display = 'none';
+    if (mainWrap) mainWrap.style.display = '';
+    if (sidebar) sidebar.style.display = '';
+
+    // Sincronizar UI de usuario y rol
+    const nameEl = document.getElementById('header-user-name');
+    const avatarEl = document.getElementById('header-user-avatar');
+    if (nameEl) nameEl.textContent = session.name || 'Carolina Felipe';
+    if (avatarEl) avatarEl.textContent = (session.name || 'C').charAt(0).toUpperCase();
+
+    if (session.role) {
+      AdminService.setCurrentRole(session.role);
+      const roleSelect = document.getElementById('select-admin-role');
+      const roleBadge = document.getElementById('role-pill-badge');
+      if (roleSelect) roleSelect.value = session.role;
+      if (roleBadge) {
+        roleBadge.textContent = session.role;
+        roleBadge.className = `role-pill role-pill--${session.role === 'Administrador' ? 'admin' : (session.role === 'Operador' ? 'operador' : 'viewer')}`;
+      }
+    }
+    return true;
+  } else {
+    if (authGate) authGate.style.display = 'flex';
+    if (mainWrap) mainWrap.style.display = 'none';
+    if (sidebar) sidebar.style.display = 'none';
+    return false;
+  }
+}
+
+function handleLoginSuccess(email, name, role) {
+  const session = {
+    authenticated: true,
+    email: email || 'admin@adminya.com.ar',
+    name: name || 'Carolina Felipe',
+    role: role || 'Administrador',
+    loginAt: new Date().toISOString()
+  };
+  StorageService.set(AUTH_SESSION_KEY, session);
+  AdminService.setCurrentRole(session.role);
+  checkAdminAuth();
+  showToast(`¡Bienvenido al Panel de Gestión, ${session.name}!`, 'success');
+  switchTab('dashboard');
+}
+
+function handleAdminLogout() {
+  StorageService.remove(AUTH_SESSION_KEY);
+  checkAdminAuth();
+  showToast('Sesión de administrador cerrada', 'info');
+}
+
+function setupAuthGateEvents() {
+  const loginForm = document.getElementById('form-admin-login');
+  const errorEl = document.getElementById('admin-login-error');
+
+  if (loginForm) {
+    loginForm.onsubmit = (e) => {
+      e.preventDefault();
+      const email = document.getElementById('admin-login-email').value.trim().toLowerCase();
+      const password = document.getElementById('admin-login-password').value.trim();
+
+      const validEmails = ['admin@adminya.com.ar', 'carolina@adminya.com.ar', 'demo@adminya.com.ar', 'admin', 'carolina'];
+      const validPasswords = ['admin123', 'adminyaaa2026', 'demo123', 'admin'];
+
+      const isValidUser = validEmails.includes(email) || email.includes('admin') || email.includes('carolina');
+      const isValidPass = validPasswords.includes(password) || password.length >= 4;
+
+      if (isValidUser && isValidPass) {
+        if (errorEl) errorEl.style.display = 'none';
+        const name = email.includes('carolina') ? 'Carolina Felipe' : 'Administrador General';
+        handleLoginSuccess(email, name, 'Administrador');
+      } else {
+        if (errorEl) {
+          errorEl.textContent = 'Credenciales no reconocidas. Podés usar admin@adminya.com.ar / admin123 o los botones de Acceso Rápido.';
+          errorEl.style.display = 'block';
+        }
+      }
+    };
+  }
+
+  // Botones de 1-Clic para demo
+  const btnAdmin = document.getElementById('btn-quick-login-admin');
+  if (btnAdmin) {
+    btnAdmin.onclick = () => handleLoginSuccess('admin@adminya.com.ar', 'Carolina Felipe (Admin Demo)', 'Administrador');
+  }
+
+  const btnOperador = document.getElementById('btn-quick-login-operador');
+  if (btnOperador) {
+    btnOperador.onclick = () => handleLoginSuccess('operador@adminya.com.ar', 'Operador Logístico (Demo)', 'Operador');
+  }
+
+  const btnViewer = document.getElementById('btn-quick-login-viewer');
+  if (btnViewer) {
+    btnViewer.onclick = () => handleLoginSuccess('auditor@adminya.com.ar', 'Auditor Externo (Demo)', 'Solo lectura');
+  }
+
+  // Botón de salir / logout en el header
+  const logoutBtn = document.getElementById('btn-admin-logout');
+  if (logoutBtn) {
+    logoutBtn.onclick = handleAdminLogout;
+  }
+}
+
 // ============================================================
 // INICIALIZACIÓN
 // ============================================================
@@ -36,9 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setupNavigation();
   setupRoleSwitcher();
   setupGlobalEvents();
+  setupAuthGateEvents();
   
-  // Renderizar vista inicial
-  switchTab('dashboard');
+  // Verificar autenticación o mostrar portal de acceso
+  const isAuth = checkAdminAuth();
+  if (isAuth) {
+    switchTab('dashboard');
+  }
 });
 
 function setupNavigation() {
