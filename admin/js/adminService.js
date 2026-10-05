@@ -5,6 +5,7 @@
 import { PRODUCTS } from '../../js/data/catalog.js';
 import { StorageService } from '../../js/services/storageService.js';
 import { OrdersService } from '../../js/services/ordersService.js';
+import { db } from '../../js/services/databaseService.js';
 
 const STORAGE_KEYS = {
   PRODUCTS: 'wholesale_products',
@@ -566,6 +567,7 @@ export const AdminService = {
     };
 
     StorageService.set(STORAGE_KEYS.PRODUCTS, products);
+    db.updateProduct(id, products[idx]).catch(err => console.warn('[AdminService] Sync error to db:', err));
     return products[idx];
   },
 

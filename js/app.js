@@ -23,6 +23,7 @@ import { Modal } from './ui/modal.js';
 import { Drawer } from './ui/drawer.js';
 import { QuickView } from './ui/quickView.js';
 import { MegaMenu } from './ui/megaMenu.js';
+import { db } from './services/databaseService.js';
 
 // Sincronización en vivo con inventario y precios del Panel Administrativo (/admin)
 function getLiveProducts() {
@@ -76,8 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Sincronizar catálogo inicial desde Storage si existe
-  getLiveProducts();
+  // Inicializar capa de datos y sincronizar catálogo
+  db.init().then(() => {
+    getLiveProducts();
+    renderCatalog();
+  });
 
   renderTopbar();
   renderBrandHeader();
@@ -110,6 +114,16 @@ function subscribeToServices() {
 
   FavoritesService.subscribe(() => {
     updateFavoritesUI();
+  });
+
+  // Suscripción reactiva en tiempo real (BaaS Supabase / LocalStorage)
+  db.subscribeToChanges('products', async () => {
+    await db.getProducts();
+    getLiveProducts();
+    renderSectionFilterPills();
+    renderCatalog();
+    renderOffersSection();
+    renderTopSellersSection();
   });
 
   // Re-renderizar si el administrador modifica precios o stock en otra pestaña
@@ -1142,6 +1156,9 @@ function renderCheckoutStep(stepNumber) {
 
         // Vaciar carrito
         CartService.clear();
+
+        // Sincronizar pedido en capa de base de datos / BaaS
+        db.createOrder(newOrder).catch(err => console.warn('[Checkout] Error sincronizando pedido con DB:', err));
 
         // Mostrar pantalla de éxito
         renderCheckoutSuccess(newOrder);

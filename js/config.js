@@ -27,5 +27,14 @@ export const STORE_CONFIG = {
   deliveryTypes: [
     { id: 'domicilio', name: 'Envío a domicilio', desc: 'Recibí en la comodidad de tu casa o negocio.' },
     { id: 'retiro', name: 'Retiro en depósito (Ituzaingó)', desc: 'Retirás sin costo una vez preparado el pedido.' }
-  ]
+  ],
+  // ============================================================
+  // CONFIGURACIÓN DE BASE DE DATOS Y SINCRONIZACIÓN BAAS
+  // ============================================================
+  DATABASE: {
+    /** @type {'local' | 'supabase'} */
+    provider: 'local', // 'local' para localStorage, 'supabase' para PostgreSQL en la nube
+    supabaseUrl: 'https://TU-PROYECTO.supabase.co',
+    supabaseAnonKey: 'TU-ANON-KEY-DE-SUPABASE'
+  }
 };
