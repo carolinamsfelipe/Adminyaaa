@@ -14,14 +14,17 @@ let _searchTimer  = null
 // ─── Datos de búsqueda en demo (reemplazar con Supabase en prod) ──────────────
 
 const SEARCH_DEMO_DATA = [
-  { type: 'cliente',  label: 'La Birreria del Centro',  route: '/panel/clientes.html?id=c1',  icon: '🏢' },
-  { type: 'cliente',  label: 'Parrilla Los Robles',     route: '/panel/clientes.html?id=c2',  icon: '🏢' },
-  { type: 'cliente',  label: 'Café & Resto El Portal',  route: '/panel/clientes.html?id=c3',  icon: '🏢' },
-  { type: 'tarea',    label: 'Presentar DDJJ Julio',    route: '/panel/tareas.html?id=t1',    icon: '✅' },
-  { type: 'tarea',    label: 'Liquidar sueldos Agosto', route: '/panel/tareas.html?id=t2',    icon: '✅' },
-  { type: 'tarea',    label: 'Renovar inscripción AFIP',route: '/panel/tareas.html?id=t3',    icon: '✅' },
-  { type: 'factura',  label: 'FC 001-00001234',         route: '/panel/cuentas-corrientes.html?id=f1', icon: '📄' },
-  { type: 'factura',  label: 'FC 001-00001235',         route: '/panel/cuentas-corrientes.html?id=f2', icon: '📄' },
+  { type: 'cliente',  label: 'La Birreria del Centro',  route: "#/clientes?id=c1",  icon: '🏢' },
+  { type: 'cliente',  label: 'Parrilla Los Robles',     route: "#/clientes?id=c2",  icon: '🏢' },
+  { type: 'cliente',  label: 'Café & Resto El Portal',  route: "#/clientes?id=c3",  icon: '🏢' },
+  { type: 'tarea',    label: 'Presentar DDJJ Julio',    route: "#/tareas?id=t1",    icon: '✅' },
+  { type: 'tarea',    label: 'Liquidar sueldos Agosto', route: "#/tareas?id=t2",    icon: '✅' },
+  { type: 'tarea',    label: 'Renovar inscripción AFIP',route: "#/tareas?id=t3",    icon: '✅' },
+  { type: 'factura',  label: 'FC 001-00001234',         route: "#/cuentas-corrientes?id=f1", icon: '📄' },
+  { type: 'factura',  label: 'FC 001-00001235',         route: "#/cuentas-corrientes?id=f2", icon: '📄' },
+  { type: 'modulo',   label: 'Gestión Mayorista & Despacho', route: "#/mayorista", icon: '📦' },
+  { type: 'modulo',   label: 'Bóveda de Claves Confidenciales', route: "#/boveda", icon: '🔒' },
+  { type: 'modulo',   label: 'Portal Mi Empresa (Clientes)', route: "#/portal-cliente", icon: '🏢' },
 ]
 
 const RECENT_KEY = 'ay_recent_searches'

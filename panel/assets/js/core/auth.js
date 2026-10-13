@@ -1,20 +1,23 @@
 /**
- * auth.js — Módulo de autenticación para AdminYAAA
- * Maneja sesión, roles y permisos por módulo.
- * Diseñado para ser reemplazado por Supabase Auth en producción.
+ * auth.js — Módulo de Autenticación, Roles y Permisos para AdminYAAA
+ *
+ * Soporta 3 roles estrictamente diferenciados:
+ *   - ADMIN: Acceso total (Joaquín, Socios, Ralukita/Carolina - SuperAdmin y Dueña)
+ *   - OPERADOR: Acceso a tareas asignadas, clientes designados, presupuestos y logística
+ *   - CLIENTE: Portal exclusivo para el cliente (su cuenta corriente, documentos compartidos y pedidos)
  */
 
 import { AppState } from './state.js'
 import { toast } from './utils.js'
 
-// ─── Roles ────────────────────────────────────────────────────────────────────
+// ─── Roles del sistema ────────────────────────────────────────────────────────
 export const ROLES = {
   ADMIN:    'admin',
   OPERADOR: 'operador',
+  CLIENTE:  'cliente',
 }
 
 // ─── Permisos por módulo ──────────────────────────────────────────────────────
-// Define qué módulos puede ver cada rol.
 export const PERMISSIONS = {
   admin: [
     'dashboard',
@@ -32,6 +35,8 @@ export const PERMISSIONS = {
     'cobranzas',
     'tesoreria',
     'configuracion',
+    'mayorista',
+    'boveda',
   ],
   operador: [
     'tareas',
@@ -39,49 +44,84 @@ export const PERMISSIONS = {
     'presupuestador',
     'presentismo',
     'fondos',
+    'mayorista',
+  ],
+  cliente: [
+    'portal-cliente',
   ],
 }
 
-// ─── Usuarios demo ────────────────────────────────────────────────────────────
-// Reemplazar con Supabase Auth en producción.
+// ─── Usuarios de acceso y demostración ────────────────────────────────────────
 export const DEMO_USERS = [
   {
-    id:           'u1',
-    nombre:       'Joaquín Ibáñez',
-    email:        'joaquin@adminyaaa.com',
-    password:     'admin123',
-    role:         'admin',
-    iniciales:    'JI',
-    avatar_color: 'emerald',
-    // Admins pueden ver todos los clientes; sin restricción por cliente_id
+    id:                 'u_ralukita',
+    nombre:             'Carolina Felipe (Ralukita)',
+    email:              'ralukita101@gmail.com',
+    password:           'ralukita2026!',
+    role:               'admin',
+    iniciales:          'CF',
+    avatar_color:       'emerald',
+    is_owner:           true,
+    clientes_asignados: null, // null = acceso a toda la cartera
+  },
+  {
+    id:                 'u1',
+    nombre:             'Joaquín Ibáñez',
+    email:              'joaquin@adminyaaa.com',
+    password:           'admin123',
+    role:               'admin',
+    iniciales:          'JI',
+    avatar_color:       'emerald',
+    is_owner:           false,
     clientes_asignados: null,
   },
   {
-    id:           'u2',
-    nombre:       'Máximo Ferreyra',
-    email:        'maximo@adminyaaa.com',
-    password:     'oper123',
-    role:         'operador',
-    iniciales:    'MF',
-    avatar_color: 'blue',
-    // Operadores sólo ven sus clientes asignados (null = todos, array = restricto)
+    id:                 'u2',
+    nombre:             'Máximo Ferreyra',
+    email:              'maximo@adminyaaa.com',
+    password:           'oper123',
+    role:               'operador',
+    iniciales:          'MF',
+    avatar_color:       'blue',
     clientes_asignados: ['c1', 'c2', 'c3'],
   },
   {
-    id:           'u3',
-    nombre:       'Carolina Sánchez',
-    email:        'carolina@adminyaaa.com',
-    password:     'oper123',
-    role:         'operador',
-    iniciales:    'CS',
-    avatar_color: 'violet',
+    id:                 'u3',
+    nombre:             'Carolina Sánchez',
+    email:              'carolina@adminyaaa.com',
+    password:           'oper123',
+    role:               'operador',
+    iniciales:          'CS',
+    avatar_color:       'violet',
     clientes_asignados: ['c4', 'c5'],
+  },
+  {
+    id:                 'u_cliente_robles',
+    nombre:             'Hugo Robles (Parrilla Los Robles)',
+    email:              'cliente@losrobles.com.ar',
+    password:           'cliente123',
+    role:               'cliente',
+    iniciales:          'HR',
+    avatar_color:       'amber',
+    cliente_id:         'c2',
+    nombre_comercial:   'Parrilla Los Robles',
+  },
+  {
+    id:                 'u_cliente_maximo',
+    nombre:             'Distribuidora Máximo (Contacto)',
+    email:              'cliente@distribuidoramaximo.com.ar',
+    password:           'cliente123',
+    role:               'cliente',
+    iniciales:          'DM',
+    avatar_color:       'rose',
+    cliente_id:         'c4',
+    nombre_comercial:   'Distribuidora Máximo',
   },
 ]
 
 // ─── Constantes internas ──────────────────────────────────────────────────────
 const SESSION_KEY = 'ay_session'
-const LOGIN_PAGE  = '/panel/login.html'
+const LOGIN_PAGE  = 'auth.html'
 
 // ─── Auth API ─────────────────────────────────────────────────────────────────
 export const Auth = {
@@ -91,11 +131,9 @@ export const Auth = {
    * @param {string} email
    * @param {string} password
    * @returns {Promise<object>} Usuario autenticado
-   * @throws {Error} Si las credenciales son inválidas
    */
   async login(email, password) {
-    // Simula latencia de red (quitar con Supabase)
-    await new Promise(r => setTimeout(r, 300))
+    await new Promise(r => setTimeout(r, 200))
 
     const normalized = (email || '').trim().toLowerCase()
     const user = DEMO_USERS.find(
@@ -103,29 +141,27 @@ export const Auth = {
     )
 
     if (!user) {
-      toast('Credenciales incorrectas. Verificá tu email y contraseña.', 'error')
+      toast('Credenciales incorrectas. Verificá tu correo y contraseña.', 'error')
       throw new Error('Credenciales inválidas')
     }
 
-    // Guardamos sin exponer la contraseña en sesión
     const sessionUser = { ...user }
     delete sessionUser.password
 
     Auth.setSession(sessionUser)
 
-    // Sincronizar con AppState si está disponible
     try {
       if (AppState && typeof AppState.set === 'function') {
         AppState.set('currentUser', sessionUser)
       }
-    } catch (_) { /* AppState opcional */ }
+    } catch (_) {}
 
-    toast(`Bienvenido, ${sessionUser.nombre.split(' ')[0]} 👋`, 'success')
+    toast(`Bienvenido/a, ${sessionUser.nombre.split(' ')[0]} 👋`, 'success')
     return sessionUser
   },
 
   /**
-   * Cierra la sesión actual y redirige al login.
+   * Cierra la sesión actual y redirige a la pantalla de login.
    */
   logout() {
     const user = Auth.currentUser()
@@ -135,14 +171,13 @@ export const Auth = {
       if (AppState && typeof AppState.set === 'function') {
         AppState.set('currentUser', null)
       }
-    } catch (_) { /* AppState opcional */ }
+    } catch (_) {}
 
-    toast(`Hasta luego, ${user?.nombre?.split(' ')[0] || ''}`, 'info')
+    toast(`Hasta pronto, ${user?.nombre?.split(' ')[0] || ''}`, 'info')
 
-    // Pequeño delay para que se vea el toast antes de redirigir
     setTimeout(() => {
-      window.location.href = Auth._loginUrl()
-    }, 800)
+      window.location.href = LOGIN_PAGE
+    }, 400)
   },
 
   /**
@@ -178,82 +213,74 @@ export const Auth = {
   },
 
   /**
-   * Verifica autenticación. Si no hay sesión, redirige al login.
-   * Usar al inicio de cada página protegida.
+   * Requiere sesión activa; redirige a auth.html si no está autenticado.
    * @returns {object} Usuario actual
    */
   requireAuth() {
     const user = Auth.getSession()
     if (!user) {
-      window.location.href = Auth._loginUrl()
+      window.location.href = LOGIN_PAGE
       throw new Error('No autenticado')
     }
-    // Sincronizar AppState en cada carga de página
-    try {
-      if (AppState && typeof AppState.set === 'function') {
-        AppState.set('currentUser', user)
-      }
-    } catch (_) { /* AppState opcional */ }
     return user
   },
 
   /**
-   * Verifica que el usuario sea admin. Si no, muestra error y redirige.
-   * @returns {object} Usuario admin
+   * Requiere rol admin; muestra toast y bloquea si no tiene permisos.
+   * @returns {object}
    */
   requireAdmin() {
     const user = Auth.requireAuth()
     if (user.role !== ROLES.ADMIN) {
-      toast('Acceso denegado. Se requieren permisos de administrador.', 'error')
+      toast('Acceso restringido a administradores.', 'error')
       setTimeout(() => {
-        window.location.href = '/panel/tareas.html'
-      }, 1200)
+        window.location.hash = user.role === ROLES.CLIENTE ? '#/portal-cliente' : '#/tareas'
+      }, 500)
       throw new Error('Permisos insuficientes')
     }
     return user
   },
 
-  /**
-   * @returns {boolean}
-   */
   isAdmin() {
     return Auth.currentUser()?.role === ROLES.ADMIN
   },
 
-  /**
-   * @returns {boolean}
-   */
   isOperador() {
     return Auth.currentUser()?.role === ROLES.OPERADOR
   },
 
-  /**
-   * @returns {object|null}
-   */
+  isCliente() {
+    return Auth.currentUser()?.role === ROLES.CLIENTE
+  },
+
+  isOwner() {
+    const u = Auth.currentUser()
+    return u?.role === ROLES.ADMIN && (u.is_owner === true || u.email === 'ralukita101@gmail.com')
+  },
+
   currentUser() {
     return Auth.getSession()
   },
 
   /**
-   * Verifica si el usuario actual puede acceder a un módulo.
-   * Para operadores, también verifica restricción por cliente si se pasa clienteId.
-   *
-   * @param {string} module - Nombre del módulo (ej: 'clientes', 'tareas')
-   * @param {string|null} [clienteId] - Opcional: ID de cliente para verificar acceso
+   * Valida si el rol del usuario puede acceder a un módulo específico.
+   * @param {string} module
+   * @param {string|null} [clienteId]
    * @returns {boolean}
    */
   canAccess(module, clienteId = null) {
     const user = Auth.currentUser()
     if (!user) return false
 
-    // Verificar permiso por módulo
     const allowedModules = PERMISSIONS[user.role] ?? []
     if (!allowedModules.includes(module)) return false
 
-    // Para admins: acceso total
     if (user.role === ROLES.ADMIN) return true
 
-    // Para operadores: verificar restricción por cliente
+    if (user.role === ROLES.CLIENTE) {
+      return module === 'portal-cliente'
+    }
+
     if (clienteId && user.clientes_asignados !== null) {
       return Array.isArray(user.clientes_asignados)
         ? user.clientes_asignados.includes(clienteId)
@@ -262,26 +289,8 @@ export const Auth = {
 
     return true
   },
-
-  /**
-   * Construye la URL del login relativa al origen actual.
-   * @private
-   */
-  _loginUrl() {
-    // Soporta tanto /panel/login.html como index en raíz
-    return LOGIN_PAGE
-  },
 }
 
-// ─── Helper: Inicializar auth en páginas protegidas ───────────────────────────
-/**
- * Conveniencia para inicializar auth en cualquier página protegida.
- * Uso: `const user = initAuth()` al inicio del módulo de la página.
- * Opcionalmente pasar 'admin' para requerir rol admin.
- *
- * @param {'any'|'admin'} [requiredRole='any']
- * @returns {object} Usuario actual
- */
 export function initAuth(requiredRole = 'any') {
   if (requiredRole === 'admin') {
     return Auth.requireAdmin()

@@ -51,6 +51,9 @@ const ROUTE_TITLES = {
   'configuracion':       'Configuración',
   'usuarios':            'Usuarios',
   'perfil':              'Mi Perfil',
+  'mayorista':           'Gestión Mayorista & Distribución',
+  'portal-cliente':      'Portal Mi Empresa',
+  'boveda':              'Bóveda Confidencial de Clientes',
 };
 
 /** Título base de la aplicación. */
@@ -411,6 +414,7 @@ function _titleFromRoute(routeName) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 (function _injectNavStyles() {
+  if (typeof document === 'undefined') return;
   if (document.getElementById('router-nav-styles')) return;
   const style = document.createElement('style');
   style.id = 'router-nav-styles';

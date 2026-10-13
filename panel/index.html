@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>AdminYAAA — Panel de Gestión Interna & Mayorista</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN con configuración temática -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              DEFAULT: '#0f172a',
+              900: '#0f172a',
+              800: '#1e293b',
+              700: '#334155',
+            },
+            accent: {
+              DEFAULT: '#10B981',
+              dark: '#059669',
+              light: '#d1fae5',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos del Panel -->
+  <link rel="stylesheet" href="./assets/css/panel.css">
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen">
+
+  <div class="ay-layout">
+    <!-- Overlay móvil para sidebar -->
+    <div id="ay-sidebar-overlay" class="hidden fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm lg:hidden transition-opacity"></div>
+
+    <!-- Sidebar Navegación Lateral -->
+    <aside id="ay-sidebar" class="ay-sidebar"></aside>
+
+    <!-- Área de Contenido Principal -->
+    <div class="ay-content flex flex-col min-h-screen">
+      <!-- Header Superior -->
+      <header id="ay-header" class="ay-header"></header>
+
+      <!-- Outlet de Páginas (SPA) -->
+      <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
+        <div id="ay-page-outlet">
+          <div class="flex items-center justify-center py-24 text-slate-400">
+            <svg class="w-8 h-8 animate-spin text-emerald-500" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer pequeño -->
+      <footer class="py-4 px-6 border-t border-slate-200 text-center text-xs text-slate-400">
+        AdminYAAA &bull; Gestión Administrativa Integral para PyMEs &bull; Mayorista a tu Casa &bull; Ramos Mejía / Ituzaingó
+      </footer>
+    </div>
+  </div>
+
+  <!-- Contenedor para Modales Dinámicos -->
+  <div id="ay-modal-container"></div>
+
+  <!-- Contenedor para Toasts -->
+  <div id="ay-toast-container"></div>
+
+  <!-- Arranque de la SPA -->
+  <script type="module">
+    import { Auth, ROLES } from './assets/js/core/auth.js'
+    import { Router } from './assets/js/core/router.js'
+    import { initStorage } from './assets/js/data/api.js'
+    import { initToasts } from './assets/js/core/utils.js'
+    import { buildSidebar, updateSidebarUser } from './assets/js/components/sidebar.js'
+    import { buildHeader, updateBreadcrumb } from './assets/js/components/header.js'
+
+    // Importación de módulos de vista
+    import { renderDashboard } from './assets/js/pages/dashboard.js'
+    import { renderClientes } from './assets/js/pages/clientes.js'
+    import { renderTareas } from './assets/js/pages/tareas.js'
+    import { renderPlanillaGastro } from './assets/js/pages/planilla-gastro.js'
+    import { renderPresupuestador } from './assets/js/pages/presupuestador.js'
+    import { renderCuentasCorrientes } from './assets/js/pages/cuentas-corrientes.js'
+    import { renderAlianzas } from './assets/js/pages/alianzas.js'
+    import { renderSueldos } from './assets/js/pages/sueldos.js'
+    import { renderFondos } from './assets/js/pages/fondos.js'
+    import { renderPresentismo } from './assets/js/pages/presentismo.js'
+    import { renderGastos } from './assets/js/pages/gastos.js'
+    import { renderSocios } from './assets/js/pages/socios.js'
+    import { renderCobranzas } from './assets/js/pages/cobranzas.js'
+    import { renderTesoreria } from './assets/js/pages/tesoreria.js'
+    import { renderConfiguracion } from './assets/js/pages/configuracion.js'
+
+    // Nuevos módulos integrados
+    import { renderMayorista } from './assets/js/pages/mayorista.js'
+    import { renderPortalCliente } from './assets/js/pages/portal-cliente.js'
+    import { renderBoveda } from './assets/js/pages/boveda.js'
+
+    // 1. Inicializar almacenamiento y toasts
+    initStorage()
+    initToasts()
+
+    // 2. Control de sesión
+    const user = Auth.currentUser()
+    if (!user) {
+      window.location.href = 'auth.html'
+    }
+
+    // 3. Montar Sidebar y Header
+    buildSidebar()
+    buildHeader()
+    updateSidebarUser()
+
+    const outlet = document.getElementById('ay-page-outlet')
+
+    // Helper para envolver renderers y actualizar breadcrumbs
+    function wrapView(title, renderFn) {
+      return (params) => {
+        updateBreadcrumb([
+          { label: 'AdminYAAA', route: '#/dashboard' },
+          { label: title, route: null }
+        ])
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        renderFn(outlet, params)
+      }
+    }
+
+    // 4. Registro de Rutas SPA
+    Router.register({
+      'dashboard': wrapView('Dashboard Principal', (el) => {
+        if (Auth.isCliente()) {
+          Router.navigate('portal-cliente')
+          return
+        }
+        if (!Auth.isAdmin()) {
+          Router.navigate('tareas')
+          return
+        }
+        renderDashboard(el)
+      }),
+      'clientes': wrapView('Cartera de Clientes', renderClientes),
+      'tareas': wrapView('Registro de Tareas', renderTareas),
+      'planilla-gastro': wrapView('Planilla Gastronómica y Cajas', renderPlanillaGastro),
+      'presupuestador': wrapView('Presupuestador & Depósito', renderPresupuestador),
+      'cuentas-corrientes': wrapView('Cuentas Corrientes', renderCuentasCorrientes),
+      'alianzas': wrapView('Alianzas con Estudios Contables', renderAlianzas),
+      'sueldos': wrapView('Sueldos & RRHH', renderSueldos),
+      'fondos': wrapView('Fondos y Cajas Chicas', renderFondos),
+      'presentismo': wrapView('Presentismo del Equipo', renderPresentismo),
+      'gastos': wrapView('Gastos Operativos', renderGastos),
+      'socios': wrapView('Finanzas de Socios', renderSocios),
+      'cobranzas': wrapView('Cobranzas & Morosidad', renderCobranzas),
+      'tesoreria': wrapView('Tesorería & Cuentas', renderTesoreria),
+      'configuracion': wrapView('Configuración del Sistema', renderConfiguracion),
+
+      // Módulo Mayorista & Distribución
+      'mayorista': wrapView('Gestión Mayorista & Distribución', renderMayorista),
+
+      // Portal Exclusivo Clientes
+      'portal-cliente': wrapView('Portal Mi Empresa', renderPortalCliente),
+
+      // Bóveda de Seguridad & Credenciales (Exclusivo Admin)
+      'boveda': wrapView('Bóveda Confidencial de Clientes', renderBoveda),
+    })
+
+    // Ruta por defecto según el rol del usuario
+    if (!window.location.hash || window.location.hash === '#/' || window.location.hash === '#') {
+      if (Auth.isCliente()) {
+        window.location.hash = '#/portal-cliente'
+      } else if (Auth.isOperador()) {
+        window.location.hash = '#/tareas'
+      } else {
+        window.location.hash = '#/dashboard'
+      }
+    }
+
+    // Inicializar router
+    Router.init()
+  </script>
+</body>
+</html>
