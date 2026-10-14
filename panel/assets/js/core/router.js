@@ -195,7 +195,8 @@ export const Router = {
    * @returns {{ routeName: string, params: Object }}
    */
   _parseHash(hashStr) {
-    const raw = (hashStr || window.location.hash || '').replace(/^#\/?/, '');
+    const defaultHash = typeof window !== 'undefined' ? (window.location.hash || '') : ''
+    const raw = (hashStr !== undefined ? hashStr : defaultHash).replace(/^#\/?/, '');
 
     // Separar query string
     const [pathPart, queryPart] = raw.split('?');

@@ -133,12 +133,25 @@
     // Helper para envolver renderers y actualizar breadcrumbs
     function wrapView(title, renderFn) {
       return (params) => {
-        updateBreadcrumb([
-          { label: 'AdminYAAA', route: '#/dashboard' },
-          { label: title, route: null }
-        ])
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-        renderFn(outlet, params)
+        try {
+          updateBreadcrumb([
+            { label: 'AdminYAAA', route: Auth.isCliente() ? '#/portal-cliente' : (Auth.isOperador() ? '#/tareas' : '#/dashboard') },
+            { label: title, route: null }
+          ])
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+          outlet.innerHTML = ''
+          renderFn(outlet, params)
+        } catch (err) {
+          console.error('[AdminYAAA] Error renderizando vista:', title, err)
+          outlet.innerHTML = `
+            <div class="p-8 bg-white border border-rose-200 rounded-xl shadow-sm text-center">
+              <div class="text-3xl mb-2">⚠️</div>
+              <h2 class="text-base font-bold text-slate-800">No se pudo cargar la vista: ${title}</h2>
+              <p class="text-xs text-rose-600 font-mono mt-1">${err.message || err}</p>
+              <button onclick="window.location.reload()" class="mt-4 px-3 py-1.5 bg-slate-900 text-white rounded text-xs">Reintentar</button>
+            </div>
+          `
+        }
       }
     }
 
