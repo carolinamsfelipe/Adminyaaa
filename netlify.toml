@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/app/*"
+  to = "/panel/:splat"
+  status = 301
