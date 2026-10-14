@@ -186,7 +186,7 @@ export const Auth = {
    */
   getSession() {
     try {
-      const raw = sessionStorage.getItem(SESSION_KEY)
+      const raw = localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY)
       return raw ? JSON.parse(raw) : null
     } catch {
       return null
@@ -194,21 +194,24 @@ export const Auth = {
   },
 
   /**
-   * Guarda el usuario en sessionStorage.
+   * Guarda el usuario en localStorage y sessionStorage.
    * @param {object} user
    */
   setSession(user) {
     try {
-      sessionStorage.setItem(SESSION_KEY, JSON.stringify(user))
+      const json = JSON.stringify(user)
+      localStorage.setItem(SESSION_KEY, json)
+      sessionStorage.setItem(SESSION_KEY, json)
     } catch (e) {
       console.error('[Auth] Error guardando sesión:', e)
     }
   },
 
   /**
-   * Elimina la sesión de sessionStorage.
+   * Elimina la sesión de localStorage y sessionStorage.
    */
   clearSession() {
+    localStorage.removeItem(SESSION_KEY)
     sessionStorage.removeItem(SESSION_KEY)
   },
 

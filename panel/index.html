@@ -120,6 +120,7 @@
     const user = Auth.currentUser()
     if (!user) {
       window.location.href = 'auth.html'
+      throw new Error('Redirigiendo a autenticación...')
     }
 
     // 3. Montar Sidebar y Header
@@ -180,14 +181,17 @@
     })
 
     // Ruta por defecto según el rol del usuario
+    let targetRoute = 'dashboard'
+    if (Auth.isCliente()) {
+      targetRoute = 'portal-cliente'
+    } else if (Auth.isOperador()) {
+      targetRoute = 'tareas'
+    }
+
+    Router.setDefault(targetRoute)
+
     if (!window.location.hash || window.location.hash === '#/' || window.location.hash === '#') {
-      if (Auth.isCliente()) {
-        window.location.hash = '#/portal-cliente'
-      } else if (Auth.isOperador()) {
-        window.location.hash = '#/tareas'
-      } else {
-        window.location.hash = '#/dashboard'
-      }
+      window.location.hash = `#/${targetRoute}`
     }
 
     // Inicializar router
